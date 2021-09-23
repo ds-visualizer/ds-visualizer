@@ -18,7 +18,13 @@ export class Node {
 
   render() {
     return (
-      <div className="flex items-center" key={this.location}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { duration: 0.5 } }}
+        exit={{ opacity: 0, transition: { duration: 0.2 } }}
+        className="flex items-center"
+        key={this.location}
+      >
         <motion.div
           initial={{ scale: 0 }}
           animate={{
@@ -36,7 +42,7 @@ export class Node {
         <div>
           <Arrow />
         </div>
-      </div>
+      </motion.div>
     );
   }
 }

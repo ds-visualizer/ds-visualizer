@@ -39,12 +39,10 @@ const LinkedList: React.FC = () => {
     // if (nodesRef.current) {
     //   nodesRef.current.style.transform = "translate(30,0)";
     // }
-    shiftLeft();
-    await timeout(() => {
-      temp.next = First;
-      First = temp;
-    }, 1000);
-    shiftBack();
+    // shiftLeft();
+    temp.next = First;
+    First = temp;
+    // shiftBack();
     renderList();
   };
 
@@ -101,7 +99,7 @@ const LinkedList: React.FC = () => {
     <div className="flex flex-col  min-h-screen justify-center items-center">
       <div className="relative">
         <div className="flex space-x-3" ref={nodesRef} id="nodes">
-          <AnimatePresence> {nodes}</AnimatePresence>
+          <AnimatePresence>{nodes}</AnimatePresence>
         </div>
         {current && (
           <div className="absolute left-0">
