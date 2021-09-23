@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Node } from "@Misc/algo/Node";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import CurrentSVG from "@Misc/algo/Current";
 import timeout from "@Misc/algo/setTimeout";
 import { shiftLeft, shiftBack } from "@Root/misc/algo/shifts";
@@ -101,7 +101,7 @@ const LinkedList: React.FC = () => {
     <div className="flex flex-col  min-h-screen justify-center items-center">
       <div className="relative">
         <div className="flex space-x-3" ref={nodesRef} id="nodes">
-          {nodes}
+          <AnimatePresence>{nodes}</AnimatePresence>
         </div>
         {current && (
           <div className="absolute left-0">
