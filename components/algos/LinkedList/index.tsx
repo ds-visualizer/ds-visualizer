@@ -1,9 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Node } from "@Misc/algo/Node";
-import { AnimatePresence, motion } from "framer-motion";
-import CurrentSVG from "@Misc/algo/Current";
-import timeout from "@Misc/algo/setTimeout";
-import { shiftLeft, shiftBack } from "@Root/misc/algo/shifts";
+import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 //
 import Options from "./Options";
@@ -13,9 +10,7 @@ let Last: Node | null = null;
 let length: number = 0;
 
 const LinkedList: React.FC = () => {
-  let [current, setCurrent] = useState<boolean>();
   let [nodes, setNodes] = useState<JSX.Element[]>([]);
-  let [option, setOption] = useState<string>("");
   const nodesRef = useRef<HTMLDivElement>(null);
 
   const addLast = (value: number) => {
@@ -35,14 +30,8 @@ const LinkedList: React.FC = () => {
       return (First = Last = new Node(value)) && renderList();
     }
     let temp = new Node(value);
-
-    // if (nodesRef.current) {
-    //   nodesRef.current.style.transform = "translate(30,0)";
-    // }
-    // shiftLeft();
     temp.next = First;
     First = temp;
-    // shiftBack();
     renderList();
   };
 
@@ -52,7 +41,7 @@ const LinkedList: React.FC = () => {
     renderList();
   };
 
-  const removeLast = () => {
+  const removeLast = async () => {
     if (First === null) {
       return;
     }
@@ -96,23 +85,24 @@ const LinkedList: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col  min-h-screen justify-center items-center">
-      <div className="relative">
-        <div className="flex space-x-3" ref={nodesRef} id="nodes">
-          <AnimatePresence>{nodes}</AnimatePresence>
-        </div>
-        {current && (
-          <div className="absolute left-0">
-            <CurrentSVG />
-          </div>
-        )}
-      </div>
+    <div className="flex flex-col w-screen bg-primary min-h-screen">
       <Options
         removeLast={removeLast}
         addFirst={addFirst}
         addLast={addLast}
         removeFirst={removeFirst}
       />
+      <div className="relative h-full px-10 py-10">
+        <div
+          className="flex space-x-3 overflow-scroll"
+          ref={nodesRef}
+          id="nodes"
+        >
+          <AnimateSharedLayout>
+            <AnimatePresence>{nodes}</AnimatePresence>
+          </AnimateSharedLayout>
+        </div>
+      </div>
     </div>
   );
 };
