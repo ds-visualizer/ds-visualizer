@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Node } from "@Misc/algo/Node";
+import { Node } from "@Root/misc/algo/Linkedlist/Node";
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 //
