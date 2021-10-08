@@ -4,12 +4,18 @@ import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 //
 import Options from "./Options";
+import Content from "@Root/components/layouts/Content";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
+
+interface Props {
+  html: MDXRemoteSerializeResult<Record<string, unknown>>;
+}
 
 let First: Node | null = null;
 let Last: Node | null = null;
 let length: number = 0;
 
-const LinkedList: React.FC = () => {
+const LinkedList: React.FC<Props> = ({ html }) => {
   let [nodes, setNodes] = useState<JSX.Element[]>([]);
   const nodesRef = useRef<HTMLDivElement>(null);
 
@@ -94,7 +100,7 @@ const LinkedList: React.FC = () => {
       />
       <div className="relative h-full px-10 py-10">
         <div
-          className="flex space-x-3 overflow-scroll"
+          className="flex space-x-3 overflow-hidden"
           ref={nodesRef}
           id="nodes"
         >
@@ -103,6 +109,7 @@ const LinkedList: React.FC = () => {
           </AnimateSharedLayout>
         </div>
       </div>
+      <Content html={html} />
     </div>
   );
 };

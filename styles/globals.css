@@ -11,3 +11,7 @@ body {
     @apply border-2 rounded border-white px-3 transition py-1;
   }
 }
+
+body {
+  background-color: #202124;
+}

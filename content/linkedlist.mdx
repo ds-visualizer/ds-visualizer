@@ -1,0 +1,86 @@
+# What is a LinkedList?
+
+> Read the heap and stack blog before reading this.
+
+LinkedList is a data structure which is similar to an array but each element are is pointed to the next element but a pointer.
+In LinkedList, the elements are called nodes.
+In data structures, nodes are knows as a structure that acts like elements in the main data structure.
+
+In a rough representation, an Integer linked list looks like:
+
+```Figure-1
+1 -> 2 -> 3 -> 4
+```
+
+Each element here is a node data structure, and each node is pointing to the next node.
+
+```
+Node{
+  value: integer,
+  next: location of the next node thats sitting in the heap memory
+}
+```
+
+Looking at `figure-1`, we can say that each element in a node and is pointing to the next one.
+We can also see that `1` is the first element so we need some variable that is holding `node 1` so that we can refer it for using it.
+
+> Since each Node is a custom data type and that is not know at the compile time, they are stored in the heap memory, **So remember to free the memory when you are done with it, high level languages have an inbuilt garbage collector so no need of worrying about it**
+
+A linked list has 4 standard methods which are:
+
+- Add First
+- Add Last
+- Remove First
+- Remove Last
+- Additionally there is also `insertAt()` but I'll not be adding it here.
+
+## Add First
+
+When calling this function, the node gets added in the first position.
+For Example:
+
+```textile
+2 -> 3 -> 4
+
+// When we do addFirst we are suppose make a node 1 that points to 2.
+// And the variable thats holding the heap location of 2 will be changed to node(1).
+
+// After adding: 1 -> 2 -> 3 -> 4
+
+// Suppose the there is no linked list, the variable will be holding null.
+In that can we can make a null check and if true, make the variable hold the new node's position that we make.
+```
+
+Time Complexity of AddFirst: O(1);
+Space Complexity of AddLast: O(1);
+
+Judging from the space and time complexity we can say Add first is fairly an efficient method.
+
+## Remove First
+
+When calling this function, the node that is in the first position is removed.
+This is simply done by removing the variable thats pointing to the first node and instead make it point to the second node, its that simple :).
+
+For Example:
+
+```
+1 -> 2 -> 3
+
+// After removing, the variable thats holding one will stack holding node(2)'s location.
+// To get the position of node(2), we can do variable.next. Variable holds node(1) so next would hold the memory location of the next element.
+// Since we know how to get the next Node's position, we can just make the variable hold the next position.
+```
+
+## Remove Last
+
+When calling this method, we will iterate till the last second node and change the `next` value to null so it will stop holding the position of the previous last
+and hence we successfully remove last.
+
+For Example:
+
+```
+1 -> 2 -> 3
+
+// make a new variable that will move till it holds the node thats last second from the last.
+// Node(2).next = null; Will make it point to a null object and hence will remove the node(3) out from the list.
+```
