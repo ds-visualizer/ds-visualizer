@@ -2,7 +2,7 @@
 
 > Read the heap and stack blog before reading this.
 
-LinkedList is a data structure which is similar to an array but each element are is pointed to the next element but a pointer.
+LinkedList is a data structure which is similar to an array but each element is pointed to the next element but a pointer.
 In LinkedList, the elements are called nodes.
 In data structures, nodes are knows as a structure that acts like elements in the main data structure.
 
@@ -24,7 +24,7 @@ Node{
 Looking at `figure-1`, we can say that each element in a node and is pointing to the next one.
 We can also see that `1` is the first element so we need some variable that is holding `node 1` so that we can refer it for using it.
 
-> Since each Node is a custom data type and that is not know at the compile time, they are stored in the heap memory, **So remember to free the memory when you are done with it, high level languages have an inbuilt garbage collector so no need of worrying about it**
+> Since each Node is a custom data type and it is not known at the compile time, nodes are stored in the heap memory, **So remember to free the memory of the node when you are done with it, high level languages have an inbuilt garbage collector so no need of worrying about it**
 
 A linked list has 4 standard methods which are:
 
@@ -73,7 +73,7 @@ For Example:
 
 ## Remove Last
 
-When calling this method, we will iterate till the last second node and change the `next` value to null so it will stop holding the position of the previous last
+When calling this method, we will iterate till the second node from last and change the `next` value to null so it will stop holding the position of the previous last
 and hence we successfully remove last.
 
 For Example:
@@ -84,3 +84,4 @@ For Example:
 // make a new variable that will move till it holds the node thats last second from the last.
 // Node(2).next = null; Will make it point to a null object and hence will remove the node(3) out from the list.
 ```
+

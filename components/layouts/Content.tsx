@@ -8,7 +8,7 @@ interface Props {
 
 const Content: React.FC<Props> = ({ html }) => {
   return (
-    <div className="content w-screen max-w-[1000px] overflow-hidden  mx-auto px-3 py-10 pb-20 text-gray-100">
+    <div className="blog w-screen max-w-[1000px] overflow-hidden  mx-auto px-3 py-10 pb-20 text-gray-100">
       <MDXRemote {...html} />
     </div>
   );

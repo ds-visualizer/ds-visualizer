@@ -15,3 +15,102 @@ body {
 body {
   background-color: #202124;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Nunito:wght@400;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@1,300&display=swap");
+
+@layer components {
+  .blog h1 {
+    @apply text-5xl md:text-6xl  2xl:text-9xl text-center;
+  }
+  .blog h2 {
+    @apply text-3xl md:text-5xl  2xl:text-7xl text-center;
+  }
+  .blog h3 {
+    @apply text-2xl md:text-4xl  2xl:text-5xl;
+  }
+
+  .blog > * {
+    @apply text-base md:text-lg xl:text-xl leading-[1.6rem] md:leading-[1.8rem] xl:leading-[2rem];
+  }
+
+  .blog blockquote {
+    @apply mb-4;
+  }
+}
+.remark-code-title {
+  width: fit-content;
+  background-color: #5f5555;
+  color: white;
+  padding: 0.1em 0.3em;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+  margin-left: 0.3rem;
+  transform: translateY(0.5rem);
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  /* scrollbar-base-color: #4949ff; */
+}
+
+.blog ul {
+  margin: 1rem 0;
+}
+.blog li {
+  list-style: disc;
+  list-style-position: outside;
+  margin-left: 1rem;
+}
+.blog h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+.blog h1 {
+  font-weight: bold;
+  margin: 2.5rem 0;
+  border-bottom: 1px solid #7a7a7a;
+}
+.blog h2 {
+  font-weight: bold;
+  margin: 1.5rem 0;
+}
+.blog p {
+  margin: 1rem 0;
+  color: #dfdfdf;
+}
+.blog pre {
+  overflow-x: scroll;
+  background: #1d1d1d;
+  padding: 0.9rem 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+}
+.blog code {
+  background: rgb(255, 255, 255, 0.7);
+  border-radius: 0.4rem;
+  padding: 0.1rem 0.2rem;
+  color:black;
+}
+.blog pre code {
+  background: transparent;
+  color: white;
+}
+.blog blockquote {
+  border-radius: 0.4rem;
+  overflow: hidden;
+  padding-left: 0.4rem;
+  background-color: rgb(88, 88, 88);
+}
+.blog blockquote p {
+  padding: 0.3rem 0.4rem;
+  background-color: rgba(49, 49, 49, 0.6);
+  margin: 0;
+}
+.blog a {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #4949ff;
+}
