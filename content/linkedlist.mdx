@@ -1,6 +1,6 @@
 # What is a LinkedList?
 
-> Read the heap and stack blog before reading this.
+> Read the heap and stack blog before reading this. <a src="https://blog.isatvik.com/heap-vs-stack">Blog here</a>
 
 LinkedList is a data structure which is similar to an array but each element is pointed to the next element but a pointer.
 In LinkedList, the elements are called nodes.
@@ -32,7 +32,7 @@ A linked list has 4 standard methods which are:
 - Add Last
 - Remove First
 - Remove Last
-- Additionally there is also `insertAt()` but I'll not be adding it here.
+- Additionally methods like `insertAt()` and `find()` will not be discussed in this.
 
 ## Add First
 
@@ -42,7 +42,7 @@ For Example:
 ```textile
 2 -> 3 -> 4
 
-// When we do addFirst we are suppose make a node 1 that points to 2.
+// When we do addFirst we are suppose make a node(1) that points to node(2).
 // And the variable thats holding the heap location of 2 will be changed to node(1).
 
 // After adding: 1 -> 2 -> 3 -> 4
@@ -71,6 +71,14 @@ For Example:
 // Since we know how to get the next Node's position, we can just make the variable hold the next position.
 ```
 
+## Add Last
+
+When calling this method, we need to iterate till we get hold of the last node `position` and once we are able do that,
+we can just make that node point to the new node.
+
+Generally people do this in different ways, either iterate till the last node which would be `O(n)` in time or store the last node location default
+and directly access it without iterating. In this scenario, Time would be `O(1)`.
+
 ## Remove Last
 
 When calling this method, we will iterate till the second node from last and change the `next` value to null so it will stop holding the position of the previous last
@@ -84,4 +92,3 @@ For Example:
 // make a new variable that will move till it holds the node thats last second from the last.
 // Node(2).next = null; Will make it point to a null object and hence will remove the node(3) out from the list.
 ```
-

@@ -128,6 +128,7 @@ html {
   margin: 0;
 }
 .blog a {
+  cursor: pointer;
   text-decoration: underline;
   font-weight: bold;
   color: #4949ff;
