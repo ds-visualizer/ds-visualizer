@@ -9,14 +9,16 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 interface Props {
   html: MDXRemoteSerializeResult<Record<string, unknown>>;
+  codeHTML: MDXRemoteSerializeResult<Record<string, unknown>>;
 }
 
 let First: Node | null = null;
 let Last: Node | null = null;
 let length: number = 0;
 
-const LinkedList: React.FC<Props> = ({ html }) => {
+const LinkedList: React.FC<Props> = ({ html, codeHTML }) => {
   let [nodes, setNodes] = useState<JSX.Element[]>([]);
+  const [code, setCode] = useState(true);
   const nodesRef = useRef<HTMLDivElement>(null);
 
   const addLast = (value: number) => {
@@ -92,6 +94,14 @@ const LinkedList: React.FC<Props> = ({ html }) => {
 
   return (
     <div className="flex flex-col w-screen bg-primary min-h-screen">
+      <button
+        onClick={() => {
+          setCode((prev) => !prev);
+        }}
+        className="fixed z-20 rounded top-10 right-5 px-4 py-2 bg-black text-white"
+      >
+        {code ? "Explanation" : "Code"}
+      </button>
       <Options
         removeLast={removeLast}
         addFirst={addFirst}
@@ -109,7 +119,7 @@ const LinkedList: React.FC<Props> = ({ html }) => {
           </AnimateSharedLayout>
         </div>
       </div>
-      <Content html={html} />
+      <Content html={code ? codeHTML : html} />
     </div>
   );
 };

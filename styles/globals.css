@@ -13,7 +13,7 @@ body {
 }
 
 body {
-  background-color: #202124;
+  background-color: #292929;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Nunito:wght@400;800&display=swap");
@@ -40,12 +40,12 @@ body {
 }
 .remark-code-title {
   width: fit-content;
-  background-color: #5f5555;
+  background-color: hsla(234, 83%, 67%, 0.6);
   color: white;
   padding: 0.1em 0.3em;
   border-top-left-radius: 0.3rem;
   border-top-right-radius: 0.3rem;
-  margin-left: 0.3rem;
+  margin-left: 0.6rem;
   transform: translateY(0.5rem);
 }
 
@@ -97,7 +97,10 @@ html {
 }
 .blog p {
   margin: 1rem 0;
-  color: #dfdfdf;
+  color: #b8b8b8;
+}
+.blog strong {
+  color: rgb(235, 233, 233);
 }
 .blog pre {
   overflow-x: scroll;
@@ -107,7 +110,7 @@ html {
   font-size: 0.8rem;
 }
 .blog code {
-  background: rgb(255, 255, 255, 0.7);
+  background: rgba(250, 249, 249, 0.7);
   border-radius: 0.4rem;
   padding: 0.1rem 0.2rem;
   color: black;
@@ -115,6 +118,7 @@ html {
 .blog pre code {
   background: transparent;
   color: white;
+  font-family: "DM Mono", monospace;
 }
 .blog blockquote {
   border-radius: 0.4rem;
@@ -126,6 +130,7 @@ html {
   padding: 0.3rem 0.4rem;
   background-color: rgba(49, 49, 49, 0.6);
   margin: 0;
+  color: white;
 }
 .blog a {
   cursor: pointer;

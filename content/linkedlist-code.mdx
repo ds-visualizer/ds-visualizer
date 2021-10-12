@@ -1,0 +1,204 @@
+# Linked List Code
+
+> LinkedList is a data structure where each element is connected to the next element's memory location.
+
+Generally LinkedList are done in `2 ways`, one way by using `2 pointers` where one points `first` and `last`, and the other way is just using one pointer that holds
+`first node position`.
+
+In this blog we will use 2 pointers where one holds fist node and other holds last node.
+
+The plain structure of LinkedList would look like this.
+
+```java:Linked-List.java
+class LinkedList {
+
+	class Node {
+		int value;
+		Node next = null;
+
+		public Node(int value) { // Constructor for a Node
+			this.value = value;
+		}
+	}
+
+	private Node first = null; // first and last are pointers to the nodes
+	private Node last = null;
+	private int length = 0;
+
+// length is optional but can change the time of `size()` method to go from O(n) to O(1) and has no effect on the space.
+// Ways to decrease time 😉.
+
+  /*
+   * First last and length are private because you don't want to access them outside of the class,
+   * You can make getters which is a good practice if you want to read private variables.
+   */
+
+	public void addFirst(int value) {}
+
+	public void addLast(int value) {}
+
+	public void insertAt(int index, int value) {}
+
+	public void removeFirst() {}
+
+	public void removeLast() {}
+
+	public void toString() {}
+
+}
+```
+
+**in this case**, Node is the structure of each node thats `inside` the LinkedList, `value` is the data thats inside of the node, and `next` is a pointer that holds the heap location of the next
+node you want to point it to.
+
+Lets look at `addFirst` Method:
+
+```java:addFirst.java
+public void addFirst(int value) {
+  length++;
+
+  Node node = new Node(value);
+
+  if (this.first == null) {
+		this.first = this.last = node;
+		return;
+  }
+
+  node.next = first;
+  first = node;
+
+  // Node(0) 1 -> 2
+  // 0 -> 1 -> 2
+  // just link 0 to first
+}
+```
+
+Basically says if first isn't holding any node that means `there is no linked list available`, then we make first and last refer to the new Node.
+
+Otherwise, we need to add a new node to the first, we do this by `make a new Node()` and then pointing that one to the first, how after pointing
+we will make the pointer first to hold the new node.
+
+> This is done in the time complexity of O(1) and space complexity of O(1) as well.
+
+Lets look at `addLast` method:
+
+```java:addLast.java
+	public void addLast(int value) {
+		Node node = new Node(value);
+		length++;
+
+		if (this.first == null) {
+			this.first = this.last = node;
+			return;
+		}
+
+		last.next = node;
+		last = last.next;
+
+		// 1 -> 2 0
+		// 1 -> 2 -> 0
+		// just link last to 0
+	}
+```
+
+This looks similar too isn't? we already have a variable thats pointing to the last node, so all we do now is make `last point to the new Node` and
+after doing that just make last pointer to be equal to the new node we added since the new Node is the **last node now**.
+
+Lets look at a cooler method now 😎, `insertAt(int index, int value)`:
+
+```java:insertAt.java
+	public void insertAt(int index, int value) {
+
+		if (index > length + 1 || index < 0) // This is required cuz if index is 0 or greater than the size of linked list,
+			return; 													 // we shouldn't be able to add a new node
+
+		if (index == 0) { // This is optional which I have done, but U can skip it.
+			addFirst(value);
+			return;
+		}
+
+		/*
+		* This is optional as well but I did this to reduce the time complexity
+		* How does this reduce time? 🤔
+		*
+		* If you look at the bottom code, we had to iterate till the index element,
+		* and we know add last is O(1) operation so why do you want to make this do O(n) when it can be
+		* done in O(1). So I decided to do this, if index = length, then do addLast()
+		*
+		* More hacks 😉
+		*/
+
+		if (index == length) {
+			addLast(value);
+			return;
+		}
+
+		length++;
+		Node current = first;
+		Node node = new Node(value);
+		for (int i = 0; i < index - 1; i++) {
+			current = current.next;
+		}
+		Node temp = current.next;
+		current.next = node;
+		node.next = temp;
+
+	}
+```
+
+### Lets analyse the code
+
+**Step 1:** We add length since we are adding a Node into it.
+
+**Step 2:** So what is current? current is a pointer, which initially points to the
+first node.
+
+**Step 3:** We need to get hold of the element thats before the give index.
+
+```
+1 -> 2 -> 3 -> 4
+```
+
+Suppose we want to add the element `node(5)` at index 2, which is at Node(3) position, we need to be able to get till Node(2) and make it point to the Node
+that we will be creating.
+
+So to get hold of the Node(2), we are using a for loop.
+
+**Step 3:** After iterating till the prev Node of index, we need to make it point to the new Node(value).
+We basically do this by changing element's next to hold the new memory location.
+
+```
+1 -> 2 -> 5
+3 -> 4
+```
+
+After doing that, Node(2) will be pointing towards 5 but 5 will not be pointing to anything, **So what happened to Node(3) and the rest 😣??**
+
+**Step 4:** Since we don't want to lose the other nodes, we store them in a temp variable before adding 5. So then after adding 5, we can make node(5)
+point towards the other temp pointer which is storing all the other nodes.
+
+**ANDDD BY THIS, I HOPE U UNDERSTOOD THIS METHOD!!! :)**
+
+Alright that was a ride, lets get back to some easier methods now :):
+
+Lets look at how to remove nodes from the last 'removeLast:`
+
+```java:removeLast.java
+	public void removeLast() {
+		if (first == null)
+			return;
+
+		length--;
+
+		if (first.next == null) {
+			first = last = null;
+			return;
+		}
+		Node current = first;
+		while (current.next.next != null) {
+			current = current.next;
+		}
+		current.next = null;
+		last = current;
+	}
+```
