@@ -2,8 +2,8 @@
 
 > LinkedList is a data structure where each element is connected to the next element's memory location.
 
-Generally LinkedList are done in `2 ways`, one way by using `2 pointers` where one points `first` and `last`, and the other way is just using one pointer that holds
-`first node position`.
+Generally LinkedList are done in `2 ways`, one way by using `2 pointers` where one points `first` and `last` node, and the other way is just using one pointer that holds
+`first node memory location`.
 
 In this blog we will use 2 pointers where one holds fist node and other holds last node.
 
@@ -45,10 +45,14 @@ class LinkedList {
 
 	public void toString() {}
 
+	public int get(int index) {}
+
+	// Some more methods which will not be covered here.
+
 }
 ```
 
-**in this case**, Node is the structure of each node thats `inside` the LinkedList, `value` is the data thats inside of the node, and `next` is a pointer that holds the heap location of the next
+**in this case**, Node is the structure of each node thats `inside` the LinkedList, `value` is the data thats inside of the node, and `next` is a pointer that holds the heap location of the
 node you want to point it to.
 
 Lets look at `addFirst` Method:
@@ -75,8 +79,8 @@ public void addFirst(int value) {
 
 Basically says if first isn't holding any node that means `there is no linked list available`, then we make first and last refer to the new Node.
 
-Otherwise, we need to add a new node to the first, we do this by `make a new Node()` and then pointing that one to the first, how after pointing
-we will make the pointer first to hold the new node.
+Otherwise, we need to add a new node to the first. We do this by making a node and them `pointing next to first`. Doing this we added a node before first.
+But, don't forget to change the pointer first as well to the new node otherwise it will still be pointing towards the previous first.
 
 > This is done in the time complexity of O(1) and space complexity of O(1) as well.
 
@@ -202,3 +206,72 @@ Lets look at how to remove nodes from the last 'removeLast:`
 		last = current;
 	}
 ```
+
+In this we go till the last second node, and make the last second node point to `null` and change our `last pointer` to point the new last node.
+if there is no node to remove, we will just stop the method.
+
+Similarly Lets look at 'removeFirst`:
+
+```java:removeFirst.java
+	public void removeFirst() {
+		if (first == null)
+			return;
+
+		length--;
+
+		first = first.next;
+	}
+```
+
+In this method, all we do is is point first pointer to the next node.
+
+```
+1 -> 2 -> 3
+
+// Suppose first is 1 and first.next is 2
+// we will just make pointer first to start holding 2, and doing that we need to get
+// hold of Node(2)'s position
+
+2 -> 3
+// first pointer is now holding 2 instead of 1.
+```
+
+`toString()` method:
+
+```java:toString.java
+	public String toString(){
+
+		String str = "[";
+		Node current = first;
+
+		while(current != null){
+			str += current.value + ", ";
+			current = current.next;
+		}
+
+		return str.substring(0,str.length()-2) + "]";
+		// this is all just for decoration, you can return the string however you want to.
+	}
+```
+
+This should look fairly simple, we just iterate thru the loop and add the value to str and finally we return the string.
+
+Similar to this method, we also have `get(int index)`:
+
+```java:get.java
+	public int get(int index){
+		Node current = first;
+
+		if(index < 0 || index >= length) return;
+
+		for(int i = 0; i < index; i++ ){
+			current = current.next;
+		}
+
+		return current.value;
+	}
+```
+
+In this method we just iterate till the index node and return the value of current.
+
+**Now with all the information you read, try to build contains method. Thats your homework 😉**
