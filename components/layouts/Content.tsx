@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import Prism from "prismjs";
-import "prismjs/themes/vs-code.css";
 import "prismjs/plugins/unescaped-markup/prism-unescaped-markup.min.js";
 import "prismjs/components/prism-java.js";
 
