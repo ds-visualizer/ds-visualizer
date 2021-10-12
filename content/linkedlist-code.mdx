@@ -2,8 +2,7 @@
 
 > LinkedList is a data structure where each element is connected to the next element's memory location.
 
-Generally LinkedList are done in `2 ways`, one way by using `2 pointers` where one points `first` and `last` node, and the other way is just using one pointer that holds
-`first node memory location`.
+Generally LinkedList are done in `2 ways`, one way by using `2 pointers` where one points `first` and `last` node.
 
 In this blog we will use 2 pointers where one holds fist node and other holds last node.
 
@@ -43,9 +42,13 @@ class LinkedList {
 
 	public void removeLast() {}
 
+	public void remove() {}
+
 	public void toString() {}
 
 	public int get(int index) {}
+
+	public int size() {}
 
 	// Some more methods which will not be covered here.
 
@@ -58,6 +61,12 @@ node you want to point it to.
 Lets look at `addFirst` Method:
 
 ```java:addFirst.java
+
+/*
+ * Time: O(1)
+ * Space: O(1);
+ */
+
 public void addFirst(int value) {
   length++;
 
@@ -87,6 +96,12 @@ But, don't forget to change the pointer first as well to the new node otherwise 
 Lets look at `addLast` method:
 
 ```java:addLast.java
+
+	/*
+ 	* Time: O(1)
+ 	* Space: O(1);
+ 	*/
+
 	public void addLast(int value) {
 		Node node = new Node(value);
 		length++;
@@ -111,9 +126,15 @@ after doing that just make last pointer to be equal to the new node we added sin
 Lets look at a cooler method now 😎, `insertAt(int index, int value)`:
 
 ```java:insertAt.java
+
+	/*
+ 	* Time: O(n)
+ 	* Space: O(1);
+ 	*/
+
 	public void insertAt(int index, int value) {
 
-		if (index > length + 1 || index < 0) // This is required cuz if index is 0 or greater than the size of linked list,
+		if (index > length || index < 0) // This is required cuz if index is 0 or greater than the size of linked list,
 			return; 													 // we shouldn't be able to add a new node
 
 		if (index == 0) { // This is optional which I have done, but U can skip it.
@@ -121,8 +142,13 @@ Lets look at a cooler method now 😎, `insertAt(int index, int value)`:
 			return;
 		}
 
+		if (index == length) {
+			addLast(value);
+			return;
+		}
+
 		/*
-		* This is optional as well but I did this to reduce the time complexity
+		* index == length is optional as well but I did this to reduce the time complexity
 		* How does this reduce time? 🤔
 		*
 		* If you look at the bottom code, we had to iterate till the index element,
@@ -132,20 +158,35 @@ Lets look at a cooler method now 😎, `insertAt(int index, int value)`:
 		* More hacks 😉
 		*/
 
-		if (index == length) {
-			addLast(value);
-			return;
-		}
+		/*
+		 * Suppose 0 -> 1 -> 2 -> 3 is the linked list, and
+		 * we want to add Node(4) at index 2,
+		 *
+		 * So we make a temporary pointer and and move it till it gets hold of Node(1)'s, position.
+		 * After doing this, we make Node(1) point to the new node and new node point to Node(2),
+		 * N by this we added a new node :0
+		 */
 
 		length++;
 		Node current = first;
 		Node node = new Node(value);
-		for (int i = 0; i < index - 1; i++) {
+		for (int i = 0; i < index - 1; i++) { // this for loop is the reason why insertAt method becomes O(n)
 			current = current.next;
 		}
+
+		// After the for loop, current will be holding Node(1);
+
 		Node temp = current.next;
+
+		// Make a temporary variable such that it holds the other nodes thats after 1
+
 		current.next = node;
+
+		// Point Node(1) to the new Node, 0 -> 1 -> 4
+
 		node.next = temp;
+
+		// finally point the new node to old node, in this example Node(2), 0 -> 1 -> 4 -> 2 -> 3
 
 	}
 ```
@@ -188,6 +229,12 @@ Alright that was a ride, lets get back to some easier methods now :):
 Lets look at how to remove nodes from the last 'removeLast:`
 
 ```java:removeLast.java
+
+	/*
+ 	* Time: O(n)
+ 	* Space: O(1);
+ 	*/
+
 	public void removeLast() {
 		if (first == null)
 			return;
@@ -199,9 +246,11 @@ Lets look at how to remove nodes from the last 'removeLast:`
 			return;
 		}
 		Node current = first;
-		while (current.next.next != null) {
+		while (current.next.next != null) { // This loop is used to iterate till the last second Node
 			current = current.next;
 		}
+
+		// then point last second node to null which remove the last node.
 		current.next = null;
 		last = current;
 	}
@@ -213,6 +262,12 @@ if there is no node to remove, we will just stop the method.
 Similarly Lets look at 'removeFirst`:
 
 ```java:removeFirst.java
+
+	/*
+ 	* Time: O(1)
+ 	* Space: O(1);
+ 	*/
+
 	public void removeFirst() {
 		if (first == null)
 			return;
@@ -239,18 +294,24 @@ In this method, all we do is is point first pointer to the next node.
 `toString()` method:
 
 ```java:toString.java
+
+	/*
+ 	* Time: O(n)
+ 	* Space: O(1);
+ 	*/
+
 	public String toString(){
 
 		String str = "[";
 		Node current = first;
 
-		while(current != null){
+		while(current != null){ // Since we are iterating thru every element, the time complexity turns out to be O(n)
 			str += current.value + ", ";
 			current = current.next;
 		}
 
 		return str.substring(0,str.length()-2) + "]";
-		// this is all just for decoration, you can return the string however you want to.
+		// this is just for decoration, you can return the string however you want to :/.
 	}
 ```
 
@@ -259,12 +320,18 @@ This should look fairly simple, we just iterate thru the loop and add the value 
 Similar to this method, we also have `get(int index)`:
 
 ```java:get.java
+
+	/*
+ 	* Time: O(n)
+ 	* Space: O(1);
+ 	*/
+
 	public int get(int index){
 		Node current = first;
 
-		if(index < 0 || index >= length) return;
+		if(index < 0 || index >= length) return; // if statement is true, index out of bound ERRRRRR.
 
-		for(int i = 0; i < index; i++ ){
+		for(int i = 0; i < index; i++) { // iterate till that node and return the node
 			current = current.next;
 		}
 
@@ -273,5 +340,61 @@ Similar to this method, we also have `get(int index)`:
 ```
 
 In this method we just iterate till the index node and return the value of current.
+
+For this task lets implement a getter 🙂 which is called `size`:
+
+```java:size.java
+
+	/*
+ 	* Time: O(1)
+ 	* Space: O(1);
+ 	*/
+
+	// Thanks to us storing length, we could make this an O(1) operator, otherwise it would turn out to be O(n)
+
+	pubic int size() {
+		return length;
+	}
+```
+
+This is just a getter to read the length property.
+
+Alright lets go back to another tough method, `remove(int index)`:
+
+```java:remove.java
+
+	public void remove(int index) {
+
+		if (index > length || index < 0)
+			return;
+
+		if(index == 0) {
+			removeFirst();
+			return;
+		}
+
+		if(index == length-1) {
+			removeLast();
+			return;
+		}
+
+		/*
+		 * Suppose 1 -> 2 -> 3 -> 4
+		 * if we want to remove index 3, we iterate till 2,
+		 * then make Node(2).next to point it to 4 instead of pointing it to Node(3).
+		 * By doing this, no node will be referencing 3 anymore, and hence Node(3) will get removed from the list.
+		 * Result: 1 -> 2 -> 4
+		 */
+
+		Node current = first;
+
+		for (int i = 0; i < index - 1; i++) { // This for loop is the reason find becomes an O(n) complexity.
+			current = current.next;
+		}
+
+		current.next = current.next.next;
+
+	}
+```
 
 **Now with all the information you read, try to build contains method. Thats your homework 😉**
