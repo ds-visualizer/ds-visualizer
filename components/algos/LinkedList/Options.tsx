@@ -6,6 +6,8 @@ interface Props {
   addLast: (value: number) => void;
   removeFirst: () => void;
   removeLast: () => void;
+  addAt: (index: number, value: number) => void;
+  removeAt: (index: number) => void;
 }
 
 const Options: React.FC<Props> = ({
@@ -13,23 +15,25 @@ const Options: React.FC<Props> = ({
   removeFirst,
   addFirst,
   addLast,
+  addAt,
+  removeAt,
 }) => {
-  let inputRef = useRef<HTMLInputElement>(null);
+  const valueRef = useRef<HTMLInputElement>(null);
+  const indexRef = useRef<HTMLInputElement>(null);
 
   const inputCheck = () => {
-    if (!inputRef.current) return;
-    let value = +inputRef.current.value;
-    console.log(value);
-    inputRef.current.value = "";
+    if (!valueRef.current) return;
+    let value = +valueRef.current.value;
+    valueRef.current.value = "";
     return value;
   };
 
   return (
-    <div className="w-full h-64 bg-secondary text-secondary">
-      <div className="h-1/2 flex-col flex justify-end items-center pt-3">
+    <div className="w-full h-[18rem] flex flex-col justify-center pt-2  bg-secondary text-secondary">
+      <div className=" flex-col flex justify-end items-center pt-3">
         <div>
-          <div className="mb-2">Enter your Value: </div>
           <form
+            className="flex  space-x-4"
             onSubmit={(e) => {
               e.preventDefault();
               const value = inputCheck();
@@ -37,13 +41,27 @@ const Options: React.FC<Props> = ({
               addFirst(value);
             }}
           >
-            <input
-              ref={inputRef}
-              type="number"
-              name=""
-              id=""
-              className="h-9 w-[15rem] rounded outline-none px-2 focus:border-primary border-2"
-            />
+            <div>
+              <div className="">Enter the Value: </div>
+
+              <input
+                ref={valueRef}
+                type="number"
+                name=""
+                id=""
+                className="h-9 w-[10rem] rounded outline-none px-2 focus:border-primary border-2"
+              />
+            </div>
+            <div>
+              <div>Enter the index:</div>
+              <input
+                ref={indexRef}
+                type="number"
+                name=""
+                id=""
+                className="h-9 w-[10rem] rounded outline-none px-2 focus:border-primary border-2"
+              />
+            </div>
           </form>
         </div>
       </div>
@@ -72,6 +90,17 @@ const Options: React.FC<Props> = ({
         </motion.button>
         <motion.button
           onClick={() => {
+            const value = valueRef.current?.value || "0";
+            const index = indexRef.current?.value || "0";
+            addAt(parseInt(index), parseInt(value));
+          }}
+          whileTap={{ scale: 0.8 }}
+          className="btn"
+        >
+          Insert At
+        </motion.button>
+        <motion.button
+          onClick={() => {
             const value = inputCheck();
             if (value == undefined) return;
             removeFirst();
@@ -91,6 +120,16 @@ const Options: React.FC<Props> = ({
           className="btn"
         >
           Remove Last
+        </motion.button>
+        <motion.button
+          onClick={() => {
+            const index = indexRef.current?.value || "0";
+            removeAt(parseInt(index));
+          }}
+          whileTap={{ scale: 0.8 }}
+          className="btn"
+        >
+          Remove At
         </motion.button>
       </div>
     </div>
