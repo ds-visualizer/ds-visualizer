@@ -26,6 +26,10 @@ const LinkedList: React.FC<Props> = ({ html, codeHTML }) => {
     renderList();
   }, []);
 
+  useEffect(() => {
+    setFirstNLast();
+  }, [nodes]);
+
   const addLast = (value: number) => {
     length++;
     if (First === null || Last === null) {
@@ -120,6 +124,17 @@ const LinkedList: React.FC<Props> = ({ html, codeHTML }) => {
     const nullNode = new NullNode();
     arr.push(nullNode.render());
     setNodes(arr);
+  };
+
+  const setFirstNLast = () => {
+    if (!First) return;
+    let current: Node | null = First;
+    while (current) {
+      current.addText("");
+      current = current.next;
+    }
+    First.addText("head");
+    Last!.addText("tail");
   };
 
   return (

@@ -10,25 +10,30 @@ export class Node {
   value: number;
   next: Node | null;
   location: string;
-  private id: number;
+  private id: string;
   private static _id: number = 0;
 
   constructor(value: number) {
     this.value = value;
     this.next = null;
     this.location = generator();
-    this.id = Node._id++;
+    this.id = "id" + Node._id++;
   }
 
   get getID() {
     return `${this.id}`;
   }
 
+  addText(str: string) {
+    const ele = document.querySelector<HTMLDivElement>(`#${this.id}`);
+    if (!ele) return;
+    ele.innerText = str;
+  }
+
   render() {
     return (
       <motion.div
         layout
-        id={`${this.id}`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { duration: 0.5 } }}
         exit={{ opacity: 0, transition: { duration: 0.2 } }}
@@ -59,6 +64,7 @@ export class Node {
           </motion.div>
         </div>
         <div className="text-sm text-white mt-1">{this.location}</div>
+        <div id={`${this.id}`} className="text-purple-500"></div>
       </motion.div>
     );
   }
