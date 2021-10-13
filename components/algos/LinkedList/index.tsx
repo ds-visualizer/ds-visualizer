@@ -128,6 +128,10 @@ const LinkedList: React.FC<Props> = ({ html, codeHTML }) => {
 
   const setFirstNLast = () => {
     if (!First) return;
+    if (length == 1) {
+      First.addText("head \ntail");
+      return;
+    }
     let current: Node | null = First;
     while (current) {
       current.addText("");
