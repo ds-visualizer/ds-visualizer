@@ -1,0 +1,406 @@
+# Linked List Code
+
+> LinkedList is a data structure where each element is connected to the next element's memory location.
+
+Generally LinkedList are done in `2 ways`, one way by using `2 pointers` where one points `Head` and `Tail` node.
+
+In this blog we will use 2 pointers where one holds fist node and other holds tail node.
+
+The plain structure of LinkedList would look like this.
+
+```java:LinkedList.java
+class LinkedList {
+
+	class Node {
+		int value;
+		Node next = null;
+
+		public Node(int value) { // Constructor for a Node
+			this.value = value;
+		}
+	}
+
+	private Node head = null; // head and tail are pointers to the nodes
+	private Node tail = null;
+	private int length = 0;
+
+// length is optional but can change the time of `size()` method to go from O(n) to O(1) and has no effect on the space.
+// Ways to decrease time 😉.
+
+  /*
+   * head, tail and length are private because you don't want to access them outside of the class,
+   * You can make getters which is a good practice if you want to read private variables.
+   */
+
+	public void addFirst(int value) {}
+
+	public void addLast(int value) {}
+
+	public void insertAt(int index, int value) {}
+
+	public void removeFirst() {}
+
+	public void removeLast() {}
+
+	public void remove() {}
+
+	public void toString() {}
+
+	public int get(int index) {}
+
+	public int size() {}
+
+	// Some more methods which will not be covered here.
+
+}
+```
+
+**in this case**, Node is the structure of each node thats `inside` the LinkedList, `value` is the data thats inside of the node, and `next` is a pointer that holds the heap location of the
+node you want to point it to.
+
+Lets look at `addFirst` Method:
+
+```java:addFirst.java
+
+/*
+ * Time: O(1)
+ * Space: O(1);
+ */
+
+public void addFirst(int value) {
+  length++;
+
+  Node node = new Node(value);
+
+  if (this.head == null) {
+		this.head = this.tail = node;
+		return;
+  }
+
+  node.next = head;
+  head= node;
+
+  // Node(0) 1 -> 2
+  // 0 -> 1 -> 2
+  // just link 0 to head
+}
+```
+
+Basically says if head isn't holding any node that means `there is no linked list available`, then we make head and tail refer to the new Node.
+
+Otherwise, we need to add a new node to the head. We do this by making a node and them `pointing next to head`. Doing this we added a node before head.
+But, don't forget to change the pointer head as well to the new node otherwise it will still be pointing towards the previous head.
+
+> This is done in the time complexity of O(1) and space complexity of O(1) as well.
+
+Lets look at `addLast` method:
+
+```java:addLast.java
+
+	/*
+ 	* Time: O(1)
+ 	* Space: O(1);
+ 	*/
+
+	public void addLast(int value) {
+		Node node = new Node(value);
+		length++;
+
+		if (this.head == null) {
+			this.head = this.tail = node;
+			return;
+		}
+
+		tail.next = node;
+		tail = tail.next;
+
+		// 1 -> 2 0
+		// 1 -> 2 -> 0
+		// just link tail to 0
+	}
+```
+
+This looks similar too isn't? we already have a variable thats pointing to the last node, so all we do now is make `tail point to the new Node` and
+after doing that just make tail pointer to be equal to the new node we added since the new Node is the **tail node**.
+
+Lets look at a cooler method now 😎, `insertAt(int index, int value)`:
+
+```java:insertAt.java
+
+	/*
+ 	* Time: O(n)
+ 	* Space: O(1);
+ 	*/
+
+	public void insertAt(int index, int value) {
+
+		if (index > length || index < 0) // This is required cuz if index is 0 or greater than the size of linked list,
+			return; 													 // we shouldn't be able to add a new node
+
+		if (index == 0) { // This is optional which I have done, but U can skip it.
+			addFirst(value);
+			return;
+		}
+
+		if (index == length) {
+			addLast(value);
+			return;
+		}
+
+		/*
+		* index == length is optional as well but I did this to reduce the time complexity
+		* How does this reduce time? 🤔
+		*
+		* If you look at the bottom code, we had to iterate till the index element,
+		* and we know addLast is O(1) operation so why do you want to make this do O(n) when it can be
+		* done in O(1). So I decided to do this, if index = length, then do addLast()
+		*
+		* More hacks 😉
+		*/
+
+		/*
+		 * Suppose 0 -> 1 -> 2 -> 3 is the linked list, and
+		 * we want to add Node(4) at index 2,
+		 *
+		 * So we make a temporary pointer and and move it till it gets hold of Node(1)'s, position.
+		 * After doing this, we make Node(1) point to the new node and new node point to Node(2),
+		 * N by this we added a new node :0
+		 */
+
+		length++;
+		Node current = head;
+		Node node = new Node(value);
+		for (int i = 0; i < index - 1; i++) { // this for loop is the reason why insertAt method becomes O(n)
+			current = current.next;
+		}
+
+		// After the for loop, current will be holding Node(1);
+
+		Node temp = current.next;
+
+		// Make a temporary variable such that it holds the other nodes thats after 1
+
+		current.next = node;
+
+		// Point Node(1) to the new Node, 0 -> 1 -> 4
+
+		node.next = temp;
+
+		// finally point the new node to old node, in this example Node(2), 0 -> 1 -> 4 -> 2 -> 3
+
+	}
+```
+
+### Lets analyse the code
+
+**Step 1:** We add length since we are adding a Node into it.
+
+**Step 2:** So what is current? current is a pointer, which initially points to the
+first node.
+
+**Step 3:** We need to get hold of the element thats before the give index.
+
+```
+1 -> 2 -> 3 -> 4
+```
+
+Suppose we want to add the element `node(5)` at index 2, which is at Node(3) position, we need to be able to get till Node(2) and make it point to the Node
+that we will be creating.
+
+So to get hold of the Node(2), we are using a for loop.
+
+**Step 3:** After iterating till the prev Node of index, we need to make it point to the new Node(value).
+We basically do this by changing element's next to hold the new memory location.
+
+```
+1 -> 2 -> 5
+3 -> 4
+```
+
+After doing that, Node(2) will be pointing towards 5 but 5 will not be pointing to anything, **So what happened to Node(3) and the rest 😣??**
+
+**Step 4:** Since we don't want to lose the other nodes, we store them in a temp variable before adding 5. So then after adding 5, we can make node(5)
+point towards the other temp pointer which is storing all the other nodes.
+
+**ANDDD BY THIS, I HOPE U UNDERSTOOD THIS METHOD!!! :)**
+
+Alright that was a ride, lets get back to some easier methods now :):
+
+Lets look at how to remove nodes from the last 'removeLast:`
+
+```java:removeLast.java
+
+	/*
+ 	* Time: O(n)
+ 	* Space: O(1);
+ 	*/
+
+	public void removeLast() {
+		if (head == null)
+			return;
+
+		length--;
+
+		if (head.next == null) {
+			head = tail = null;
+			return;
+		}
+		Node current = head;
+		while (current.next.next != null) { // This loop is used to iterate till the last second Node
+			current = current.next;
+		}
+
+		// then point last second node to null which remove the last node.
+		current.next = null;
+		tail = current;
+	}
+```
+
+In this we go till the last second node, and make the last second node point to `null` and change our `tail pointer` to point the new last node.
+if there is no node to remove, we will just stop the method.
+
+Similarly Lets look at 'removeFirst`:
+
+```java:removeFirst.java
+
+	/*
+ 	* Time: O(1)
+ 	* Space: O(1);
+ 	*/
+
+	public void removeFirst() {
+		if (head == null)
+			return;
+
+		length--;
+
+		head = head.next;
+	}
+```
+
+In this method, all we do is is point head pointer to the next node.
+
+```
+1 -> 2 -> 3
+
+// Suppose head is 1 and head.next is 2
+// we will just make pointer head to start holding 2, and doing that we need to get
+// hold of Node(2)'s position
+
+2 -> 3
+// head pointer is now holding 2 instead of 1.
+```
+
+`toString()` method:
+
+```java:toString.java
+
+	/*
+ 	* Time: O(n)
+ 	* Space: O(1);
+ 	*/
+
+	public String toString(){
+
+		String str = "[";
+		Node current = head;
+
+		while(current != null){ // Since we are iterating thru every element, the time complexity turns out to be O(n)
+			str += current.value + ", ";
+			current = current.next;
+		}
+
+		return str.substring(0,str.length()-2) + "]";
+		// this is just for decoration, you can return the string however you want to :/.
+	}
+```
+
+This should look fairly simple, we just iterate thru the loop and add the value to str and finally we return the string.
+
+Similar to this method, we also have `get(int index)`:
+
+```java:get.java
+
+	/*
+ 	* Time: O(n)
+ 	* Space: O(1);
+ 	*/
+
+	public int get(int index){
+		Node current = head;
+
+		if(index < 0 || index >= length) return; // if statement is true, index out of bound ERRRRRR.
+
+		for(int i = 0; i < index; i++) { // iterate till the index node and return the node's value
+			current = current.next;
+		}
+
+		return current.value;
+	}
+```
+
+In this method we just iterate till the index node and return the value of current.
+
+For this task lets implement a getter 🙂 which is called `size`:
+
+```java:size.java
+
+	/*
+ 	* Time: O(1)
+ 	* Space: O(1);
+ 	*/
+
+	// Thanks to us storing length, we could make this an O(1) operator, otherwise it would turn out to be O(n)
+
+	pubic int size() {
+		return length;
+	}
+```
+
+This is just a getter to read the length property.
+
+Alright lets go back to another tough method, `remove(int index)`:
+
+```java:remove.java
+
+	/*
+ 	* Time: O(n)
+ 	* Space: O(1);
+ 	*/
+
+	public void remove(int index) {
+
+		if (index >= length || index < 0)
+			return;
+
+		if(index == 0) {
+			removeFirst();
+			return;
+		}
+
+		if(index == length-1) {
+			removeLast();
+			return;
+		}
+
+		/*
+		 * Suppose 1 -> 2 -> 3 -> 4
+		 * if we want to remove index 3, we iterate till 2,
+		 * then make Node(2).next to point it to 4 instead of pointing it to Node(3).
+		 * By doing this, no node will be referencing 3 anymore, and hence Node(3) will get removed from the list.
+		 * Result: 1 -> 2 -> 4
+		 */
+
+		Node current = head;
+
+		for (int i = 0; i < index - 1; i++) { // This for loop is the reason find becomes an O(n) complexity.
+			current = current.next;
+		}
+
+		current.next = current.next.next;
+		length--
+
+	}
+```
+
+**Now with all the information you read, try to build contains method. Thats your homework 😉**
