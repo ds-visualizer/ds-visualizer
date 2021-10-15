@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import Input from "@Components/layouts/Input";
 import OptionBackground from "@Components/layouts/OptionBackground";
-import Button from "@Components/layouts/Button";
+import Button from "@Root/components/layouts/Button";
 import Buttons from "@Components/layouts/Buttons";
 import Node from "./Node";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
