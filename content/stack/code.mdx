@@ -1,0 +1,143 @@
+# Stacks
+
+> Stack is a data structure where elements that enter last leave first. This is similar to a stack of books.
+They are also known as, `LIFO`-**Last In First Out** or `FILO`-**First In Last Out**.
+
+Stacks can be built using arrays or linkedlists. In this blog we will be using an array to build a stack.
+
+The plain structure of Stack would look like this.
+
+```java:Stacks.java
+class stacks{
+    int[] items;
+    private int count;
+    private int capacity;
+
+// Constructor for determining the size of the stack at the time of initialization
+    public Stacks(int capacity){
+        items = new int[capacity];
+        this.capacity=capacity;
+    }
+
+    public void push(int value) {}
+
+    public void pop() {}
+
+    @Override
+    public String toString() {}
+
+    public boolean isEmpty {}
+
+    public int peek() {}
+}
+```
+Here `count` variable is the index of the top element.
+
+Lets look at `push` Method:
+
+```java:push.java
+
+/*
+ * Time: O(1)
+ * Space: O(1)
+*/
+
+// Adds an element on top of the stack
+
+public void push(int value){
+    items[count++]=value;
+}
+```
+In the push method, it is also important to check if the stack is full, and output corresponding error message. When the stack runs out of space, there is no room left for elements to be added, resulting in stackoverflow. 
+
+Following code can be used to address the exception.
+
+```java:
+      if(count==capacity) {
+         throw new StackOverFlowError();
+     }
+```
+
+Lets look at `pop` method:
+
+```java:pop.java
+
+/*
+ * Time: O(1)
+ * Space: O(1)
+*/
+
+//Removes the top element
+
+public int pop(){
+    int temp = items[count]
+    items[count--] = 0;
+    return temp;
+}
+```
+This method is used to remove elements from the stack.
+
+Similar to `push` method, it is important to check if the stack is empty, and output corresponding error message. When the stack is empty, there are no elements to be removed (there is no such element).
+
+Following code can be used to address the exception
+
+```java:
+      if(count==0) {
+         throw new NoSuchElementException();
+     }
+```
+
+
+
+Lets look at `peek` Method:
+
+```java:peek.java
+
+/*
+ * Time: O(1)
+ * Space: O(1)
+*/
+
+// Returns the top element in the stack
+
+public int peek(){
+    return items[count-1];
+}
+```
+Peek and pop are kinda similar, where both methods target the top element of the stack. But the major difference is that, peek returns the element on the top of the stack, whereas pop removes the element on the top from the stack.
+
+Lets look at `isEmpty` Method
+
+```java:isEmpty.java
+
+/*
+ * Time: O(1)
+ * Space: O(1)
+*/
+
+public boolean isEmpty(){
+    return count==0;
+}
+```
+This method can be used to check if the stack is empty. It returns true when count value is zero.
+
+Lets look at `toString` Method:
+
+```java:toString
+
+/*
+ * Time: O(n)
+ * Space: O(n)
+*/
+
+@Override
+public String toString(){
+    var values = Arrays.copyOfRange(items,0,count); 
+    
+    // Did this way to show you that this method exists. Using a traditional for loop would allow you to achieve this method in O(1) space complexity.
+
+    return Arrays.toString(values)
+}
+```
+This method is useful for printing the stack.
+
