@@ -1,7 +1,7 @@
 # Queue Code
 
-> Queue is a data structure where elements that enter first leaves first. They are also known as 
-`LILO` - **Last In Last out** or `FIFO` - **First In First Out**
+> Queue is a data structure where elements that enter first leaves first. They are also known as
+> `LILO` - **Last In Last out** or `FIFO` - **First In First Out**
 
 An analogy can be shopping queue 😉.
 
@@ -24,9 +24,15 @@ public class Queue {
   }
 
   public void enqueue(int value) {}
+
   public void dequeue() {}
+
   public int peek() {}
+
   public boolean isEmpty() {}
+
+  @Override
+  public String toString() {}
 
   // You can add more methods but I think this much will be enough for now.
 }
@@ -39,7 +45,6 @@ Alright lets look at the global variables before we go front.
 - `queue` array is an array that holds all the elements in it.
 
 - `length` it a variable that holds the current length of the queue, this is required since doing **queue.length** returns us the array length and not the number of elements thats inside the queue.
-  
 - `front` is a variable that holds the first element index in the circular array.
 
 - `rear` is the variable that holds the (last element index) + 1 in the circular array.
@@ -67,7 +72,7 @@ Firstly lets look at the basic method `enqueue`:
 
 In this method, we just add another element into our queue and increment rare with one.
 
-Our next method is `dequeue`: 
+Our next method is `dequeue`:
 
 ```java:dequeue.java
   public void dequeue() {
@@ -85,7 +90,7 @@ Our next method is `dequeue`:
 
 In this method we just remove an element from the array, and increase front to the next element index.
 
-Suppose you want to know which element in the first, we use a method called `peek`: 
+Suppose you want to know which element in the first, we use a method called `peek`:
 
 ```java:peek.java
   public int peek() {
@@ -96,10 +101,33 @@ Suppose you want to know which element in the first, we use a method called `pee
   }
 ```
 
-Another simple method is isEmpty to check if the queue is empty or no. 
+Another simple method is isEmpty to check if the queue is empty or no.
 
 ```java:isEmpty.java
   public boolean isEmpty() {
     return length == 0;
   }
+```
+
+Printing a circular array might be tricky so don't feel bad if you don't get it.
+
+```java:toString.java
+
+@override
+  public String toString() {
+    String str1 = "";
+
+    for(int i = front; i < queue.length ; i++){
+      str += queue[i];
+    }
+
+    String str2 = "";
+
+    for(int i = rear; i < front; i++){
+      str += queue[i];
+    }
+
+    return str1 + str2;
+  }
+
 ```
