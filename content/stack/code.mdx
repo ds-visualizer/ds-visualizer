@@ -3,7 +3,7 @@
 > Stack is a data structure where elements that enter last leave first. This is similar to a stack of books.
 They are also known as, `LIFO`-**Last In First Out** or `FILO`-**First In Last Out**.
 
-Stacks can be built using arrays and linkedlists. In this blog we will be using an array to build a stack.
+Stacks can be built using arrays or linkedlists. In this blog we will be using an array to build a stack.
 
 The plain structure of Stack would look like this.
 
@@ -31,7 +31,7 @@ class stacks{
     public int peek() {}
 }
 ```
-Here count variable is the index of the top element.
+Here `count` variable is the index of the top element.
 
 Lets look at `push` Method:
 
@@ -50,7 +50,7 @@ public void push(int value){
 ```
 In the push method, it is also important to check if the stack is full, and output corresponding error message. When the stack runs out of space, there is no room left for elements to be added, resulting in stackoverflow. 
 
-Follwoing code can be used to address the exception.
+Following code can be used to address the exception.
 
 ```java:
       if(count==capacity) {
@@ -70,10 +70,12 @@ Lets look at `pop` method:
 //Removes the top element
 
 public int pop(){
-    return items[--count];
+    int temp = items[count]
+    items[count--] = 0;
+    return temp;
 }
 ```
-To remove the top element from the stack, decrement count (index of top element) by 1 to make the count point the next element as the top element.
+This method is used to remove elements from the stack.
 
 Similar to `push` method, it is important to check if the stack is empty, and output corresponding error message. When the stack is empty, there are no elements to be removed (there is no such element).
 
