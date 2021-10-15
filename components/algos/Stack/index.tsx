@@ -5,10 +5,14 @@ import Node from "./Node";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import Buttons from "@Root/components/layouts/Buttons";
 import Button from "@Root/components/layouts/Button";
+import Content from "@Root/components/layouts/Content";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
-interface Props {}
+interface Props {
+  html: MDXRemoteSerializeResult<Record<string, unknown>>;
+}
 
-const index: React.FC<Props> = () => {
+const index: React.FC<Props> = ({ html }) => {
   const [stack, setStack] = useState<Array<JSX.Element>>([]);
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -54,17 +58,18 @@ const index: React.FC<Props> = () => {
         </Buttons>
       </OptionBackground>
 
-      <AnimateSharedLayout>
-        <div className="h-[50vh]">
-          <motion.div
-            className={`flex flex-col-reverse items-center mt-10 px-3 py-3 border-2 transition-all border-purple-500 border-t-0 min-h-[0.8rem] w-28 mx-auto `}
-          >
-            <AnimateSharedLayout>
-              <AnimatePresence>{stack}</AnimatePresence>
-            </AnimateSharedLayout>
-          </motion.div>
-        </div>
-      </AnimateSharedLayout>
+      <div className="h-[40vh] overflow-y-auto">
+        <motion.div
+          className={`flex flex-col-reverse items-center mt-10 px-3 py-3 border-2 transition-all border-purple-500 border-t-0 min-h-[0.8rem] w-28 mx-auto `}
+        >
+          <AnimateSharedLayout>
+            <AnimatePresence>{stack}</AnimatePresence>
+          </AnimateSharedLayout>
+        </motion.div>
+      </div>
+      <div>
+        <Content html={html} />
+      </div>
     </>
   );
 };
