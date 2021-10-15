@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
 
 export default class Node {
-  private readonly value: number;
+  public readonly value: any;
   private static count = 0;
   private countN: number;
 
-  constructor(value: number) {
+  constructor(value: any) {
     this.value = value;
     this.countN = Node.count++;
   }
 
-  render() {
+  render(key?: number) {
     return (
       <motion.div
         layout
