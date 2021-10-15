@@ -1,7 +1,7 @@
 # Stacks
 
 > Stack is a data structure where elements that enter last leave first. This is similar to a stack of books.
-They are also known as, `LIFO`-**Last In First Out** or `FILO`-**First In Last Out**.
+> They are also known as, `LIFO`-**Last In First Out** or `FILO`-**First In Last Out**.
 
 Stacks can be built using arrays or linkedlists. In this blog we will be using an array to build a stack.
 
@@ -15,22 +15,27 @@ class stacks{
 
 // Constructor for determining the size of the stack at the time of initialization
     public Stacks(int capacity){
+
         items = new int[capacity];
         this.capacity=capacity;
+
     }
 
     public void push(int value) {}
 
     public void pop() {}
 
+    public int peek() {}
+
+    public boolean isEmpty() {}
+
     @Override
     public String toString() {}
 
-    public boolean isEmpty {}
 
-    public int peek() {}
 }
 ```
+
 - `count` variable is the index for the next element that enters.
 
 - `items` is the array that our stack will be in.
@@ -50,16 +55,16 @@ Lets look at `push` Method:
 
 public void push(int value){
 
-    if(count == length) 
+    if(count == length) // Since our stack length is full
         return;
 
     items[count++]=value;
 }
 ```
+
 While pushing just make sure that you check if the stack is full or no, and if not full then go further :).
 
-Instead of returning elements, you can use exception but Ill leave this friendly and not put any exceptions.
-
+Instead of stopping the execution by using return, you can use exception but Ill leave this friendly and not put any exceptions.
 
 Lets look at `pop` method:
 
@@ -74,7 +79,7 @@ Lets look at `pop` method:
 
 public int pop(){
 
-    if(count ==0) 
+    if(count == 0) // No elements to pop
         return;
 
     int temp = items[count]
@@ -82,6 +87,7 @@ public int pop(){
     return temp;
 }
 ```
+
 This method is used to remove elements from the stack.
 
 Similar to `push` method, it is important to check if the stack is empty, and you can use exception here as well.
@@ -99,13 +105,15 @@ Lets look at `peek` Method:
 
 public int peek(){
 
-    if(count == 0) // throw err. 
+    if(count == 0)
+        return; // throw err.
 
     return items[count-1];
 }
 ```
-Peek and pop are kinda similar, where both methods target the top element of the stack. 
-But the major difference is that, peek returns the element thats on the top of the stack, whereas pop removes the element on the top from the stack.
+
+Peek and pop are kinda similar, where both methods target the top element of the stack.
+But the major difference is that, peek returns the element thats on the top of the stack and `doesn't remove the element`, whereas pop removes the element on the top from the stack.
 
 Lets look at `isEmpty` Method
 
@@ -117,11 +125,11 @@ Lets look at `isEmpty` Method
 */
 
 public boolean isEmpty(){
-    return count==0;
+    return count == 0;
 }
 ```
-This method can be used to check if the stack is empty. It returns true when count value is zero.
 
+This method can be used to check if the stack is empty. It returns true when count value is zero.
 
 Lets look at `toString` Method:
 
@@ -134,13 +142,18 @@ Lets look at `toString` Method:
 
 @Override
 public String toString(){
-    var values = Arrays.copyOfRange(items,0,count); 
-    
-    // Did this way to show you that this method exists. 
+    var values = Arrays.copyOfRange(items,0,count);
+
+    // This method makes a for loop and generates a new array, which results in a O(n) space.
+
+    // Did this way to show you that this method exists.
     // Using a traditional for loop would allow you to achieve this method in O(1) space complexity.
 
     return Arrays.toString(values)
 }
 ```
-This method is useful for printing the stack.
 
+Method just for printing the stack
+
+> If you read till here, you question can be just use a linked list? cuz thats what I think too, there is no harm in using a linked list
+> and getting this work done in few statements but I wanted to teach you the traditional method using an array.

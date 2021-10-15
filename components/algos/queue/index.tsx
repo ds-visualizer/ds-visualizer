@@ -25,7 +25,6 @@ const index: React.FC<Props> = ({ codeHtml }) => {
 
   const dequeue = () => {
     const newQ = queue.slice(1);
-    console.log(newQ);
     setQueue(newQ);
   };
 
@@ -48,7 +47,6 @@ const index: React.FC<Props> = ({ codeHtml }) => {
           />
         </Buttons>
       </OptionBackground>
-
       <div className="flex mt-4 space-x-3 items-center justify-center border-2 border-purple-500 w-min mx-auto px-3 border-l-0 border-r-0 h-20">
         <AnimateSharedLayout>
           <AnimatePresence>{queue}</AnimatePresence>
