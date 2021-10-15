@@ -1,0 +1,105 @@
+# Queue Code
+
+> Queue is a data structure where elements that enter first leaves first. They are also known as 
+`LILO` - **Last In Last out** or `FIFO` - **First In First Out**
+
+An analogy can be shopping queue 😉.
+
+The basic **structure** of queue would look like this:
+
+```java:Queue.java
+public class Queue {
+
+  private int[] queue;
+  private int length = 0;
+  private int front = 0;
+  private int rear = 0;
+  private int capacity;
+
+  public Queue(int capacity) {
+
+    queue = new int[capacity];
+    this.capacity = capacity;
+
+  }
+
+  public void enqueue(int value) {}
+  public void dequeue() {}
+  public int peek() {}
+  public boolean isEmpty() {}
+
+  // You can add more methods but I think this much will be enough for now.
+}
+```
+
+> We will be using a circular array in this implementation.
+
+Alright lets look at the global variables before we go front.
+
+- `queue` array is an array that holds all the elements in it.
+
+- `length` it a variable that holds the current length of the queue, this is required since doing **queue.length** returns us the array length and not the number of elements thats inside the queue.
+  
+- `front` is a variable that holds the first element index in the circular array.
+
+- `rear` is the variable that holds the (last element index) + 1 in the circular array.
+
+- `capacity` is the variable that is given by the constructor to instantiate the array with a size.
+
+Now that we have understood what each variable is doing, we can look at basic methods in it.
+
+Firstly lets look at the basic method `enqueue`:
+
+```java:enqueue.java
+  public void enqueue(int value) {
+
+    if (length == queue.length)
+      return;
+
+    // You can throw exceptions if you wish to, but I want to keep this friendly and
+    // just return it
+
+    length++;
+    queue[rear] = value;
+    rear = (rear + 1) % capacity;
+  }
+```
+
+In this method, we just add another element into our queue and increment rare with one.
+
+Our next method is `dequeue`: 
+
+```java:dequeue.java
+  public void dequeue() {
+    if (length == 0)
+      return;
+
+    // Similarly you can throw exception here as well
+    // Java is full of errors so keep throwing exceptions when you can 😉
+
+    length--;
+    queue[front] = 0;
+    front = (front + 1) % capacity;
+  }
+```
+
+In this method we just remove an element from the array, and increase front to the next element index.
+
+Suppose you want to know which element in the first, we use a method called `peek`: 
+
+```java:peek.java
+  public int peek() {
+
+    // Just returns the first element thats inside the queue
+
+    return queue[front];
+  }
+```
+
+Another simple method is isEmpty to check if the queue is empty or no. 
+
+```java:isEmpty.java
+  public boolean isEmpty() {
+    return length == 0;
+  }
+```
