@@ -19,7 +19,10 @@ const queue = ({
 export default queue;
 
 export const getStaticProps = async () => {
-  const codePath = path.resolve(process.cwd(), "content/queue/code.mdx");
+  const codePath = path.resolve(
+    process.cwd(),
+    "content/queue/code-linkedlist.mdx"
+  );
   const mdx = fs.readFileSync(codePath, "utf-8");
   const codeHtml = await serialize(mdx);
 
