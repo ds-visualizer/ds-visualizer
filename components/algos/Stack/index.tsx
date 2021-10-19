@@ -9,7 +9,7 @@ interface Props {
 
 const index: React.FC<Props> = ({ html }) => {
   const [content, example] = html;
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
 
   return (
     <div>
