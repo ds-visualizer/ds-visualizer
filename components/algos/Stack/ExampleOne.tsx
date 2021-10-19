@@ -5,8 +5,12 @@ import Buttons from "@Root/components/layouts/Buttons";
 import Button from "@Root/components/layouts/Button";
 import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
 import Node from "./Node";
+import mdxHtml from "@Root/interface/mdxHtmlType";
+import Content from "@Root/components/layouts/Content";
 
-interface Props {}
+interface Props {
+  html: mdxHtml;
+}
 
 const brackets = ["(", "<", "{", "[", ")", ">", "}", "]"];
 const openBrackets = ["(", "<", "{", "["];
@@ -21,7 +25,7 @@ const bracketPair: { [bracket: string]: string } = {
 
 const tempStack: string[] = []; // Change it to state from global, not good code
 
-const ExampleOne: React.FC<Props> = () => {
+const ExampleOne: React.FC<Props> = ({ html }) => {
   const [bracketStr, setBracketStr] = useState("");
   const [str, setStr] = useState("");
   const [popup, setPopup] = useState(false);
@@ -121,7 +125,7 @@ const ExampleOne: React.FC<Props> = () => {
           <Button onClick={next} content="Next Step" />
         </Buttons>
       </OptionBackground>
-      <div className="flex relative justify-center">
+      <div className="flex relative w-full justify-center">
         <motion.div layout>
           <div className="w-[18rem]">
             <div className="text-3xl text-white text-center">
@@ -140,8 +144,11 @@ const ExampleOne: React.FC<Props> = () => {
             </div>
           </div>
         </motion.div>
+        <div className=" hidden lg:block scale-50 shadow bg-gray-700 text-primary  px-3 py-3 rounded absolute left-1/4 -translate-x-1/2">
+          <Content html={html} className="w-[40rem]" />
+        </div>
         {popup && (
-          <div className=" shadow bg-gray-700 text-primary -translate-x-1/3 px-3 py-3 rounded absolute left-2/3  top-1/2">
+          <div className="shadow bg-gray-700 text-primary -translate-x-1/3 px-3 py-3 rounded absolute left-2/3  top-1/2">
             {popupMsg}
           </div>
         )}

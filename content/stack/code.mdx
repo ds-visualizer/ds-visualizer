@@ -80,7 +80,7 @@ Lets look at `pop` method:
 public int pop(){
 
     if(count == 0) // No elements to pop
-        return;
+        // throw error so it doesn't go to the next step
 
     int temp = items[count]
     items[count--] = 0;
@@ -155,5 +155,5 @@ public String toString(){
 
 Method just for printing the stack
 
-> If you read till here, you question can be just use a linked list? cuz thats what I think too, there is no harm in using a linked list
+> If you read till here, you question can be just use a linked list? cuz thats the same thing going around my mind now, there is no harm in using a linked list
 > and getting this work done in few statements but I wanted to teach you the traditional method using an array.

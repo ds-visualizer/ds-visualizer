@@ -11,7 +11,7 @@ const queue = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Queue codeHtml={codeHtml} />
+      <Queue html={[codeHtml]} />
     </>
   );
 };
@@ -23,7 +23,9 @@ export const getStaticProps = async () => {
     process.cwd(),
     "content/queue/code-linkedlist.mdx"
   );
+
   const mdx = fs.readFileSync(codePath, "utf-8");
+
   const codeHtml = await serialize(mdx);
 
   return {

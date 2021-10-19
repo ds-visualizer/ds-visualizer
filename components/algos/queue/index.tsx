@@ -9,10 +9,11 @@ import { AnimateSharedLayout, AnimatePresence } from "framer-motion";
 import Node from "./Node";
 
 interface Props {
-  codeHtml: mdxHtml;
+  html: mdxHtml[];
 }
 
-const index: React.FC<Props> = ({ codeHtml }) => {
+const index: React.FC<Props> = ({ html }) => {
+  const [codeHtml] = html;
   const [queue, setQueue] = useState<Array<JSX.Element>>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 

@@ -92,14 +92,14 @@ Our next method will be `remove` which is same as `removeFirst` from linked list
 
 This might be a new method but its simple, `peek`. The method peek just looks at the first element in the queue.
 
-```java:remove.java
+```java:peek.java
 
 	/*
  	* Time: O(1)
  	* Space: O(1);
  	*/
 
-	public int removeFirst() {
+	public int peek() {
 		if (head == null)
 			// throw err
 
@@ -131,4 +131,5 @@ Our final method will be `toString`:
 	}
 ```
 
-Try implementing queue with an array and you the complexity will change and become so much harder.
+Try implementing queue with an array and observe that the complexity changes and become so much harder.
+Generally, I prefer linked list over an array in case of stacks or queues.

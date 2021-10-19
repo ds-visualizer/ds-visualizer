@@ -4,10 +4,11 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import ExampleOne from "./ExampleOne";
 
 interface Props {
-  html: MDXRemoteSerializeResult<Record<string, unknown>>;
+  html: MDXRemoteSerializeResult<Record<string, unknown>>[];
 }
 
 const index: React.FC<Props> = ({ html }) => {
+  const [content, example] = html;
   const [toggle, setToggle] = useState(false);
 
   return (
@@ -20,7 +21,7 @@ const index: React.FC<Props> = ({ html }) => {
       >
         {toggle ? "Example" : "Code"}
       </button>
-      {toggle ? <Code html={html} /> : <ExampleOne />}
+      {toggle ? <Code html={content} /> : <ExampleOne html={example} />}
     </div>
   );
 };
