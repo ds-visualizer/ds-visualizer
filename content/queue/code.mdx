@@ -3,9 +3,9 @@
 > Queue is a data structure where elements that enter first leaves first. They are also known as
 > `LILO` - **Last In Last out** or `FIFO` - **First In First Out**
 
-An analogy can be shopping queue 😉.
+An analogy can be a shopping queue 😉.
 
-The basic **structure** of queue would look like this:
+The basic **structure** of a queue would look like this:
 
 ```java:Queue.java
 public class Queue {
@@ -44,7 +44,7 @@ Alright lets look at the global variables before we go front.
 
 - `queue` array is an array that holds all the elements in it.
 
-- `length` it a variable that holds the current length of the queue, this is required since doing **queue.length** returns us the array length and not the number of elements thats inside the queue.
+- `length` is a variable that holds the current length of the queue, this is required since doing **queue.length** returns us the array length and not the number of elements that's inside the queue.
 - `front` is a variable that holds the first element index in the circular array.
 
 - `rear` is the variable that holds the (last element index) + 1 in the circular array.
@@ -95,7 +95,7 @@ Suppose you want to know which element in the first, we use a method called `pee
 ```java:peek.java
   public int peek() {
 
-    // Just returns the first element thats inside the queue
+    // Just returns the first element that's inside the queue
 
     return queue[front];
   }
