@@ -55,7 +55,7 @@ Lets look at `push` Method:
 
 public void push(int value){
 
-    if(count == length) // Since our stack length is full
+    if(count == capacity) // Since our stack length is full
         return;
 
     items[count++]=value;
