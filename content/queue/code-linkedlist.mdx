@@ -10,8 +10,8 @@ The basic **structure** of queue would look like this:
 ```java:Queue.java
 public class Queue {
 
-  private Node first = null;
-  private Node last = null;
+  private Node head = null;
+  private Node tail = null;
   private int length = 0;
 
   class Node {
@@ -40,7 +40,7 @@ public class Queue {
 
 We will be using a linked list for this implementation, you can also try doing this with **Circular Array**
 
-Nodes `first` will be the first node in the linked list, and `last` will be the last node in the linked list.
+Nodes `head` will be the first node in the linked list, and `tail` will be the last node in the linked list.
 
 We know a queue is **last in last out**. So it means elements enter from the end and leave from the first. We have already built these function but lets go thru them again :).
 
