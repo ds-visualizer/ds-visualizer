@@ -19,7 +19,7 @@
       "@Components/*": ["./components/*"],
       "@Misc/*": ["./misc/*"],
       "@Context/*": ["./context/*"],
-      "@Interfaces/*": ["./interfaces/*"],
+      "@Interfaces/*": ["./interface/*"],
       "@Hooks/*": ["./hooks/*"]
     }
   },

@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
+import OptionBackground from "@Components/layouts/OptionBackground";
 
 interface Props {
   addFirst: (value: number) => void;
@@ -29,7 +30,7 @@ const Options: React.FC<Props> = ({
   };
 
   return (
-    <div className="w-full h-[18rem] flex flex-col justify-center pt-2  bg-secondary text-secondary">
+    <OptionBackground>
       <div className=" flex-col flex justify-end items-center pt-3">
         <div>
           <form
@@ -132,7 +133,7 @@ const Options: React.FC<Props> = ({
           Remove At
         </motion.button>
       </div>
-    </div>
+    </OptionBackground>
   );
 };
 

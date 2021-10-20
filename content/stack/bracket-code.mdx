@@ -1,0 +1,56 @@
+```java:Main.java
+class Main {
+
+  public static void main(String[] args){
+
+    System.out.println(balancedBrackets("({({})})"));
+
+  }
+
+  public static boolean balancedBrackets(String str) {
+
+		String openingBrackets = "{[(<";
+		String closingBrackets = "}])>";
+
+    Stack<Character> stack = new Stack<Character>();
+
+      // toCharArray method is used for making the string into Character array.
+
+		for(char bracket : str.toCharArray()){
+
+        // If its an opening bracket, we won't get index -1 and we can push it into the
+
+			if(openingBrackets.indexOf(bracket) != -1){
+				stack.push(bracket);
+				continue;
+			}
+
+        // if its a close bracket we need to compare with opening bracket thats on top of the stack.
+        // Suppose the stack is empty, we won't have anything to compare with and hence not a balance pair
+
+			if(stack.size() == 0) return false;
+
+        // We will check if the closing bracket and opening bracket (Top of the stack) are correspondingBracket,
+        // the method returns a boolean
+
+			Boolean corsBracket = correspondingBracket(bracket, stack.peek());
+
+			if(!corsBracket) return false;
+			stack.pop();
+
+		}
+
+    return stack.size() == 0;
+  }
+
+  // You could use a hash map instead of this method but Since we didn't learn it yet, I kept it simple
+
+	public static boolean correspondingBracket(char closeBracket, char openBracket){
+		if(closeBracket == ')') return openBracket == '(';
+		else if (closeBracket == '}') return openBracket == '{';
+		else if (closeBracket == '>') return openBracket == '<';
+		else return openBracket == '[';
+ 	}
+}
+
+```
