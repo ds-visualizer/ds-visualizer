@@ -4,7 +4,7 @@
 
 Generally LinkedList are done in `2 ways`, one way by using `2 pointers` where one points `Head` and `Tail` node.
 
-In this blog we will use 2 pointers where one holds fist node and other holds tail node.
+In this blog we will use 2 pointers where one holds first node and other holds tail node.
 
 The plain structure of LinkedList would look like this.
 
@@ -55,7 +55,7 @@ class LinkedList {
 }
 ```
 
-**in this case**, Node is the structure of each node thats `inside` the LinkedList, `value` is the data thats inside of the node, and `next` is a pointer that holds the heap location of the
+**in this case**, Node is the structure of each node that's `inside` the LinkedList, `value` is the data that's inside of the node, and `next` is a pointer that holds the heap location of the
 node you want to point it to.
 
 Lets look at `addFirst` Method:
@@ -120,7 +120,7 @@ Lets look at `addLast` method:
 	}
 ```
 
-This looks similar too isn't? we already have a variable thats pointing to the last node, so all we do now is make `tail point to the new Node` and
+This looks similar too isn't? we already have a variable that's pointing to the last node, so all we do now is make `tail point to the new Node` and
 after doing that just make tail pointer to be equal to the new node we added since the new Node is the **tail node**.
 
 Lets look at a cooler method now 😎, `insertAt(int index, int value)`:
@@ -178,7 +178,7 @@ Lets look at a cooler method now 😎, `insertAt(int index, int value)`:
 
 		Node temp = current.next;
 
-		// Make a temporary variable such that it holds the other nodes thats after 1
+		// Make a temporary variable such that it holds the other nodes that's after 1
 
 		current.next = node;
 
@@ -198,7 +198,7 @@ Lets look at a cooler method now 😎, `insertAt(int index, int value)`:
 **Step 2:** So what is current? current is a pointer, which initially points to the
 first node.
 
-**Step 3:** We need to get hold of the element thats before the give index.
+**Step 3:** We need to get hold of the element that's before the give index.
 
 ```
 1 -> 2 -> 3 -> 4
@@ -403,4 +403,4 @@ Alright lets go back to another tough method, `remove(int index)`:
 	}
 ```
 
-**Now with all the information you read, try to build contains method. Thats your homework 😉**
+**Now with all the information you read, try to build contains method. That's your homework 😉**
