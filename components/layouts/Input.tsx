@@ -18,7 +18,7 @@ const Input = React.forwardRef<HTMLInputElement | null, Props>(
           type={type || "number"}
           name=""
           id=""
-          value={value}
+          value={value || "0"}
           className="h-9 w-full rounded outline-none px-2 focus:border-primary border-2"
         />
       </div>

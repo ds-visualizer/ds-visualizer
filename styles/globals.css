@@ -34,6 +34,10 @@ body {
     @apply text-base md:text-lg xl:text-xl leading-[1.6rem] md:leading-[1.8rem] xl:leading-[2rem];
   }
 
+  .blog pre code {
+    @apply text-base;
+  }
+
   .blog blockquote {
     @apply mb-4;
   }
