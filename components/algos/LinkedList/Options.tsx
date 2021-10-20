@@ -66,7 +66,7 @@ const Options: React.FC<Props> = ({
           </form>
         </div>
       </div>
-      <div className="space-x-3 h-1/2 justify-center flex items-center">
+      <div className="space-x-3 h-1/2 overflow-scroll w-screen justify-center flex items-center">
         <motion.button
           onClick={() => {
             const value = inputCheck();
