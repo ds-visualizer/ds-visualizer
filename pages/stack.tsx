@@ -4,6 +4,7 @@ import Stack from "@Components/algos/Stack";
 import path from "path";
 import fs from "fs";
 import serialize from "@Misc/serialize";
+import Head from "next/head";
 
 const stack = ({
   html,
@@ -12,6 +13,9 @@ const stack = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
+      <Head>
+        <title>Stack</title>
+      </Head>
       <Stack html={[html, codeExample, exampleCodeHtml]} />
     </>
   );

@@ -5,12 +5,16 @@ import path from "path";
 import type { InferGetStaticPropsType } from "next";
 import serialize from "@Misc/serialize";
 import Queue from "@Components/algos/queue";
+import Head from "next/head";
 
 const queue = ({
   codeHtml,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
+      <Head>
+        <title>Queue</title>
+      </Head>
       <Queue html={[codeHtml]} />
     </>
   );
