@@ -8,10 +8,11 @@ import serialize from "@Misc/serialize";
 const stack = ({
   html,
   codeExample,
+  exampleCodeHtml,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Stack html={[html, codeExample]} />
+      <Stack html={[html, codeExample, exampleCodeHtml]} />
     </>
   );
 };
@@ -24,11 +25,21 @@ export const getStaticProps = async () => {
     process.cwd(),
     "content/stack/bracket_pair.mdx"
   );
+
+  const exampleCode = path.resolve(
+    process.cwd(),
+    "content/stack/bracket-code.mdx"
+  );
+
   const codeExample = await serialize(
     fs.readFileSync(codeExamplePath, "utf-8")
   );
+
+  const exampleCodeHtml = await serialize(
+    fs.readFileSync(exampleCode, "utf-8")
+  );
   return {
-    props: { html, codeExample },
+    props: { html, codeExample, exampleCodeHtml },
   };
 };
 

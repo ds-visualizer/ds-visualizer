@@ -10,6 +10,7 @@ import Content from "@Root/components/layouts/Content";
 
 interface Props {
   html: mdxHtml;
+  exampleCode: mdxHtml;
 }
 
 const brackets = ["(", "<", "{", "[", ")", ">", "}", "]"];
@@ -25,7 +26,7 @@ const bracketPair: { [bracket: string]: string } = {
 
 const tempStack: string[] = []; // Change it to state from global, not good code
 
-const ExampleOne: React.FC<Props> = ({ html }) => {
+const ExampleOne: React.FC<Props> = ({ html, exampleCode }) => {
   const [bracketStr, setBracketStr] = useState("");
   const [str, setStr] = useState("");
   const [popup, setPopup] = useState(false);
@@ -49,7 +50,7 @@ const ExampleOne: React.FC<Props> = ({ html }) => {
       }
       setPopup(true);
       setPopupMsg(
-        "Its not a balanced parenthesis since the stack isn't empty even after the string is"
+        "Its not a balanced parenthesis since the stack isn't empty even after the string is empty"
       );
       setTimeout(() => {
         setPopup(false);
@@ -144,7 +145,7 @@ const ExampleOne: React.FC<Props> = ({ html }) => {
             </div>
           </div>
         </motion.div>
-        <div className=" hidden lg:block scale-50 shadow bg-gray-700 text-primary  px-3 py-3 rounded absolute left-1/4 -translate-x-1/2">
+        <div className=" hidden lg:block scale-75 shadow bg-gray-700 text-primary  px-3 py-3 rounded absolute left-1/4 -translate-x-1/2">
           <Content html={html} className="w-[40rem]" />
         </div>
         {popup && (
@@ -153,6 +154,7 @@ const ExampleOne: React.FC<Props> = ({ html }) => {
           </div>
         )}
       </div>
+      <Content html={exampleCode} />
     </>
   );
 };

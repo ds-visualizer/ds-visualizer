@@ -1,7 +1,7 @@
-**Step 1:** check if the string and stack length is 0 then its a balanced string, if string string length is 0 but not stack length then its not a balanced string.
-
-**step 2:** compare the first index of the string and if its an open bracket `push` it to the stack. However, if its a close
+**step 1:** compare the first index of the string and if its an open bracket `push` it to the stack. However, if its a close
 bracket then you compare with the bracket thats on top of the stack using `peek` method. If they aren't corresponding then it means
-they aren't balanced bracket pair. `Pop` if they are corresponding brackets
+they aren't balanced bracket pair. `Pop` the element in stack if they are corresponding brackets
 
-**step 3:** Keep doing this till you reach the end of the stack.
+**step 2:** Keep doing this till you reach the end of the stack.
+
+**step 3:** If the stack is empty at the ending of the loop, then its a balanced parenthesis.

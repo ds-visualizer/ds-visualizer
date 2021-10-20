@@ -8,7 +8,7 @@ interface Props {
 }
 
 const index: React.FC<Props> = ({ html }) => {
-  const [content, example] = html;
+  const [content, example, exampleCode] = html;
   const [toggle, setToggle] = useState(true);
 
   return (
@@ -21,7 +21,11 @@ const index: React.FC<Props> = ({ html }) => {
       >
         {toggle ? "Example" : "Code"}
       </button>
-      {toggle ? <Code html={content} /> : <ExampleOne html={example} />}
+      {toggle ? (
+        <Code html={content} />
+      ) : (
+        <ExampleOne html={example} exampleCode={exampleCode} />
+      )}
     </div>
   );
 };

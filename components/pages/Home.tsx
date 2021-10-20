@@ -7,8 +7,8 @@ interface Props {}
 const Home: React.FC<Props> = () => {
   return (
     <div className="">
-      {routes.map(({ name, path }) => (
-        <div className="text-purple-500 underline">
+      {routes.map(({ name, path }, index) => (
+        <div key={index} className="text-purple-500 underline">
           <Link href={path}>
             <a>{name}</a>
           </Link>
