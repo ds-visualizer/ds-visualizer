@@ -1,26 +1,59 @@
 import React, { useRef, useState } from "react";
-import Node from "./Node";
 import OptionBackground from "@Components/layouts/OptionBackground";
 import Input from "@Root/components/layouts/Input";
 import Buttons from "@Root/components/layouts/Buttons";
 import Button from "@Root/components/layouts/Button";
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
+
+import Node from "./Node";
 import NullNode from "./NullNode";
 
 interface Props {}
 
-const render = (root: Node<number | string> | null) => {
-  if (!root) return <>{new NullNode().render()}</>;
+const render = (
+  root: Node<number | string> | null,
+  rootHeight: number,
+  currentHeight: number
+): JSX.Element => {
+  if (currentHeight > rootHeight) {
+    return <></>;
+  }
+
+  if (!root)
+    return (
+      <>
+        <div className="flex space-y-8 flex-col items-center">
+          {new NullNode().render()}
+          <div className={`flex space-x-10`}>
+            {render(null, rootHeight, currentHeight + 1)}
+            {render(null, rootHeight, currentHeight + 1)}
+          </div>
+        </div>
+      </>
+    );
+
+  const graphFunction = () => {
+    const div = document.querySelector(`#c${root.id}`);
+    if (!div) return;
+    // console.log(div.getBoundingClientRect().width);
+    console.log(div);
+  };
 
   return (
     <div className="flex space-y-8 flex-col items-center">
-      <div>{root.render()}</div>
-      <div className="flex space-x-10">
-        {render(root.left)}
-        {render(root.right)}
+      <div id={`n${root.id}`}>{root.render()}</div>
+      <div id={`c${root.id}`} className={`flex space-x-10`}>
+        {render(root.left, rootHeight, currentHeight + 1)}
+        {render(root.right, rootHeight, currentHeight + 1)}
       </div>
+      {graphFunction()}
     </div>
   );
+};
+
+const height = (node: Node<any> | null): number => {
+  if (!node) return -1;
+  return 1 + Math.max(height(node.left), height(node.right));
 };
 
 let root: Node<number> | null = null;
@@ -53,7 +86,7 @@ const index: React.FC<Props> = () => {
     renderTree();
   };
 
-  const renderTree = () => setTree(render(root));
+  const renderTree = () => setTree(render(root, height(root), 0));
 
   return (
     <>

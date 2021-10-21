@@ -1,12 +1,16 @@
 import { motion } from "framer-motion";
 
 export default class Node<T> {
+  private static NID = 0;
+
   value: T;
   right: Node<T> | null = null;
   left: Node<T> | null = null;
+  id: number;
 
   constructor(value: T) {
     this.value = value;
+    this.id = Node.NID++;
   }
 
   render() {
