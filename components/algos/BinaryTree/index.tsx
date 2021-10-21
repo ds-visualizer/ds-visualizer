@@ -5,11 +5,12 @@ import Input from "@Root/components/layouts/Input";
 import Buttons from "@Root/components/layouts/Buttons";
 import Button from "@Root/components/layouts/Button";
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import NullNode from "./NullNode";
 
 interface Props {}
 
 const render = (root: Node<number | string> | null) => {
-  if (!root) return <div></div>;
+  if (!root) return <>{new NullNode().render()}</>;
 
   return (
     <div className="flex space-y-8 flex-col items-center">
@@ -52,9 +53,7 @@ const index: React.FC<Props> = () => {
     renderTree();
   };
 
-  const renderTree = () => {
-    setTree(render(root));
-  };
+  const renderTree = () => setTree(render(root));
 
   return (
     <>
