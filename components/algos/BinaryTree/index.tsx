@@ -4,6 +4,7 @@ import OptionBackground from "@Components/layouts/OptionBackground";
 import Input from "@Root/components/layouts/Input";
 import Buttons from "@Root/components/layouts/Buttons";
 import Button from "@Root/components/layouts/Button";
+import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 interface Props {}
 
@@ -11,9 +12,9 @@ const render = (root: Node<number | string> | null) => {
   if (!root) return <div></div>;
 
   return (
-    <div className="flex space-y-5 flex-col items-center">
+    <div className="flex space-y-8 flex-col items-center">
       <div>{root.render()}</div>
-      <div className="flex space-x-7">
+      <div className="flex space-x-10">
         {render(root.left)}
         {render(root.right)}
       </div>
@@ -69,7 +70,11 @@ const index: React.FC<Props> = () => {
         </Buttons>
       </OptionBackground>
       <div className="w-screen min-h-screen overflow-hidden flex justify-center pt-28">
-        <div>{tree}</div>
+        <div>
+          <AnimatePresence>
+            <AnimateSharedLayout>{tree}</AnimateSharedLayout>
+          </AnimatePresence>
+        </div>
       </div>
     </>
   );
