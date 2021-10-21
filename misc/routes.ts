@@ -5,6 +5,7 @@ const routes: Array<Route> = [
   { name: "LinkedList", path: "/linkedlist" },
   { name: "Stack", path: "/stack" },
   { name: "Queue", path: "/queue" },
+  { name: "Binary Tree", path: "/binarytree" },
 ];
 
 export default routes;
