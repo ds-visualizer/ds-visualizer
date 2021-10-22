@@ -25,15 +25,32 @@ const graphFunction = (node: Node<number> | null) => {
 
   const xMidPoint = (leftNodeAxis!.x + rightNodeAxis!.x) / 2;
 
-  const perpendicularD = distance(
-    [xMidPoint, rightNodeAxis!.y],
-    [parentAxis.x, parentAxis.y]
-  );
+  let perpendicularD: number;
 
-  const hypo = distance(
-    [parentAxis.x, parentAxis.y],
-    [rightNodeAxis!.x, rightNodeAxis!.y]
-  );
+  if (rightNodeID != ".null") {
+    perpendicularD = distance(
+      [xMidPoint, rightNodeAxis!.y],
+      [parentAxis.x, parentAxis.y]
+    );
+  } else {
+    perpendicularD = distance(
+      [xMidPoint, leftNodeAxis!.y],
+      [parentAxis.x, parentAxis.y]
+    );
+  }
+
+  let hypo: number;
+  if (rightNodeID != ".null") {
+    hypo = distance(
+      [parentAxis.x, parentAxis.y],
+      [rightNodeAxis!.x, rightNodeAxis!.y]
+    );
+  } else {
+    hypo = distance(
+      [parentAxis.x, parentAxis.y],
+      [leftNodeAxis!.x, leftNodeAxis!.y]
+    );
+  }
 
   const deg = Math.acos(perpendicularD / hypo) * 45;
 
