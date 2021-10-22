@@ -1,0 +1,135 @@
+# Queue Code
+
+> Queue is a data structure where elements that enter first leave first. They are also known as
+> `LILO` - **Last In Last out** or `FIFO` - **First In First Out**
+
+An analogy can be a shopping queue 😉.
+
+The basic **structure** of queue would look like this:
+
+```java:Queue.java
+public class Queue {
+
+  private Node head = null;
+  private Node tail = null;
+  private int length = 0;
+
+  class Node {
+		int value;
+		Node next = null;
+
+		public Node(int value) { // Constructor for a Node
+			this.value = value;
+		}
+	}
+
+  public void add(int value) {}
+
+  public void remove() {}
+
+  public int peek() {}
+
+  public boolean isEmpty() {}
+
+  @Override
+  public String toString() {}
+
+  // You can add more methods but I think this much will be enough for now.
+}
+```
+
+We will be using a linked list for this implementation, you can also try doing this with **Circular Array**
+
+Nodes `head` will be the first node in the linked list, and `tail` will be the last node in the linked list.
+
+We know a queue is **last in last out**. So it means elements enter from the end and leave from the first. We have already built these function but lets go thru them again :).
+
+our first function is `add` which is same as `addLast` in a linked list.
+
+```java:add.java
+
+	/*
+ 	* Time: O(1)
+ 	* Space: O(1);
+ 	*/
+
+	public void add(int value) {
+		Node node = new Node(value);
+		length++;
+
+		if (this.head == null) {
+			this.head = this.tail = node;
+			return;
+		}
+
+		tail.next = node;
+		tail = tail.next;
+	}
+
+```
+
+I think it should be clear, if you have any doubt with this implementation, I strongly suggest you to go thru my linked list visualizer.
+
+Our next method will be `remove` which is same as `removeFirst` from linked list.
+
+```java:remove.java
+
+	/*
+ 	* Time: O(1)
+ 	* Space: O(1);
+ 	*/
+
+	public void removeFirst() {
+		if (head == null)
+			return;
+
+		length--;
+
+		head = head.next;
+	}
+
+```
+
+This might be a new method but its simple, `peek`. The method peek just looks at the first element in the queue.
+
+```java:peek.java
+
+	/*
+ 	* Time: O(1)
+ 	* Space: O(1);
+ 	*/
+
+	public int peek() {
+		if (head == null)
+			// throw err
+
+		return head.value;
+	}
+```
+
+Our final method will be `toString`:
+
+```java:toString.java
+
+	/*
+ 	* Time: O(n)
+ 	* Space: O(1);
+ 	*/
+
+	public String toString(){
+
+		String str = "[";
+		Node current = head;
+
+		while(current != null){ // Since we are iterating thru every element, the time complexity turns out to be O(n)
+			str += current.value + ", ";
+			current = current.next;
+		}
+
+		return str.substring(0,str.length()-2) + "]";
+		// this is just for decoration, you can return the string however you want to :/.
+	}
+```
+
+Try implementing queue with an array and observe that the complexity changes and become so much harder.
+Generally, I prefer linked list over an array in case of stacks or queues.

@@ -6,14 +6,17 @@ import "prismjs/components/prism-java.js";
 
 interface Props {
   html: MDXRemoteSerializeResult<Record<string, unknown>>;
+  className?: string;
 }
 
-const Content: React.FC<Props> = ({ html }) => {
+const Content: React.FC<Props> = ({ html, className }) => {
   useEffect(() => {
     Prism.highlightAll();
   });
   return (
-    <div className="blog w-screen  xl:max-w-[1100px] 3xl:max-w-[1500px] overflow-hidden  mx-auto px-3 py-10 pb-20 text-gray-100">
+    <div
+      className={`blog w-screen  xl:max-w-[1100px] 3xl:max-w-[1500px] overflow-hidden  mx-auto px-3 py-10 pb-20 text-gray-100 ${className}`}
+    >
       <MDXRemote {...html} />
     </div>
   );

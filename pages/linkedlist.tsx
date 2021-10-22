@@ -23,8 +23,14 @@ const Index = ({
 };
 
 export const getStaticProps = async () => {
-  const filePath = path.resolve(process.cwd(), "content/linkedlist.mdx");
-  const codePath = path.resolve(process.cwd(), "content/linkedlist-code.mdx");
+  const filePath = path.resolve(
+    process.cwd(),
+    "content/linkedlist/linkedlist.mdx"
+  );
+  const codePath = path.resolve(
+    process.cwd(),
+    "content/linkedlist/linkedlist-code.mdx"
+  );
   const data = fs.readFileSync(filePath, "utf-8");
   const information = await serialize(data, {
     mdxOptions: {

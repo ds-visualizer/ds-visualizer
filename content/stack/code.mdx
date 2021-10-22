@@ -1,7 +1,11 @@
 # Stacks
 
 > Stack is a data structure where elements that enter last leave first. This is similar to a stack of books.
+<<<<<<< HEAD
 They are also known as, `LIFO`-**Last In First Out** or `FILO`-**First In Last Out**.
+=======
+> They are also known as, `LIFO`-**Last In First Out** or `FILO`-**First In Last Out**.
+>>>>>>> 314da669bc445dc844f921c1e827f8542b22b19c
 
 Stacks can be built using arrays or linkedlists. In this blog we will be using an array to build a stack.
 
@@ -9,20 +13,32 @@ The plain structure of Stack would look like this.
 
 ```java:Stacks.java
 class stacks{
+<<<<<<< HEAD
     int[] items;
+=======
+    private int[] items;
+>>>>>>> 314da669bc445dc844f921c1e827f8542b22b19c
     private int count;
     private int capacity;
 
 // Constructor for determining the size of the stack at the time of initialization
     public Stacks(int capacity){
+<<<<<<< HEAD
         items = new int[capacity];
         this.capacity=capacity;
+=======
+
+        items = new int[capacity];
+        this.capacity=capacity;
+
+>>>>>>> 314da669bc445dc844f921c1e827f8542b22b19c
     }
 
     public void push(int value) {}
 
     public void pop() {}
 
+<<<<<<< HEAD
     @Override
     public String toString() {}
 
@@ -32,6 +48,24 @@ class stacks{
 }
 ```
 Here `count` variable is the index of the top element.
+=======
+    public int peek() {}
+
+    public boolean isEmpty() {}
+
+    @Override
+    public String toString() {}
+
+
+}
+```
+
+- `count` variable is the index for the next element that enters.
+
+- `items` is the array that our stack will be in.
+
+- `capacity` is the variable that holds the length of array, this is optional but used it since it made my code clean
+>>>>>>> 314da669bc445dc844f921c1e827f8542b22b19c
 
 Lets look at `push` Method:
 
@@ -45,6 +79,7 @@ Lets look at `push` Method:
 // Adds an element on top of the stack
 
 public void push(int value){
+<<<<<<< HEAD
     items[count++]=value;
 }
 ```
@@ -57,6 +92,19 @@ Following code can be used to address the exception.
          throw new StackOverFlowError();
      }
 ```
+=======
+
+    if(count == capacity) // Since our stack length is full
+        return;
+
+    items[count++]=value;
+}
+```
+
+While pushing just make sure that you check if the stack is full or no, and if not full then go further :).
+
+Instead of stopping the execution by using return, you can use exception but I'll leave this friendly and not put any exceptions.
+>>>>>>> 314da669bc445dc844f921c1e827f8542b22b19c
 
 Lets look at `pop` method:
 
@@ -70,11 +118,20 @@ Lets look at `pop` method:
 //Removes the top element
 
 public int pop(){
+<<<<<<< HEAD
     int temp = items[count]
+=======
+
+    if(count == 0) // No elements to pop
+        // throw error so it doesn't go to the next step
+
+    int temp = items[count - 1]
+>>>>>>> 314da669bc445dc844f921c1e827f8542b22b19c
     items[count--] = 0;
     return temp;
 }
 ```
+<<<<<<< HEAD
 This method is used to remove elements from the stack.
 
 Similar to `push` method, it is important to check if the stack is empty, and output corresponding error message. When the stack is empty, there are no elements to be removed (there is no such element).
@@ -88,6 +145,12 @@ Following code can be used to address the exception
 ```
 
 
+=======
+
+This method is used to remove elements from the stack.
+
+Similar to `push` method, it is important to check if the stack is empty, and you can use exception here as well.
+>>>>>>> 314da669bc445dc844f921c1e827f8542b22b19c
 
 Lets look at `peek` Method:
 
@@ -101,10 +164,23 @@ Lets look at `peek` Method:
 // Returns the top element in the stack
 
 public int peek(){
+<<<<<<< HEAD
     return items[count-1];
 }
 ```
 Peek and pop are kinda similar, where both methods target the top element of the stack. But the major difference is that, peek returns the element on the top of the stack, whereas pop removes the element on the top from the stack.
+=======
+
+    if(count == 0)
+        return; // throw err.
+
+    return items[count-1];
+}
+```
+
+Peek and pop are kinda similar, where both methods target the top element of the stack.
+But the major difference is that, peek returns the element that's on the top of the stack and `doesn't remove the element`, whereas pop removes the element on the top from the stack.
+>>>>>>> 314da669bc445dc844f921c1e827f8542b22b19c
 
 Lets look at `isEmpty` Method
 
@@ -116,14 +192,25 @@ Lets look at `isEmpty` Method
 */
 
 public boolean isEmpty(){
+<<<<<<< HEAD
     return count==0;
 }
 ```
+=======
+    return count == 0;
+}
+```
+
+>>>>>>> 314da669bc445dc844f921c1e827f8542b22b19c
 This method can be used to check if the stack is empty. It returns true when count value is zero.
 
 Lets look at `toString` Method:
 
+<<<<<<< HEAD
 ```java:toString
+=======
+```java:toString.java
+>>>>>>> 314da669bc445dc844f921c1e827f8542b22b19c
 
 /*
  * Time: O(n)
@@ -132,12 +219,29 @@ Lets look at `toString` Method:
 
 @Override
 public String toString(){
+<<<<<<< HEAD
     var values = Arrays.copyOfRange(items,0,count); 
     
     // Did this way to show you that this method exists. Using a traditional for loop would allow you to achieve this method in O(1) space complexity.
+=======
+    var values = Arrays.copyOfRange(items,0,count);
+
+    // This method makes a for loop and generates a new array, which results in a O(n) space.
+
+    // Did this way to show you that this method exists.
+    // Using a traditional for loop would allow you to achieve this method in O(1) space complexity.
+>>>>>>> 314da669bc445dc844f921c1e827f8542b22b19c
 
     return Arrays.toString(values)
 }
 ```
+<<<<<<< HEAD
 This method is useful for printing the stack.
 
+=======
+
+Method just for printing the stack
+
+> If you read till here, you question can we just use a linked list? cuz that's the same thing going around my mind now, there is no harm in using a linked list
+> and getting this work done in few statements but I wanted to teach you the traditional method using an array.
+>>>>>>> 314da669bc445dc844f921c1e827f8542b22b19c

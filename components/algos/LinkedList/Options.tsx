@@ -56,17 +56,17 @@ const Options: React.FC<Props> = ({
             <div>
               <div>Enter the index:</div>
               <input
-                ref={indexRef}
                 type="number"
                 name=""
                 id=""
                 className="h-9 w-[10rem] rounded outline-none px-2 focus:border-primary border-2"
+                ref={indexRef}
               />
             </div>
           </form>
         </div>
       </div>
-      <div className="space-x-3 h-1/2 justify-center flex items-center">
+      <div className="space-x-3 h-1/2 overflow-scroll w-screen justify-center flex items-center">
         <motion.button
           onClick={() => {
             const value = inputCheck();
