@@ -13,9 +13,9 @@ const graphFunction = (node: Node<number> | null) => {
   const childBoxCord = childBox!.getBoundingClientRect();
   if (!childBox || !childBoxCord?.width) return;
 
-  const rightNodeID = node?.right ? `#n${node!.right!.id}` : ".null";
+  const rightNodeID = node?.right ? `#n${node!.right!.id}` : `.nu${node.id}`;
   const rightNode = childBox.querySelector(rightNodeID);
-  const leftNodeID = node?.left ? `#n${node!.left!.id}` : ".null";
+  const leftNodeID = node?.left ? `#n${node!.left!.id}` : `.nu${node.id}`;
   const leftNode = childBox.querySelector(leftNodeID);
 
   const rightNodeAxis = rightNode?.getBoundingClientRect();
@@ -40,6 +40,7 @@ const graphFunction = (node: Node<number> | null) => {
   }
 
   let hypo: number;
+  console.log(rightNode);
   if (rightNodeID != ".null") {
     hypo = distance(
       [parentAxis.x, parentAxis.y],

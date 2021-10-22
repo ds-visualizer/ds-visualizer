@@ -59,7 +59,7 @@ export default class Node<T> {
             >
               <Image
                 src={"/arrow.svg"}
-                width={"50px"}
+                width={"40px"}
                 height={data.hypo + "px"}
               />
             </motion.div>
@@ -81,7 +81,7 @@ export default class Node<T> {
             >
               <Image
                 src={"/arrow.svg"}
-                width={"50px"}
+                width={"40px"}
                 height={data.hypo + "px"}
               />
             </motion.div>
