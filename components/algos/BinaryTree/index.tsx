@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import OptionBackground from "@Components/layouts/OptionBackground";
 import Input from "@Root/components/layouts/Input";
 import Buttons from "@Root/components/layouts/Buttons";
@@ -7,11 +7,12 @@ import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 import Node from "./Node";
 import NullNode from "./NullNode";
+import graphFunction from "./graphFunction";
 
 interface Props {}
 
 const render = (
-  root: Node<number | string> | null,
+  root: Node<number> | null,
   rootHeight: number,
   currentHeight: number
 ): JSX.Element => {
@@ -22,7 +23,7 @@ const render = (
   if (!root)
     return (
       <>
-        <div className="flex space-y-8 flex-col items-center">
+        <div className="flex  space-y-8 flex-col items-center">
           {new NullNode().render()}
           <div className={`flex space-x-10`}>
             {render(null, rootHeight, currentHeight + 1)}
@@ -32,22 +33,18 @@ const render = (
       </>
     );
 
-  const graphFunction = () => {
-    const div = document.querySelector(`#c${root.id}`);
-    if (!div) return;
-    // console.log(div.getBoundingClientRect().width);
-    console.log(div);
-  };
+  const data = graphFunction(root);
 
   return (
-    <div className="flex space-y-8 flex-col items-center">
-      <div id={`n${root.id}`}>{root.render()}</div>
-      <div id={`c${root.id}`} className={`flex space-x-10`}>
-        {render(root.left, rootHeight, currentHeight + 1)}
-        {render(root.right, rootHeight, currentHeight + 1)}
+    <>
+      <div className="flex space-y-8 flex-col items-center">
+        <div id={`n${root.id}`}>{root.render(data)}</div>
+        <div id={`c${root.id}`} className={`flex space-x-10`}>
+          {render(root.left, rootHeight, currentHeight + 1)}
+          {render(root.right, rootHeight, currentHeight + 1)}
+        </div>
       </div>
-      {graphFunction()}
-    </div>
+    </>
   );
 };
 
@@ -61,12 +58,19 @@ let root: Node<number> | null = null;
 const index: React.FC<Props> = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const [count, setCount] = useState<number>(1);
   const [tree, setTree] = useState<JSX.Element>();
 
-  const insert = (value: number) => {
+  useEffect(() => {
+    if (count == 2) return setCount(1);
+    renderTree();
+    setCount(2);
+  }, [tree]);
+
+  const insert = async (value: number) => {
     if (!root) {
       root = new Node(value);
-      renderTree();
+      await renderTree();
       return;
     }
     let current = root;
@@ -83,10 +87,12 @@ const index: React.FC<Props> = () => {
         } else current = current.left;
       }
     }
-    renderTree();
+    await renderTree();
   };
 
-  const renderTree = () => setTree(render(root, height(root), 0));
+  const renderTree = async () => {
+    return setTree(render(root, height(root), 0));
+  };
 
   return (
     <>
