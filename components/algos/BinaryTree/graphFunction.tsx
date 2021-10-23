@@ -40,7 +40,6 @@ const graphFunction = (node: Node<number> | null) => {
   }
 
   let hypo: number;
-  console.log(rightNode);
   if (rightNodeID != ".null") {
     hypo = distance(
       [parentAxis.x, parentAxis.y],

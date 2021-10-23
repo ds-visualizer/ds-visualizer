@@ -1,97 +1,100 @@
 # Binary Search Tree (BST) Code
- 
-> BST is a data strucutre that spreads out like a tree. The first element of the tree is knowm as the `root`. In a BST, values that are smaller than the root are on the left side of the root, which are reffered as `leftChild`. Values that are greater or equal to the root are on the right side of the root, which are reffered as `rightChild`.
- 
-The plain strucutre of BST would like this.
- 
+
+> BST is a data structure that spreads out like a tree. The first element of the tree is known as the `root`. In a BST,
+> values that are smaller than the root are on the left side of the root, which are refereed as `leftChild`.
+> Values that are greater or equal to the root are on the right side of the root, which are refereed as `rightChild`.
+
+The plain structure of BST would like this.
+
 ```java:BST.java
 class BST{
     public class Node {
         private Node leftChild;
         private Node rightChild;
-        public int value;
- 
-    //Constructor
- 
+        private int value;
+
         public Node(int value) {
             this.value = value;
         }
- 
+
     // The following method is optional
     // This method is to look at the node values clearly while debugging.
+
         @Override
         public String toString() {
             return "Value = " + value;
         }
     }
- 
+
     private Node root;
- 
+
     /*
-    * leftChild, rightChild, root are private because you don't want to access them outside of 
+    * leftChild, rightChild, root are private because you don't want to access them outside of
     * the class.
     * You can make getter which is a very good practice if you want to read private variables
     */
- 
- 
+
+
     public void insert(int value);
- 
+
     public boolean find(int value);
- 
+
     /*
-    * Traversal methods are different ways in which you can itereate through the tree.
+    * Traversal methods are different ways in which you can iterate through the tree.
     */
- 
+
     public void preOrderTraversal();
- 
+
     public void inOrderTraversal();
- 
+
     public void postOrderTraversal();
- 
-    public int height() 
- 
+
+    public int height()
+
 }
 ```
- 
-**In this case**, Node is the structure of each node that's *inside* the tree. `value` is the data that's inside of the node, and `leftChild` is a pointer that holds the heap location of the node that is on on the left side of the root node. Similaraly, `rightChild` is a pointer that holds the heap location of the node that is on the right side of the root node.
- 
+
+**In this case**, Node is the structure of each node that's _inside_ the tree. `value` is the data that's inside of the node, and
+`leftChild` is a pointer that holds the heap location of the node that is on on the left side of the root node. Similarly,
+`rightChild` is a pointer that holds the heap location of the node that is on the right side of the root node.
+
 Lets look at `insert` Method:
- 
+
 ```JAVA:insert,java
- 
+
 /*
- * Time: O(logn)
+ * Time: O(log n)
  * Space: O(1)
  */
- 
-public void insert(int value) {
+
+    public void insert(int value) {
         var node = new Node(value);
- 
+
         // When there is no root, the node becomes the root
- 
+
         if (root == null) {
             root = node;
             return;
         }
- 
+
         var current = root;
         while (true) {
- 
+
          // Checking if the value is less than or greater than the current
-          
+
             if (value < current.value) {
- 
+
             // When the leftChild of current node is null, the new node is placed over there
- 
+
                 if (current.leftChild == null) {
                     current.leftChild = node;
                     break;
                 }
                 current = current.leftChild;
             } else {
- 
-            // When the rightChild of current node is null, the new node is places over there   
- 
+
+            // When the rightChild of current node is null, the new node is places over there
+
                 if (current.rightChild == null) {
                     current.rightChild = node;
                     break;
@@ -101,104 +104,118 @@ public void insert(int value) {
         }
     }
 ```
- 
-Initially the method checks if the root is empty and adds the node as the `root` if it is empty. Otherwise, taking the `root` as `current` we traverse the tree either on the left side (when the `value` is less than root value) or on the right side (when the `value` is greater or equal to root value). When there is a `current` with its `leftChild` or `rightChild` as null, the node is added over there.
- 
-> Since we check either only the right side or the left side, which is basically the half of the tree, the time complexity would be O(logn) with space complexity of O(1).
- 
- 
+
+Initially the method checks if the root is empty and adds the node as the `root` if it is empty. Otherwise, taking the `root` as `current` we
+traverse the tree either on the left side (when the `value` is less than root value) or on the right side (when the `value` is greater or equal
+to root value). When there is a `current` with its `leftChild` or `rightChild` as null, the node is added over there.
+
+> Since we check either only the right side or the left side, which is basically the half of the tree, the time complexity would be
+> O(log n) with space complexity of O(1).
+
 Lets look at `find` Method:
- 
+
 ```JAVA:find.java
 /*
- * Time: O(logn)
+ * Time: O(log n)
  * Space: O(1)
  */
- 
+
 // This method is to check if a particular value is present in the tree
 
- public boolean find(int value) {
+    public boolean find(int value) {
         var current = root;
         while (current != null) {
 
-            if (value > current.value)
+            if (value == current.value)
+                return true;
+
+            else if (value > current.value)
                 current = current.rightChild;
 
             else if (value < current.value)
                 current = current.leftChild;
-
-            else
-                return true;
         }
         return false;
-}
+    }
 ```
- 
-`find` method works similarlly to the `insert` method. It itereates from the root and checks if the value lies on left side or right side and returns true when the `current` value equals to `value`.
- 
-> Since it iterates only one one side, the time complexity is O(logn) and space complexity is O(n).
- 
- 
- 
- 
-> In linear data strucutres like linkedlists there is only one way to traverse it, which is from th first node till the last one. But tree being a non-liner data structure, there are two paths through which traversal can take place, either left side or right side.
- 
+
+`find` method works similarly to the `insert` method. It iterates from the root and checks if the value lies on left side or
+right side and returns true when the `current` value equals to `value`.
+
+> Since it iterates only one one side, the time complexity is O(log n) and space complexity is O(n).
+
+> In linear data structures like linked lists there is only one way to traverse it, which is from th first node till the last one.
+> But tree being a non-liner data structure, there are two paths through which traversal can take place, either left side or right side.
+
 Tree traversals are classified into two categories:
-- Breadth-first traversals: It is also called **Level Order traversal**. Here we visit all the nodes at the same level before visiting the nodes at the next level
- 
-- Depth-first traverals:
- 
+
+- Breadth-first traversals: It is also called **Level Order traversal**. Here we visit all the nodes at the same level before visiting the
+  nodes at the next level
+
+- Depth-first traversals:
+
 There are three types of depth first traversals:
- 
+
 - Pre-Order Traversal: We first visit the root, then the the left subtree and right subtree.
- 
+
 - In-Order Traversal: We first visit the left subtree, then the root and right subtree.
- 
+
 - Post-Order Traversal: We first visit the left subtree, then the right subtree and root.
- 
+
 Basic schema of depth first traversals:
-1) Pre-Order Traversal:  **Root**      *Left*        *Right*
- 
-2) In-Order Traversal:    *Left*      **Root**       *Right*
- 
-3) Post_order Travesal:   *Left*       *Right*      **Root**
- 
- 
+
+1. Pre-Order Traversal: **Root** _Left_ _Right_
+
+2. In-Order Traversal: _Left_ **Root** _Right_
+
+3. Post*order Traversal: \_Left* _Right_ **Root**
+
 Since, you have understood various traversals that are possible in a tree, now lets look at the code for **depth-first traversals**.
- 
-> For tree traversals we will be using recusrions.
- 
+
+> For tree traversals we will be using recursions.
+
 Let look at `preOrderTraversal` Method:
- 
+
 ```JAVA:preOrderTraversal.java
- 
+
+/*
+ * Time: O(n)
+ * Space: O(1)
+ */
+
 // Method overloading
- 
-public void preOrderTraversal() {
+
+    public void preOrderTraversal() {
         preOrderTraversal(root);
     }
- 
-private void preOrderTraversal(Node root) {
+
+    private void preOrderTraversal(Node root) {
         if (root == null)
             return;
-            
+
         System.out.println(root.value);
         preOrderTraversal(root.leftChild);
         preOrderTraversal(root.rightChild);
     }
 ```
- 
+
 Lets look at `inOrderTraversal` Method:
- 
-```JAVA:inOrderTraversaljava
- 
+
+```JAVA:inOrderTraversal.java
+
+/*
+ * Time: O(n)
+ * Space: O(1)
+ */
+
+
 // Method overloading
- 
-public void inOrderTraversal() {
+
+    public void inOrderTraversal() {
         inOrderTraversal(root);
     }
- 
-private void inOrderTraversal(Node root) {
+
+    private void inOrderTraversal(Node root) {
         if (root == null)
             return;
 
@@ -207,18 +224,24 @@ private void inOrderTraversal(Node root) {
         inOrderTraversal(root.rightChild);
     }
 ```
- 
+
 Lets look at `postOrderTraversal` Method:
- 
+
 ```JAVA:postOrderTraversal.java
- 
+
+/*
+ * Time: O(n)
+ * Space: O(1)
+ */
+
+
 // Method overloading
- 
-public void postOrderTraversal() {
+
+    public void postOrderTraversal() {
         postOrderTraversal(root);
     }
- 
-private void postOrderTraversal(Node root) {
+
+    private void postOrderTraversal(Node root) {
         if (root == null)
             return;
 
@@ -227,28 +250,36 @@ private void postOrderTraversal(Node root) {
         System.out.println(root.value);
     }
 ```
+
 > Since `root` is declared as private, which cannot be accessed outside the class, we have overloaded the methods without the parameter (`root`).
- 
+
 - Method overloading: There can be multiple methods in a class with same names but different parameters.
- 
+
 Now let's look at the difference between height and depth before we move on to `height` method.
- 
+
 - Depth: The number of edges from the `root` to the **target** node. (You move from the top to bottom).
- 
-- Height: Height is the opposite of depth. As we go up the the tree, the height of the nodes increases. It can be defined as the longest path from the leaf node to the **target** node. Height of the `root` node is also called the height of the tree.
- 
+
+- Height: Height is the opposite of depth. As we go up the the tree, the height of the nodes increases. It can be defined as the longest path from the leaf node to the **target** node.
+  Height of the `root` node is also called the height of the tree.
+
 Leaf node: A node with no child is called a lead. There are no nodes attached after it.
- 
+
 Lets look at `height` Method:
- 
+
 ```JAVA:height.java
- 
+
+/*
+ * Time: O(n)
+ * Space: O(1)
+ */
+
 // Method overloading
-public int height() {
+
+    public int height() {
         return height(root);
     }
- 
-private int height(Node root) {
+
+    private int height(Node root) {
         // Base condition
         if (root == null)
             return -1;
@@ -256,8 +287,6 @@ private int height(Node root) {
         return 1 + Math.max(height(root.leftChild), height(root.rightChild));
     }
 ```
- 
-> Instead of calculating the height of the tree at once, we will start by calculating the height of left and right subtrees. Then, we take subtree with greater height and move one level up on that side.
- 
-- Since we have started from the leaves and moved up the tree, it can be seen that we have followed **Post-order traversal** to find the height of the tree.
 
+In this method, we keep calling the method again and again and when we reach a **null** we will return -1 and stop the recursion.
+Then compare the max of left and right subtree, which ever is greater, thats the height of the tree.

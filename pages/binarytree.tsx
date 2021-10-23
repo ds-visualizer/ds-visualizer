@@ -1,17 +1,35 @@
 import React from "react";
-import type { NextPage } from "next";
+import type { InferGetStaticPropsType, NextPage } from "next";
 import BinaryTree from "@Components/algos/BinaryTree";
 import Head from "next/head";
 
-const binarytree: NextPage = () => {
+import fs from "fs";
+import path from "path";
+import serialize from "@Misc/serialize";
+
+const binarytree = ({
+  contentHtml,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Head>
         <title>Binary Tree</title>
       </Head>
-      <BinaryTree />
+      <BinaryTree htmlContent={[contentHtml]} />
     </>
   );
 };
 
 export default binarytree;
+
+export const getStaticProps = async () => {
+  const contentMdx = fs.readFileSync(
+    path.resolve(process.cwd(), "content/Tree", "BST-code.mdx"),
+    "utf-8"
+  );
+  let contentHtml = await serialize(contentMdx);
+
+  return {
+    props: { contentHtml },
+  };
+};
