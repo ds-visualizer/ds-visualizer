@@ -82,7 +82,7 @@ public int pop(){
     if(count == 0) // No elements to pop
         // throw error so it doesn't go to the next step
 
-    int temp = items[count]
+    int temp = items[count - 1]
     items[count--] = 0;
     return temp;
 }
