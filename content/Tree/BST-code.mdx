@@ -11,13 +11,14 @@ class BST{
         private Node rightChild;
         public int value;
  
-//Constructor
+    //Constructor
  
         public Node(int value) {
             this.value = value;
         }
  
-// This method is to look at the node values clearly while debugging.
+    // The following method is optional
+    // This method is to look at the node values clearly while debugging.
         @Override
         public String toString() {
             return "Value = " + value;
@@ -115,13 +116,17 @@ Lets look at `find` Method:
  */
  
 // This method is to check if a particular value is present in the tree
+
  public boolean find(int value) {
         var current = root;
         while (current != null) {
+
             if (value > current.value)
                 current = current.rightChild;
+
             else if (value < current.value)
                 current = current.leftChild;
+
             else
                 return true;
         }
@@ -173,9 +178,10 @@ public void preOrderTraversal() {
         preOrderTraversal(root);
     }
  
-    private void preOrderTraversal(Node root) {
+private void preOrderTraversal(Node root) {
         if (root == null)
             return;
+            
         System.out.println(root.value);
         preOrderTraversal(root.leftChild);
         preOrderTraversal(root.rightChild);
@@ -192,9 +198,10 @@ public void inOrderTraversal() {
         inOrderTraversal(root);
     }
  
-    private void inOrderTraversal(Node root) {
+private void inOrderTraversal(Node root) {
         if (root == null)
             return;
+
         inOrderTraversal(root.leftChild);
         System.out.println(root.value);
         inOrderTraversal(root.rightChild);
@@ -211,9 +218,10 @@ public void postOrderTraversal() {
         postOrderTraversal(root);
     }
  
-    private void postOrderTraversal(Node root) {
+private void postOrderTraversal(Node root) {
         if (root == null)
             return;
+
         postOrderTraversal(root.leftChild);
         postOrderTraversal(root.rightChild);
         System.out.println(root.value);
@@ -240,10 +248,11 @@ public int height() {
         return height(root);
     }
  
-    private int height(Node root) {
+private int height(Node root) {
         // Base condition
         if (root == null)
             return -1;
+
         return 1 + Math.max(height(root.leftChild), height(root.rightChild));
     }
 ```
