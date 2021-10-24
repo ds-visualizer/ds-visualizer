@@ -24,6 +24,7 @@ const index: React.FC<Props> = () => {
 
   const addVertex = (label: string) => {
     setGraph({ ...graph, [label]: [] });
+    labelRef.current!.value = "";
   };
 
   const addEdge = (from: string, to: string) => {
@@ -33,6 +34,8 @@ const index: React.FC<Props> = () => {
     if (graph[from].find((node) => node.value == to)) return;
 
     setGraph({ ...graph, [from]: [...graph[from], new Node(to)] });
+    fromRef.current!.value = "";
+    toRef.current!.value = "";
   };
 
   const removeEdge = (from: string, to: string) => {
@@ -45,6 +48,8 @@ const index: React.FC<Props> = () => {
 
     graph[from].splice(nodeIndex, 1);
     setGraph({ ...graph, [from]: [...graph[from]] });
+    fromRef.current!.value = "";
+    toRef.current!.value = "";
   };
 
   const removeVertex = (label: string) => {
@@ -59,6 +64,7 @@ const index: React.FC<Props> = () => {
     }
 
     setGraph(newGraph);
+    labelRef.current!.value = "";
   };
 
   return (
@@ -70,7 +76,6 @@ const index: React.FC<Props> = () => {
             if (!labelRef.current!.value) return;
 
             addVertex(labelRef.current!.value);
-            labelRef.current!.value = "";
           }}
         >
           <Input
@@ -83,7 +88,6 @@ const index: React.FC<Props> = () => {
             <Button
               onClick={() => {
                 removeVertex(labelRef.current!.value);
-                labelRef.current!.value = "";
               }}
               content="Remove Vertex"
             />
@@ -93,8 +97,6 @@ const index: React.FC<Props> = () => {
           onSubmit={(e) => {
             e.preventDefault();
             addEdge(fromRef.current!.value, toRef.current!.value);
-            fromRef.current!.value = "";
-            toRef.current!.value = "";
           }}
         >
           <div>
@@ -106,8 +108,6 @@ const index: React.FC<Props> = () => {
             <Button
               onClick={() => {
                 removeEdge(fromRef.current!.value, toRef.current!.value);
-                fromRef.current!.value = "";
-                toRef.current!.value = "";
               }}
               type="submit"
               content="Remove Edge"
