@@ -115,7 +115,7 @@ const index: React.FC<Props> = () => {
           </Buttons>
         </form>
       </OptionBackground>
-      <div className="my-5 flex flex-col items-start px-10">
+      <div className="my-5 w-screen py-16 overflow-y-hidden overflow-x-scroll  flex flex-col items-start px-14">
         <AnimateSharedLayout>
           <AnimatePresence>{render(graph)}</AnimatePresence>
         </AnimateSharedLayout>
