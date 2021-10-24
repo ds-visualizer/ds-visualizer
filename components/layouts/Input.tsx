@@ -8,10 +8,10 @@ interface Props {
 }
 
 const Input = React.forwardRef<HTMLInputElement | null, Props>(
-  ({ content, type, onChange, value }, ref) => {
+  ({ content, type, onChange }, ref) => {
     return (
       <div className="flex flex-col items-center">
-        <div>{content}</div>
+        <div className="w-full">{content}</div>
         <input
           onChange={onChange}
           ref={ref}
