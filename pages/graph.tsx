@@ -1,18 +1,31 @@
+import type { InferGetStaticPropsType, NextPage } from "next";
+
 import React from "react";
-import type { NextPage } from "next";
+import fs from "fs";
+import path from "path";
 
 import Graph from "@Components/algos/graph";
 import Head from "next/head";
+import serialize from "@Misc/serialize";
 
-const graph: NextPage = () => {
+const graph = ({
+  graphCodeHTML,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <Head>
         <title>Graph</title>
       </Head>
-      <Graph />
+      <Graph html={[graphCodeHTML]} />
     </>
   );
 };
 
 export default graph;
+
+export const getStaticProps = async () => {
+  const blogPath = path.resolve(process.cwd(), "content/graph");
+  const graphCodeMDX = fs.readFileSync(blogPath + "/graph-code.md", "utf-8");
+  const graphCodeHTML = await serialize(graphCodeMDX);
+  return { props: { graphCodeHTML } };
+};

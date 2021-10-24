@@ -8,14 +8,18 @@ import Button from "@Root/components/layouts/Button";
 
 import Node from "./Node";
 import render from "./render";
+import mdxHtml from "@Root/interface/mdxHtmlType";
+import Content from "@Root/components/layouts/Content";
 
-interface Props {}
+interface Props {
+  html: mdxHtml[];
+}
 
 export interface IGraph {
   [vertex: string]: Array<Node<string>>;
 }
 
-const index: React.FC<Props> = () => {
+const index: React.FC<Props> = ({ html }) => {
   const [graph, setGraph] = useState<IGraph>({});
 
   const labelRef = useRef<HTMLInputElement>(null);
@@ -115,10 +119,13 @@ const index: React.FC<Props> = () => {
           </Buttons>
         </form>
       </OptionBackground>
-      <div className="my-5 w-screen py-16 overflow-y-hidden overflow-x-scroll  flex flex-col items-start px-14">
+      <div className="my-5 w-screen py-16 overflow-y-hidden overflow-x-scroll min-h-[40vh] flex flex-col items-start px-14">
         <AnimateSharedLayout>
           <AnimatePresence>{render(graph)}</AnimatePresence>
         </AnimateSharedLayout>
+      </div>
+      <div>
+        <Content html={html[0]} />
       </div>
     </div>
   );
