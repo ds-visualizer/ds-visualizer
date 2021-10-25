@@ -11,6 +11,7 @@ Formatter: prettier
   - [Start environment](#start-environment)
   - [For fixing typos](#for-fixing-typos)
   - [Finding bugs](#finding-bugs)
+  - [Need help](#need-help)
 
 ## Start environment
 
@@ -29,3 +30,9 @@ You can fix the typos and put a pr.
 ## Finding bugs
 
 You can put up an issues on the `issue` tab and I will look into it.
+
+## Need help
+
+- Need a UI designer to design the page and shoot me a mail.
+- Might want to refractor the ts imports cleaner.
+- Need to update dependencies.
