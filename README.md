@@ -4,7 +4,7 @@
 Domain: https://dsvisualizer.isatvik.com/
 ```
 
-```text
+```texthttps://github.com/satvik-1203/ds-visualizer/tree/selection-sort
 GitHub: https://github.com/satvik-1203/ds-visualizer
 ```
 
