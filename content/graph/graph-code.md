@@ -30,11 +30,11 @@ class GraphLinkedList {
 
   class Node {
 
-    String label;
+    public String label;
 
     // Each vertex will have a linked list edges for all the edges it will have
 
-    LinkedList<String> edges = new LinkedList<String>();
+    public LinkedList<String> edges = new LinkedList<String>();
 
     public Node(String label) {
       this.label = label;
@@ -48,7 +48,6 @@ class GraphLinkedList {
   // to hashmaps soon
 
   private LinkedList<Node> nodes = new LinkedList<Node>();
-
 
   private Node findNode(String label) {}
 
@@ -73,7 +72,7 @@ Before we jump into the methods, since we are using a linked list, we need to ma
 ```java:helperMethods.java
 
   /*
-   * Time: O(V)
+   * Time: O(V) -> V is the number of vertices
    * Space: O(1)
    */
 
@@ -101,7 +100,7 @@ Before we jump into the methods, since we are using a linked list, we need to ma
 
 ```
 
-The First method we will go around is `adding vertices`.
+The First method we will go through is `adding vertices`.
 
 Before we go into it, try adding a vertex in the visualizer and see what happens.
 
