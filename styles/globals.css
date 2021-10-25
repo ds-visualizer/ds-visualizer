@@ -16,6 +16,10 @@ body {
   background-color: #292929;
 }
 
+input {
+  background-color: rgba(107, 114, 128, 0.3);
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Nunito:wght@400;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@1,300&display=swap");
 

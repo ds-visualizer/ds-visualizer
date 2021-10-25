@@ -18,7 +18,7 @@ const Input = React.forwardRef<HTMLInputElement | null, Props>(
           type={type || "number"}
           name=""
           id=""
-          className="h-9 w-full bg-gray-500 rounded outline-none border-0 px-2 focus:border-primary "
+          className="h-9 w-full border-gray-800  rounded outline-none border-[1px] px-2 focus:border-primary "
         />
       </div>
     );
