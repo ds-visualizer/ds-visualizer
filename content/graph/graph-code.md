@@ -22,7 +22,7 @@ THe plain structure of a graph would look like this:
 
 ```java:Graph.java
 
-class GraphLinkedList {
+class Graph {
 
   // Nodes in graphs are unique, there can't be 2 repeating nodes.
   // Generally you could use UID's and use same name but I don't want to put this
