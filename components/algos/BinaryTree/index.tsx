@@ -61,15 +61,17 @@ const index: React.FC<Props> = ({ htmlContent }) => {
   return (
     <div className="overflow-hidden">
       <OptionBackground>
-        <Input ref={inputRef} content="Enter your value" />
-        <Buttons>
-          <Button
-            onClick={() => {
-              insert(parseInt(inputRef.current?.value || "0"));
-            }}
-            content="Insert"
-          />
-        </Buttons>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            insert(parseInt(inputRef.current?.value || "0"));
+          }}
+        >
+          <Input ref={inputRef} content="Enter your value" />
+          <Buttons>
+            <Button type="submit" content="Insert" />
+          </Buttons>
+        </form>
       </OptionBackground>
       <div className="w-screen min-h-[50vh] overflow-hidden flex justify-center pt-28">
         <div>
