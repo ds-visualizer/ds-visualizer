@@ -142,12 +142,12 @@ const LinkedList: React.FC<Props> = ({ html, codeHTML }) => {
   };
 
   return (
-    <div className="flex flex-col w-screen bg-primary min-h-screen">
+    <div className="flex flex-col w-screen min-h-screen">
       <button
         onClick={() => {
           setCode((prev) => !prev);
         }}
-        className="fixed z-20 rounded top-10 right-5 px-4 py-2 bg-black text-white"
+        className="fixed z-20 rounded top-20 right-5 px-4 py-2 bg-black text-white"
       >
         {code ? "Explanation" : "Code"}
       </button>

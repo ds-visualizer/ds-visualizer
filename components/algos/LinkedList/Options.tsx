@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import OptionBackground from "@Components/layouts/OptionBackground";
+import Buttons from "@Root/components/layouts/Buttons";
+import Input from "@Root/components/layouts/Input";
 
 interface Props {
   addFirst: (value: number) => void;
@@ -43,95 +45,82 @@ const Options: React.FC<Props> = ({
             }}
           >
             <div>
-              <div className="">Enter the Value: </div>
-
-              <input
-                ref={valueRef}
-                type="number"
-                name=""
-                id=""
-                className="h-9 w-[10rem] rounded outline-none px-2 focus:border-primary border-2"
-              />
+              <Input ref={valueRef} type="number" content="Enter the Value: " />
             </div>
             <div>
-              <div>Enter the index:</div>
-              <input
-                type="number"
-                name=""
-                id=""
-                className="h-9 w-[10rem] rounded outline-none px-2 focus:border-primary border-2"
-                ref={indexRef}
-              />
+              <Input type="number" content="Enter the index:" ref={indexRef} />
             </div>
           </form>
         </div>
       </div>
-      <div className="space-x-3 h-1/2 overflow-scroll w-screen justify-center flex items-center">
-        <motion.button
-          onClick={() => {
-            const value = inputCheck();
-            if (value == undefined) return;
-            addFirst(value);
-          }}
-          whileTap={{ scale: 0.8 }}
-          className="btn"
-        >
-          Add First
-        </motion.button>
-        <motion.button
-          onClick={() => {
-            const value = inputCheck();
-            if (value == undefined) return;
-            addLast(value);
-          }}
-          whileTap={{ scale: 0.8 }}
-          className="btn"
-        >
-          Add Last
-        </motion.button>
-        <motion.button
-          onClick={() => {
-            const value = valueRef.current?.value || "0";
-            const index = indexRef.current?.value || "0";
-            addAt(parseInt(index), parseInt(value));
-          }}
-          whileTap={{ scale: 0.8 }}
-          className="btn"
-        >
-          Insert At
-        </motion.button>
-        <motion.button
-          onClick={() => {
-            const value = inputCheck();
-            if (value == undefined) return;
-            removeFirst();
-          }}
-          whileTap={{ scale: 0.8 }}
-          className="btn"
-        >
-          Remove First
-        </motion.button>
-        <motion.button
-          onClick={() => {
-            const value = inputCheck();
-            if (value == undefined) return;
-            removeLast();
-          }}
-          whileTap={{ scale: 0.8 }}
-          className="btn"
-        >
-          Remove Last
-        </motion.button>
-        <motion.button
-          onClick={() => {
-            const index = indexRef.current?.value || "0";
-            removeAt(parseInt(index));
-          }}
-          whileTap={{ scale: 0.8 }}
-          className="btn"
-        >
-          Remove At
-        </motion.button>
+      <div>
+        <Buttons className="overflow-x-hidden">
+          <motion.button
+            onClick={() => {
+              const value = inputCheck();
+              if (value == undefined) return;
+              addFirst(value);
+            }}
+            whileTap={{ scale: 0.8 }}
+            className="btn"
+          >
+            Add First
+          </motion.button>
+          <motion.button
+            onClick={() => {
+              const value = inputCheck();
+              if (value == undefined) return;
+              addLast(value);
+            }}
+            whileTap={{ scale: 0.8 }}
+            className="btn"
+          >
+            Add Last
+          </motion.button>
+          <motion.button
+            onClick={() => {
+              const value = valueRef.current?.value || "0";
+              const index = indexRef.current?.value || "0";
+              addAt(parseInt(index), parseInt(value));
+            }}
+            whileTap={{ scale: 0.8 }}
+            className="btn"
+          >
+            Insert At
+          </motion.button>
+          <motion.button
+            onClick={() => {
+              const value = inputCheck();
+              if (value == undefined) return;
+              removeFirst();
+            }}
+            whileTap={{ scale: 0.8 }}
+            className="btn"
+          >
+            Remove First
+          </motion.button>
+          <motion.button
+            onClick={() => {
+              const value = inputCheck();
+              if (value == undefined) return;
+              removeLast();
+            }}
+            whileTap={{ scale: 0.8 }}
+            className="btn"
+          >
+            Remove Last
+          </motion.button>
+          <motion.button
+            onClick={() => {
+              const index = indexRef.current?.value || "0";
+              removeAt(parseInt(index));
+            }}
+            whileTap={{ scale: 0.8 }}
+            className="btn"
+          >
+            Remove At
+          </motion.button>
+        </Buttons>
       </div>
     </OptionBackground>
   );
