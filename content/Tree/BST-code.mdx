@@ -68,7 +68,7 @@ Lets look at `insert` Method:
  */
 
     public void insert(int value) {
-        var node = new Node(value);
+        Node node = new Node(value);
 
         // When there is no root, the node becomes the root
 
@@ -77,7 +77,7 @@ Lets look at `insert` Method:
             return;
         }
 
-        var current = root;
+        Node current = root;
         while (true) {
 
          // Checking if the value is less than or greater than the current
@@ -123,7 +123,7 @@ Lets look at `find` Method:
 // This method is to check if a particular value is present in the tree
 
     public boolean find(int value) {
-        var current = root;
+        Node current = root;
         while (current != null) {
 
             if (value == current.value)
