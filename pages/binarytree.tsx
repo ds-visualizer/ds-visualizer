@@ -1,7 +1,7 @@
 import React from "react";
 import type { InferGetStaticPropsType, NextPage } from "next";
 import BinaryTree from "@Components/algos/BinaryTree";
-import Head from "next/head";
+import Metadata from "@Root/components/layouts/Metadata";
 
 import fs from "fs";
 import path from "path";
@@ -13,9 +13,8 @@ const binarytree = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Head>
-        <title>Binary Tree</title>
-      </Head>
+      <Metadata title="Binary Tree" />
+
       <BinaryTree htmlContent={[contentHtml]} />
       <Progress />
     </>

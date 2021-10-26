@@ -4,8 +4,8 @@ import Stack from "@Components/algos/Stack";
 import path from "path";
 import fs from "fs";
 import serialize from "@Misc/serialize";
-import Head from "next/head";
 import Progress from "@Root/components/layouts/Progress";
+import Metadata from "@Root/components/layouts/Metadata";
 
 const stack = ({
   html,
@@ -14,9 +14,8 @@ const stack = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Head>
-        <title>Stack</title>
-      </Head>
+      <Metadata title="Stack" />
+
       <Stack html={[html, codeExample, exampleCodeHtml]} />
       <Progress />
     </>
