@@ -47,6 +47,7 @@ function Metadata({
         content={[...keys, ...keywords, title].join(", ")}
       />
       <meta name="robots" content="index, follow" />
+      <meta name="theme-color" content="#5b21b6" />
       {/* favicons */}
       <link rel="shortcut icon" href="/favicon.ico" />
       <link rel="canonical" href={domain} />
