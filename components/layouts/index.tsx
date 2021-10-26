@@ -11,6 +11,7 @@ const index: React.FC<Props> = ({ children }) => {
 
   return (
     <div className="relative">
+      <div></div>
       <NavBar />
       {children}
       {!footerNotIn.includes(router.pathname) && <Footer />}

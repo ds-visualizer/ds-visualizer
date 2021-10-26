@@ -3,11 +3,19 @@
 @tailwind utilities;
 
 body {
-  background-color: #292929;
+  background-color: #141414;
+  background-image: linear-gradient(to bottom, #141414, transparent);
+  background-attachment: fixed;
 }
 
 input {
   background-color: rgba(107, 114, 128, 0.3);
+}
+
+.card {
+  background-image: url("/images/card.svg");
+  background-repeat: no-repeat;
+  background-position: 35% 50%;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Nunito:wght@400;800&display=swap");
