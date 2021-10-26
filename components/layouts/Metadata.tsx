@@ -14,7 +14,7 @@ interface IProps {
 const sitename = "DS Visualizer";
 
 // Domain name
-const domain = "https://dsvisualizer.isatvik.com/";
+const domain = "https://dsvisualizer.isatvik.com";
 
 // default description
 const desc = "A data structure visualizer";
@@ -50,7 +50,7 @@ function Metadata({
       <meta name="theme-color" content="#5b21b6" />
       {/* favicons */}
       <link rel="shortcut icon" href="/favicon.ico" />
-      <link rel="canonical" href={domain} />
+      <link rel="canonical" href={domain + path} />
       {/*
       <link rel="manifest" href="/manifest.json" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
