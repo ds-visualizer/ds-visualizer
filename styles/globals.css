@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 body {
-  background-color: #292929;
+  background-color: #141414;
+  background-image: linear-gradient(to bottom, #141414, transparent);
+  background-attachment: fixed;
 }
 
 input {
