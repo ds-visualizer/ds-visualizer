@@ -11,10 +11,11 @@ const stack = ({
   html,
   codeExample,
   exampleCodeHtml,
+  metaData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Metadata title="Stack" />
+      <Metadata {...metaData} />
 
       <Stack html={[html, codeExample, exampleCodeHtml]} />
       <Progress />
@@ -43,8 +44,11 @@ export const getStaticProps = async () => {
   const exampleCodeHtml = await serialize(
     fs.readFileSync(exampleCode, "utf-8")
   );
+
+  const metaData = await import("@Misc/Meta.json");
+
   return {
-    props: { html, codeExample, exampleCodeHtml },
+    props: { metaData: metaData.stack, html, codeExample, exampleCodeHtml },
   };
 };
 

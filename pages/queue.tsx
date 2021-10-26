@@ -10,10 +10,11 @@ import Metadata from "@Root/components/layouts/Metadata";
 
 const queue = ({
   codeHtml,
+  metaData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Metadata title="Queue" />
+      <Metadata {...metaData} />
 
       <Queue html={[codeHtml]} />
       <Progress />
@@ -32,8 +33,9 @@ export const getStaticProps = async () => {
   const mdx = fs.readFileSync(codePath, "utf-8");
 
   const codeHtml = await serialize(mdx);
+  const metaData = await import("@Misc/Meta.json");
 
   return {
-    props: { codeHtml },
+    props: { codeHtml, metaData: metaData.queue },
   };
 };

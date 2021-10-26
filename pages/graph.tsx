@@ -11,10 +11,11 @@ import Metadata from "@Root/components/layouts/Metadata";
 
 const graph = ({
   graphCodeHTML,
+  metaData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Metadata title="Graph" />
+      <Metadata {...metaData} />
 
       <Graph html={[graphCodeHTML]} />
       <Progress />
@@ -28,5 +29,6 @@ export const getStaticProps = async () => {
   const blogPath = path.resolve(process.cwd(), "content/graph");
   const graphCodeMDX = fs.readFileSync(blogPath + "/graph-code.md", "utf-8");
   const graphCodeHTML = await serialize(graphCodeMDX);
-  return { props: { graphCodeHTML } };
+  const metaData = await import("@Misc/Meta.json");
+  return { props: { graphCodeHTML, metaData: metaData.graph } };
 };

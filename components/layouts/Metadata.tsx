@@ -6,6 +6,7 @@ interface IProps {
   path?: string;
   description?: string;
   keywords?: string[];
+  image?: string;
   children?: ReactNode;
 }
 
@@ -13,19 +14,20 @@ interface IProps {
 const sitename = "DS Visualizer";
 
 // Domain name
-const domain = "https://domain.com";
+const domain = "https://dsvisualizer.isatvik.com/";
 
 // default description
-const desc = "DS Visualizer";
+const desc = "A data structure visualizer";
 
 // default keywords
-const keys = ["ds vidualizer", "dsvisualizer"];
+const keys = ["ds visualizer", "data structure visualizer"];
 
 function Metadata({
   title,
   path = "/",
   description = desc,
   keywords = [],
+  image,
   children,
 }: IProps) {
   const url = `${domain}${path}`;
@@ -40,11 +42,16 @@ function Metadata({
       />
       <title>{title}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content={[...keys, ...keywords].join(", ")} />
+      <meta
+        name="keywords"
+        content={[...keys, ...keywords, title].join(", ")}
+      />
       <meta name="robots" content="index, follow" />
+      <meta name="theme-color" content="#5b21b6" />
       {/* favicons */}
       <link rel="shortcut icon" href="/favicon.ico" />
-      {/* <link rel="canonical" href={domain} />
+      <link rel="canonical" href={domain} />
+      {/*
       <link rel="manifest" href="/manifest.json" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -89,20 +96,22 @@ function Metadata({
       <meta name="msapplication-TileColor" content="#ffc40d" />
       <meta name="msapplication-config" content="/icons/browserconfig.xml" />
       <meta name="theme-color" content="#ffffff" /> */}
+
       {/* open graphs */}
-      {/* <meta property="og:title" content={title} />
+
+      <meta property="og:title" content={title} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_US" />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content="/image.png" />
-      <meta property="og:site_name" content={sitename} /> */}
-      {/* <meta name="twitter:title" content={title} />
+      <meta property="og:image" content={image} />
+      <meta property="og:site_name" content={sitename} />
+      <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content="/image.png" />
-      <meta name="twitter:image:alt" content="twitter image" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={url} /> */}
+      <meta name="twitter:image" content={image} />
+      {/* <meta name="twitter:image:alt" content="twitter image" /> */}
+      {/* <meta name="twitter:card" content="summary_large_image" /> */}
+      <meta name="twitter:url" content={url} />
       {/* <meta name='twitter:creator' content='@username' /> */}
       {/* apple splash screen images (optional) */}
       {/* <link rel='apple-touch-startup-image' href='/icons/apple_splash_2048.png' sizes='2048x2732' />
