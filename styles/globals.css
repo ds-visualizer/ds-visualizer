@@ -3,16 +3,6 @@
 @tailwind utilities;
 
 body {
-  min-height: 100vh;
-}
-
-@layer components {
-  .btn {
-    @apply border-2 rounded px-3 transition py-1 border-gray-500;
-  }
-}
-
-body {
   background-color: #292929;
 }
 
@@ -24,6 +14,14 @@ input {
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@1,300&display=swap");
 
 @layer components {
+  .btn {
+    @apply border-2 rounded px-3 transition py-1 border-gray-500;
+  }
+
+  p {
+    @apply my-2;
+  }
+
   .blog h1 {
     @apply text-4xl md:text-5xl  2xl:text-7xl text-center;
   }
@@ -67,7 +65,7 @@ input {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #bb86fc;
+  background-color: rgb(91, 33, 182);
 }
 
 *::-webkit-scrollbar-track {
@@ -76,9 +74,9 @@ input {
 
 html {
   scroll-behavior: smooth;
-  scrollbar-width: thin;
-  overflow-x: hidden;
-  /* scrollbar-base-color: #4949ff; */
+  scrollbar-width: thin !important;
+  scrollbar-width: 5px;
+  scrollbar-base-color: rgb(91, 33, 182);
 }
 
 .blog ul {

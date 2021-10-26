@@ -7,6 +7,8 @@ import fs from "fs";
 
 // @ts-ignore
 import remarkCodeTitle from "remark-code-titles";
+import React from "react";
+import Progress from "@Root/components/layouts/Progress";
 
 const Index = ({
   html,
@@ -18,6 +20,7 @@ const Index = ({
         <title>Linked List</title>
       </Head>
       <LinkedList html={html} codeHTML={codeHTML} />
+      <Progress />
     </>
   );
 };

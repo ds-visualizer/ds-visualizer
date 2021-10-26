@@ -1,7 +1,18 @@
 import { motion, useTransform, useViewportScroll } from "framer-motion";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
-const Progress: React.FC = () => {
+interface Props {
+  notIn?: Array<string>;
+}
+
+const Progress: React.FC<Props> = ({ notIn }) => {
+  const router = useRouter();
+
+  if (notIn?.includes(router.pathname)) {
+    return <></>;
+  }
+
   const { scrollYProgress } = useViewportScroll();
   const yRange = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
 

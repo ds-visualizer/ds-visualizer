@@ -6,6 +6,7 @@ import type { InferGetStaticPropsType } from "next";
 import serialize from "@Misc/serialize";
 import Queue from "@Components/algos/queue";
 import Head from "next/head";
+import Progress from "@Root/components/layouts/Progress";
 
 const queue = ({
   codeHtml,
@@ -16,6 +17,7 @@ const queue = ({
         <title>Queue</title>
       </Head>
       <Queue html={[codeHtml]} />
+      <Progress />
     </>
   );
 };
