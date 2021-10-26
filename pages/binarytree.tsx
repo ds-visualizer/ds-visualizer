@@ -10,10 +10,11 @@ import Progress from "@Root/components/layouts/Progress";
 
 const binarytree = ({
   contentHtml,
+  metaData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Metadata title="Binary Tree" />
+      <Metadata {...metaData} />
 
       <BinaryTree htmlContent={[contentHtml]} />
       <Progress />
@@ -29,8 +30,9 @@ export const getStaticProps = async () => {
     "utf-8"
   );
   let contentHtml = await serialize(contentMdx);
+  const { binarytree } = await import("@Misc/Meta.json");
 
   return {
-    props: { contentHtml },
+    props: { contentHtml, metaData: binarytree },
   };
 };

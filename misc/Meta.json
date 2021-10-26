@@ -1,0 +1,27 @@
+{
+  "linkedlist": {
+    "title": "Linked List",
+    "path": "/linkedlist",
+    "image": ""
+  },
+  "binarytree": {
+    "title": "Binary Tree",
+    "path": "/binartree"
+  },
+  "graph": {
+    "title": "Graph",
+    "path": "/graph"
+  },
+  "queue": {
+    "title": "Queue",
+    "path": "/queue"
+  },
+  "stack": {
+    "title": "Stack",
+    "path": "/stack"
+  },
+  "home": {
+    "title": "Home",
+    "path": "/"
+  }
+}

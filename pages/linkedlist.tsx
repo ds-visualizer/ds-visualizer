@@ -13,10 +13,11 @@ import Metadata from "@Root/components/layouts/Metadata";
 const Index = ({
   html,
   codeHTML,
+  metaData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Metadata title="Linked List" />
+      <Metadata {...metaData} />
 
       <LinkedList html={html} codeHTML={codeHTML} />
       <Progress />
@@ -46,9 +47,10 @@ export const getStaticProps = async () => {
       remarkPlugins: [remarkCodeTitle],
     },
   });
+  const metaData = await import("@Misc/Meta.json");
 
   return {
-    props: { html: information, codeHTML },
+    props: { html: information, codeHTML, metaData: metaData.linkedlist },
   };
 };
 
