@@ -2,26 +2,33 @@
   "linkedlist": {
     "title": "Linked List",
     "path": "/linkedlist",
-    "image": ""
+    "image": "",
+    "description": "Learn more about linked list using our visualizer and code explanation"
   },
   "binarytree": {
     "title": "Binary Tree",
-    "path": "/binartree"
+    "path": "/binartree",
+    "description": "Learn more about binary tree using our visualizer and code explanation"
   },
   "graph": {
     "title": "Graph",
-    "path": "/graph"
+    "path": "/graph",
+    "description": "Learn more about graphs using our visualizer and code explanation"
   },
   "queue": {
     "title": "Queue",
-    "path": "/queue"
+    "path": "/queue",
+    "description": "Learn more about queue using our visualizer and code explanation"
   },
   "stack": {
     "title": "Stack",
-    "path": "/stack"
+    "path": "/stack",
+    "description": "Learn more about stacks using our visualizer and code explanation"
   },
   "home": {
     "title": "Home",
-    "path": "/"
+    "path": "/",
+    "description": "Enhance your learning experience with the help of our data structure explanation and visualization",
+    "keywords": ["data structure", "data structure visualizer", "visualizer"]
   }
 }
