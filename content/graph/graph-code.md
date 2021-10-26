@@ -141,12 +141,9 @@ We will go thru removeNode method after this. Try this on the visualizer again ð
    * Space: O(1)
    */
 
-  public void addEdge(String from, String to) {
+   public void addEdge(String from, String to) {
 
     // We need to first check if both the nodes exist
-
-    // O(v) since we are iterating the linked list and finding the node.
-    // Again this could become O(1) with a hash map.
 
     Node fromNode = findNode(from);
     Node toNode = findNode(to);
@@ -154,11 +151,11 @@ We will go thru removeNode method after this. Try this on the visualizer again ð
     if (fromNode == null || toNode == null)
       return;
 
-    fromNode.edges.add(to); // This mean we are point from to to.
+    fromNode.edges.add(toNode); // This mean we are point from to to.
 
     // If u want to make this undirected graph then add
     // toNode.vertices.add(from);
-    // so we make vertex to also point vertex from
+    // so we make to also point from ðŸ˜‰
   }
 
 ```
@@ -170,31 +167,29 @@ So lets look at `removeNode` now:
 ```java:removeNode.java
 
   /*
-   * Time: O(V * E) worth case in dense graph O(V^2).
+   * Time: O(V * E).
    * E is the number of edges.
    * Space: O(1)
    */
 
   public void removeNode(String label) {
-    Boolean exist = contains(label);
+    Node labelNode = findNode(label);
 
-    // no vertex to remove if it doesn't exist in the linked list
-
-    if (!exist)
+    if (labelNode == null) // no vertex to remove if it doesn't exist in the linked list
       return;
 
-    for (int i = 0; i < nodes.size(); i++)
-      if (nodes.get(i).label == label)
-        nodes.remove(i);
+    // Using hash map we can get this to O(1), so come back to this after learning
+    // hash maps ðŸ˜‰
 
-    // We also need to iterate to all the other vertices and remove the link / edge to
+    nodes.remove(labelNode);
+
+    // We also need to iterate to all the other vertices and remove the link to
     // label
 
     // Due to this method, removing a node becomes O(V * E)
 
     for (Node node : nodes)
-      if (node.edges.contains(label))
-        node.edges.remove(label);
+      node.edges.remove(labelNode);
 
   }
 
@@ -211,20 +206,18 @@ Our last method will be `removeEdge`:
 
   public void removeEdge(String from, String to) {
 
-    // Checking if nodes exist
+
+    // Finding node takes O(V)
 
     Node fromNode = findNode(from);
     Node toNode = findNode(to);
 
-    // we also need check if both nodes exist or not.
+    // we again need to find if both nodes exist or no.
 
     if (fromNode == null || toNode == null)
       return;
 
-    fromNode.edges.remove(to);
-
-    // Like before we also need to remove it from to if you are doing
-    // undirected graphs
+    fromNode.edges.remove(toNode);
 
   }
 ```
