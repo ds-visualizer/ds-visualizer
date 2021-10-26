@@ -228,7 +228,7 @@ Just for the purpose of debugging I'll also show a print method:
   public void print() {
 
     for (Node node : nodes)
-      System.out.println(node.label + " is connected to " + node.edges.toString());
+      System.out.println(node.label + " is connected to " + node.edges.toString().toString());
 
   }
 ```
