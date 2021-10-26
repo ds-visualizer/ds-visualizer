@@ -6,6 +6,7 @@ import Head from "next/head";
 import fs from "fs";
 import path from "path";
 import serialize from "@Misc/serialize";
+import Progress from "@Root/components/layouts/Progress";
 
 const binarytree = ({
   contentHtml,
@@ -16,6 +17,7 @@ const binarytree = ({
         <title>Binary Tree</title>
       </Head>
       <BinaryTree htmlContent={[contentHtml]} />
+      <Progress />
     </>
   );
 };

@@ -5,6 +5,7 @@ import path from "path";
 import fs from "fs";
 import serialize from "@Misc/serialize";
 import Head from "next/head";
+import Progress from "@Root/components/layouts/Progress";
 
 const stack = ({
   html,
@@ -17,6 +18,7 @@ const stack = ({
         <title>Stack</title>
       </Head>
       <Stack html={[html, codeExample, exampleCodeHtml]} />
+      <Progress />
     </>
   );
 };

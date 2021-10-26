@@ -67,7 +67,7 @@ const index: React.FC<Props> = ({ htmlContent }) => {
             insert(parseInt(inputRef.current?.value || "0"));
           }}
         >
-          <Input ref={inputRef} content="Enter your value" />
+          <Input ref={inputRef} content="Enter your value:" />
           <Buttons>
             <Button type="submit" content="Insert" />
           </Buttons>

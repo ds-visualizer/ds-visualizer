@@ -7,6 +7,7 @@ import path from "path";
 import Graph from "@Components/algos/graph";
 import Head from "next/head";
 import serialize from "@Misc/serialize";
+import Progress from "@Root/components/layouts/Progress";
 
 const graph = ({
   graphCodeHTML,
@@ -17,6 +18,7 @@ const graph = ({
         <title>Graph</title>
       </Head>
       <Graph html={[graphCodeHTML]} />
+      <Progress />
     </>
   );
 };
