@@ -34,7 +34,7 @@ class Graph {
 
     // Each vertex will have a linked list edges for all the edges it will have
 
-    public LinkedList<String> edges = new LinkedList<String>();
+    LinkedList<Node> edges = new LinkedList<Node>();
 
     public Node(String label) {
       this.label = label;
