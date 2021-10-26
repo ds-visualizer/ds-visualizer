@@ -103,7 +103,7 @@ function Metadata({
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_US" />
       <meta property="og:description" content={description} />
-      {/* <meta property="og:image" content="/image.png" /> */}
+      <meta property="og:image" content={image} />
       <meta property="og:site_name" content={sitename} />
       {/* <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
