@@ -5,18 +5,17 @@ import fs from "fs";
 import path from "path";
 
 import Graph from "@Components/algos/graph";
-import Head from "next/head";
 import serialize from "@Misc/serialize";
 import Progress from "@Root/components/layouts/Progress";
+import Metadata from "@Root/components/layouts/Metadata";
 
 const graph = ({
   graphCodeHTML,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Head>
-        <title>Graph</title>
-      </Head>
+      <Metadata title="Graph" />
+
       <Graph html={[graphCodeHTML]} />
       <Progress />
     </>

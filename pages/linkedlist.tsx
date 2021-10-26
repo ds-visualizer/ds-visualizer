@@ -1,5 +1,4 @@
 import type { InferGetStaticPropsType } from "next";
-import Head from "next/head";
 import LinkedList from "@Components/algos/LinkedList";
 import { serialize } from "next-mdx-remote/serialize";
 import path from "path";
@@ -9,6 +8,7 @@ import fs from "fs";
 import remarkCodeTitle from "remark-code-titles";
 import React from "react";
 import Progress from "@Root/components/layouts/Progress";
+import Metadata from "@Root/components/layouts/Metadata";
 
 const Index = ({
   html,
@@ -16,9 +16,8 @@ const Index = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Head>
-        <title>Linked List</title>
-      </Head>
+      <Metadata title="Linked List" />
+
       <LinkedList html={html} codeHTML={codeHTML} />
       <Progress />
     </>
