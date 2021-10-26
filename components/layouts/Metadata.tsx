@@ -106,12 +106,12 @@ function Metadata({
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
       <meta property="og:site_name" content={sitename} />
-      {/* <meta name="twitter:title" content={title} />
+      <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content="/image.png" />
-      <meta name="twitter:image:alt" content="twitter image" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={url} /> */}
+      <meta name="twitter:image" content={image} />
+      {/* <meta name="twitter:image:alt" content="twitter image" /> */}
+      {/* <meta name="twitter:card" content="summary_large_image" /> */}
+      <meta name="twitter:url" content={url} />
       {/* <meta name='twitter:creator' content='@username' /> */}
       {/* apple splash screen images (optional) */}
       {/* <link rel='apple-touch-startup-image' href='/icons/apple_splash_2048.png' sizes='2048x2732' />
