@@ -35,5 +35,11 @@
     "description": "Enhance your learning experience with the help of our data structure explanation and visualization",
     "keywords": ["data structure", "data structure visualizer", "visualizer"],
     "image": "/images/home.png"
+  },
+  "tree": {
+    "title": "Tree",
+    "path": "/tree",
+    "description": "Learn more about stacks using our visualizer and code explanation",
+    "image": "/images/tree.png"
   }
 }

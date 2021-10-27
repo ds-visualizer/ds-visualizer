@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 body {
-  background-color: #141414;
-  background-image: linear-gradient(to bottom, #141414, transparent);
+  background-color: #242323;
+  background-image: linear-gradient(to bottom, #1a1818, transparent);
   background-attachment: fixed;
 }
 
@@ -31,7 +31,7 @@ input {
   }
 
   .blog h1 {
-    @apply text-4xl md:text-5xl  2xl:text-7xl text-center;
+    @apply text-4xl md:text-5xl  2xl:text-7xl text-center pb-3;
   }
   .blog h2 {
     @apply text-3xl md:text-4xl  2xl:text-6xl text-center;
