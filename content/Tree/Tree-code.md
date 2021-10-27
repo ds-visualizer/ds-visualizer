@@ -1,8 +1,8 @@
 # Tree code
 
-For this code I won't be having a visulizer due to the short time I have :((, but I'll update it soon once I get free :)).
+For this code I won't be having a visulizer due to the lack of time :((, but I'll update it soon once I get free :)).
 
-Trees and graphs are almost the same except that they `graphs` are `circular` while `trees` aren't circular.
+Trees and graphs are almost the same except that `graphs` are `circular` while `trees` aren't circular.
 
 ```text:example.txt
 
@@ -20,7 +20,7 @@ Graph example:
 
 ```
 
-Now that u have a brief understating about about trees, lets look at the code:
+Now that you have a brief understating about about trees, lets look at the code:
 
 The plain structure would look like this:
 
