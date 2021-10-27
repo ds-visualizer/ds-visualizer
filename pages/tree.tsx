@@ -5,6 +5,7 @@ import serialize from "@Misc/serialize";
 import fs from "fs";
 import Tree from "@Components/algos/Tree";
 import path from "path";
+import Progress from "@Root/components/layouts/Progress";
 
 const tree = ({
   html,
@@ -14,6 +15,7 @@ const tree = ({
     <>
       <Metadata {...metadata} />
       <Tree html={html} />
+      <Progress />
     </>
   );
 };
