@@ -5,15 +5,11 @@ if you want to see Adjacency matrix graph as well.
 
 I won't go in depth of Adjacency matrix but I want to show the differences between them before we go further
 
-`Adjacency Matrix` is made with 2D array and and very costly in space but has faster removal times whereas `Adjacency List` is space efficient and faster in adding vertices.
+`Adjacency Matrix` is made with 2D array and and very costly in space but has faster removal / read times whereas `Adjacency List` is space efficient and faster in adding vertices.
 
 There is no telling that one of them is better than the other, it depends on the situation. But here in this blog we will go over **Adjacency List**.
 
 Lines that connect one node to another node are called **edges**, and nodes in graphs are called **Vertices**.
-
-`Dense graph` is a type of graph that each vertex is connected to other vertices,
-and generally when people talk about worth cases in graphs they take in account of
-dense graph.
 
 > As we walk through in the blog, I want y'all to keep understanding it with the help of the visualizer, there is no use for me to simply
 > every piece when you have the visualizer in front of you 😉.
@@ -34,7 +30,7 @@ class Graph {
 
     // Each vertex will have a linked list edges for all the edges it will have
 
-    LinkedList<Node> edges = new LinkedList<Node>();
+    LinkedList<Node> edges = new LinkedList<Node>(); // Linked list that holds all the vertices it points to
 
     public Node(String label) {
       this.label = label;
@@ -46,6 +42,8 @@ class Graph {
   // linked list will give you a look up time of O(n);
   // Since we didn't learn hashmaps yet, I'll be using linked list, will update it
   // to hashmaps soon
+
+  // Linked list that holds all the vertices in the graph
 
   private LinkedList<Node> nodes = new LinkedList<Node>();
 
