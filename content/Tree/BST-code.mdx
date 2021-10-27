@@ -147,7 +147,7 @@ Lets look at `height` Method:
     private int height(Node root) {
         // Base condition
         if (root == null)
-            return -1;
+            return 0;
 
         return 1 + Math.max(height(root.leftChild), height(root.rightChild));
     }
