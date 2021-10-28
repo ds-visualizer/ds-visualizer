@@ -1,6 +1,7 @@
 import Route from "@Root/interface/Route";
 
 const routes: Array<Route> = [
+  { name: "Tree Traversals", path: "/treetraversals" },
   { name: "Graph", path: "/graph" },
   { name: "Binary Tree", path: "/binarytree" },
   { name: "Tree", path: "/tree" },
