@@ -34,7 +34,7 @@ input {
     @apply text-4xl md:text-5xl  2xl:text-7xl text-center pb-3;
   }
   .blog h2 {
-    @apply text-3xl md:text-4xl  2xl:text-6xl text-center;
+    @apply text-3xl md:text-4xl  2xl:text-6xl;
   }
   .blog h3 {
     @apply text-2xl md:text-3xl  2xl:text-4xl;

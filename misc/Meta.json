@@ -41,5 +41,11 @@
     "path": "/tree",
     "description": "Learn more about tree using our visualizer and code explanation",
     "image": "/images/tree.png"
+  },
+  "treetraversals": {
+    "title": "Tree Traversals",
+    "path": "/treetraversals",
+    "description": "Learn more about tree traversal using our visualizer and code explanation",
+    "image": "/images/treetraversals.png"
   }
 }
