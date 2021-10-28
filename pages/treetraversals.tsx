@@ -6,10 +6,13 @@ import path from "path";
 import TreeTraversals from "@Components/algos/TreeTraversal";
 import serialize from "@Misc/serialize";
 import Progress from "@Root/components/layouts/Progress";
+import meta from "@Misc/Meta.json";
+import Metadata from "@Root/components/layouts/Metadata";
 
 const index = ({ html }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
+      <Metadata {...meta.treetraversals}/>
       <TreeTraversals html={html} />
       <Progress />
     </>
