@@ -57,7 +57,7 @@ In pre-order traversal we visit the node then go to the `left subtree` then `rig
 
 ### In-Order Traversal:
 
-In In-Order traversal, we first visit the left subtree, then parent, then right subtree.
+In In-Order traversal, we first visit the left node, then parent, then right node.
 
 ```JAVA:inOrderTraversal.java
 
@@ -83,7 +83,7 @@ In In-Order traversal, we first visit the left subtree, then parent, then right 
 
 ### Post-Order Traversal:
 
-In this method we visit the left side, then right side then the parent.
+In this method we visit the left node, then right node then the parent.
 
 ```JAVA:postOrderTraversal.java
 
@@ -111,7 +111,7 @@ In this method we visit the left side, then right side then the parent.
 
 Now lets look at Breadth First Search Traversal (BFS):
 
-In this traversal we visit level, visit the nodes in that level and then go on to the next level. Its called level order traversal.
+In this traversal we visit the nodes in first level and then go on to the next level till there are no levels to visit. Its called level order traversal.
 
 ```Java:levelOrderTraversal.java
 
