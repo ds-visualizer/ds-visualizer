@@ -121,7 +121,7 @@ const index: React.FC<Props> = ({ html }) => {
         </form>
       </OptionBackground>
       <div className="w-screen min-h-[50vh] overflow-hidden flex justify-center pt-28">
-        <div>
+        <div className="overflow-hidden">
           <AnimatePresence>
             <AnimateSharedLayout>{tree}</AnimateSharedLayout>
           </AnimatePresence>
