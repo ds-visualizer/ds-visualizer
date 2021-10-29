@@ -1,4 +1,4 @@
-# TreeTraversals Code
+# Tree Traversals Code
 
 ## Tree traversals are classified into two categories
 
@@ -111,7 +111,7 @@ In this method we visit the left side, then right side then the parent.
 
 Now lets look at Breadth First Search Traversal (BFS):
 
-In this traversal we visit each node and then go on to the next node. Its called level order traversal.
+In this traversal we visit level, visit the nodes in that level and then go on to the next level. Its called level order traversal.
 
 ```Java:levelOrderTraversal.java
 
@@ -120,34 +120,65 @@ In this traversal we visit each node and then go on to the next node. Its called
   * Space: O(1)
   */
 
-  public void levelOrder() {
+  List<Integer> levelOrder() {
 
-    // We need to visit the root node before we start the recursion 
-    // since we never touch the root again in the recursion
-   
-    System.out.println(root.value);
-    levelOrder(root);
+    List<Integer> nodes = new LinkedList<>();
 
+    if (root == null)
+      return nodes;
+
+    // this is how we create a queue in java
+
+    Queue<Node> visited = new LinkedList<>();
+
+    // .add just adds the new node to the end of the queue
+
+    visited.add(root);
+
+    while (!visited.isEmpty()) {
+
+      // poll is basically pop. It remove first element in the queue
+
+      Node current = visited.poll();
+
+      nodes.add(current.value);
+
+      if (current.leftChild != null)
+        visited.add(current.leftChild);
+      if (current.rightChild != null)
+        visited.add(current.rightChild);
+
+    }
+
+    // We need to add a node before we call the method so we don't keep calling the
+    // parent node in the method
+
+    return nodes;
   }
 
-  private void levelOrder(Node node) {
+```
 
-    if (node == null)
-      return;
+An example of this would look something like this:
 
-    // If we have left child only then we can access it otherwise its an error
+```js:example.txt
 
-    if (node.leftChild != null) 
-      System.out.println(node.leftChild.value);
+      2
+  1       3
+0   1   3   3
 
-    // If we have right child only then we can access it otherwise its an errors
+nodes = [];
+visited = [];
 
-    if (node.rightChild != null) 
-      System.out.println(node.rightChild.value);
+// add 2 into the queue
 
-    levelOrder(node.leftChild);
+// visited = [2]
 
-    levelOrder(node.rightChild);
-  }
+while visited.length != 0 :
+  current = visited.poll() // current = 2, visited = [];
+  nodes.push(current) // nodes = [2]
+  if(current.left != null) visited = [1]
+  if(current.right != null) visited = [1,3]
+
+  // Keep doing this till the queue is done, for practice you can trace this by yourself
 
 ```

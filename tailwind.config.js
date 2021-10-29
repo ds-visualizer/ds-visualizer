@@ -21,6 +21,9 @@ module.exports = {
         primary: "#202124",
         secondary: "#BB86FC",
       },
+      transitionTimingFunction: {
+        bubble: "cubic-bezier(0, 1.49, 0.61, 0.61)",
+      },
     },
   },
   variants: {
