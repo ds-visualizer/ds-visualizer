@@ -120,12 +120,11 @@ In this traversal we visit level, visit the nodes in that level and then go on t
   * Space: O(1)
   */
 
-  List<Integer> levelOrder() {
+  void levelOrder() {
 
-    List<Integer> nodes = new LinkedList<>();
 
     if (root == null)
-      return nodes;
+      return;
 
     // this is how we create a queue in java
 
@@ -137,15 +136,15 @@ In this traversal we visit level, visit the nodes in that level and then go on t
 
     while (!visited.isEmpty()) {
 
-      // poll is basically pop. It remove first element in the queue
+      // poll is basically pop. It removes first element in the queue
 
       Node current = visited.poll();
 
-      nodes.add(current.value);
+      System.out.println(current.value);
 
       if (current.leftChild != null)
         visited.add(current.leftChild);
-        
+
       if (current.rightChild != null)
         visited.add(current.rightChild);
 
@@ -154,7 +153,6 @@ In this traversal we visit level, visit the nodes in that level and then go on t
     // We need to add a node before we call the method so we don't keep calling the
     // parent node in the method
 
-    return nodes;
   }
 
 ```
@@ -167,7 +165,7 @@ An example of this would look something like this:
   1       3
 0   1   3   3
 
-nodes = [];
+
 visited = [];
 
 // add 2 into the queue
@@ -176,10 +174,10 @@ visited = [];
 
 while visited.length != 0 :
   current = visited.poll() // current = 2, visited = [];
-  nodes.push(current) // nodes = [2]
+  print(current) // print(2)
   if(current.left != null) visited = [1]
   if(current.right != null) visited = [1,3]
 
-  // Keep doing this till the queue is done, for practice you can trace this by yourself
+  // Keep doing this till the queue is empty, for practice you can trace this by yourself
 
 ```
