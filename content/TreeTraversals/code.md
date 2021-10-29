@@ -174,8 +174,8 @@ visited = [];
 while visited.length != 0 :
   current = visited.poll() // current = 2, visited = [];
   print(current) // print(2)
-  if(current.left != null) visited = [1]
-  if(current.right != null) visited = [1,3]
+  if(current.left != null) visited.push(current.left) // visited = [1]
+  if(current.right != null) visited.push(current.right) // visited = [1,3]
 
   // Keep doing this till the queue is empty, for practice you can trace this by yourself
 
