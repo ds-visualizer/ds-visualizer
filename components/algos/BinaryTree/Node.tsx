@@ -40,9 +40,10 @@ export default class Node<T> {
             },
           }}
           layout
-          className="w-10  rounded flex justify-center items-center h-10 bg-gray-400"
         >
-          {this.value}
+          <div className="w-10 node rounded transition-transform  flex justify-center items-center h-10 bg-gray-400">
+            {this.value}
+          </div>
         </motion.div>
         {data && this.right && (
           <>
