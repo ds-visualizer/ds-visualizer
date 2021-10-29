@@ -172,10 +172,12 @@ visited = [];
 // visited = [2]
 
 while visited.length != 0 :
-  current = visited.poll() // current = 2, visited = [];
+  current = visited.poll() // current = (Node) 2, visited = [];
+  
   print(current) // print(2)
-  if(current.left != null) visited.push(current.left) // visited = [1]
-  if(current.right != null) visited.push(current.right) // visited = [1,3]
+  
+  if(current.leftChild != null) visited.push(current.leftChild) // visited = [1]
+  if(current.rightChild != null) visited.push(current.rightChild) // visited = [1,3]
 
   // Keep doing this till the queue is empty, for practice you can trace this by yourself
 
