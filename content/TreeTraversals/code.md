@@ -2,8 +2,7 @@
 
 ## Tree traversals are classified into two categories
 
-- **Breadth-first traversals:** It is also called **Level Order traversal**. Here we visit all the nodes at the same level before visiting the
-  nodes at the next level but in this blog we won't go around them since they make use of stacks. We will go around them in graphs.
+**Breadth-first traversals:** It is also called **Level Order traversal**. Here we visit all the nodes that are at the same level before visiting the nodes at the next level.
 
 **Depth-first traversals:**
 
@@ -120,7 +119,7 @@ In this traversal we visit the nodes in first level and then go on to the next l
   * Space: O(1)
   */
 
-  void levelOrder() {
+  public void levelOrder() {
 
 
     if (root == null)
