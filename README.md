@@ -3,7 +3,7 @@
 ## Domain:
 
 ```text
-    https://dsvisualizer.isatvik.com/
+https://dsvisualizer.isatvik.com/
 ```
 
 ## About:
