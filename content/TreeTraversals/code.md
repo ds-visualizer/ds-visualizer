@@ -145,6 +145,7 @@ In this traversal we visit level, visit the nodes in that level and then go on t
 
       if (current.leftChild != null)
         visited.add(current.leftChild);
+        
       if (current.rightChild != null)
         visited.add(current.rightChild);
 
