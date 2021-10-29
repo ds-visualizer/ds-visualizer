@@ -19,5 +19,5 @@ going through `CONTRIBUTING.md` file.
 
 To contribute please look at `CONTRIBUTING.md` file.
 
-We hope you have a good experience using this project for your learning.
+We hope you have a good experience using this project for your learning!
 
