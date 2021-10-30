@@ -1,76 +1,90 @@
 import React, { useEffect, useState } from "react";
 import { Value } from "@Root/misc/algo/arrValue";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import OptionBackground from "@Components/layouts/OptionBackground";
+import Input from "@Components/layouts/Input";
+import Buttons from "@Components/layouts/Buttons";
+import Button from "@Components/layouts/Button";
 
-let arr: Value[] = [];
 const Index = () => {
-  let [values, setValues] = useState<JSX.Element[]>([]);
-  const [isSorted, setIsSorted] = useState<boolean>(false);
+  const [values, setValues] = useState<Value[]>([]);
+  const [start, setStart] = useState<boolean>(false);
+  const [renderArr, setRenderArr] = useState<JSX.Element[]>([]);
 
-  const createRandomArr = (items: number) => {
+  const generateArr = (items: number = 5) => {
+    setValues([]);
+    let cp = [];
     for (let i = 0; i < items; i++) {
-      arr.push(new Value(Math.floor(Math.random() * 100)));
+      cp.push(new Value(Math.floor(Math.random() * 100)));
     }
-    renderList();
+    setValues(cp);
+    let x: JSX.Element[] = [];
+    cp.forEach((e) => x.push(e.render()));
+    setRenderArr(x);
   };
 
-  const swap = (arr: Value[], x: number, y: number) => {
-    let temp = arr[x];
-    arr[x] = arr[y];
-    arr[y] = temp;
-  };
-
-  function waitforme(ms: number) {
+  function addDelay(ms: number) {
     return new Promise((resolve) => {
       setTimeout(resolve, ms);
     });
   }
 
-  const selectionSort = async () => {
-    let minimumValue = 0;
+  const swapElements = (x: number, y: number) => {
+    let temp = values[x];
+    values[x] = values[y];
+    values[y] = temp;
+    setValues(values);
+  };
 
-    for (let i = 0; i < arr.length - 1; i++) {
-      minimumValue = i;
-      renderList();
-      for (let j = i + 1; j < arr.length; j++) {
-        if (arr[j].value < arr[minimumValue].value) {
-          minimumValue = j;
-          renderList();
+  const sortArray = async () => {
+    let minPos = 0;
+    for (let i = 0; i < values.length - 1; i++) {
+      minPos = i;
+      for (let j = i + 1; j < values.length; j++) {
+        if (values[j].value < values[minPos].value) {
+          minPos = j;
         }
       }
-      swap(arr, minimumValue, i);
+      swapElements(minPos, i);
+      renderArray();
+      await addDelay(1000);
     }
+    setStart(false);
   };
 
-  const renderList = () => {
-    let arr2: JSX.Element[] = [];
-    for (let i = 0; i < arr.length; i++) {
-      arr2.push(arr[i].render());
+  const renderArray = () => {
+    let copyArr: JSX.Element[] = [];
+    for (let i = 0; i < values.length; i++) {
+      copyArr.push(values[i].render());
     }
-    setValues(arr2);
+    setRenderArr(copyArr);
   };
+
+  useEffect(() => {
+    if (start === true) {
+      sortArray();
+    }
+  }, [start]);
 
   return (
-    <div>
-      <button
-        onClick={() => {
-          createRandomArr(10);
-          console.log(arr);
-        }}
-      >
-        Genarate
-      </button>
-      <button
-        className="block"
-        onClick={() => {
-          selectionSort();
-        }}
-      >
-        Sort
-      </button>
-      <div className="flex w-full justify-evenly">
-        <AnimatePresence>{values}</AnimatePresence>
-      </div>
+    <div className="w-full h-[100vh] flex flex-col  align-center">
+      <OptionBackground>
+        <Buttons>
+          <Button
+            content="Sort"
+            onClick={async () => {
+              setStart(true);
+            }}
+          ></Button>
+          <Button
+            content="Generate"
+            onClick={() => {
+              generateArr(5);
+            }}
+          ></Button>
+        </Buttons>
+      </OptionBackground>
+      <div className="flex justify-center w-full h-full">{renderArr}</div>
     </div>
   );
 };
