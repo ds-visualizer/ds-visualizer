@@ -116,7 +116,7 @@ In this traversal we visit the nodes in first level and then go on to the next l
 
   /*
   * Time: O(n)
-  * Space: O(1)
+  * Space: O(n)
   */
 
   public void levelOrder() {
