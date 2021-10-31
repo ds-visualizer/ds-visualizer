@@ -22,7 +22,7 @@ Basic schema of depth first traversals:
 
 3. `Post-order Traversal`: _Left_ _Right_ **Parent**
 
-## Lets start with depth first search traversals first (DFS).
+## Lets start with depth first traversals first.
 
 ### Pre-Order Traversal:
 
@@ -108,7 +108,7 @@ In this method we visit the left node, then right node then the parent.
   }
 ```
 
-Now lets look at Breadth First Search Traversal (BFS):
+## Breadth First Traversal:
 
 In this traversal we visit the nodes in first level and then go on to the next level till there are no levels to visit. Its called level order traversal.
 
@@ -127,7 +127,7 @@ In this traversal we visit the nodes in first level and then go on to the next l
 
     // this is how we create a queue in java
 
-    Queue<Node> visited = new LinkedList<>();
+    Queue<Node> visited = new LinkedList<Node>();
 
     // .add just adds the new node to the end of the queue
 
@@ -135,7 +135,7 @@ In this traversal we visit the nodes in first level and then go on to the next l
 
     while (!visited.isEmpty()) {
 
-      // poll is basically pop. It removes first element in the queue
+      // poll is basically pop from the first. It removes first element in the queue
 
       Node current = visited.poll();
 
@@ -173,9 +173,9 @@ visited = [];
 
 while visited.length != 0 :
   current = visited.poll() // current = (Node) 2, visited = [];
-  
+
   print(current) // print(2)
-  
+
   if(current.leftChild != null) visited.push(current.leftChild) // visited = [1]
   if(current.rightChild != null) visited.push(current.rightChild) // visited = [1,3]
 
