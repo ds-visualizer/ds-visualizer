@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import mdxHtml from "@Root/interface/mdxHtmlType";
 import OptionBackground from "@Components/layouts/OptionBackground";
 import Button from "@Components/layouts/Button";
@@ -22,6 +22,25 @@ const index: React.FC<Props> = ({ html }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const { renderTree, tree } = useBinaryTree(root);
   const [running, setRunning] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      await insert(10, root, renderTree);
+      await insert(11, root, renderTree);
+      await insert(10, root, renderTree);
+      await insert(12, root, renderTree);
+      await insert(9, root, renderTree);
+      await insert(9, root, renderTree);
+      await insert(8, root, renderTree);
+      await renderTree();
+    })();
+
+    return () => {
+      (async () => {
+        root.root = null;
+      })();
+    };
+  }, []);
 
   const preOrder = async (node: Node<any> | null) => {
     if (!node) return;
@@ -117,11 +136,19 @@ const index: React.FC<Props> = ({ html }) => {
                 setRunning(false);
               }}
             />
+            <Button
+              type="button"
+              content="Clear"
+              onClick={async () => {
+                root.root = null;
+                await renderTree();
+              }}
+            />
           </Buttons>
         </form>
       </OptionBackground>
       <div className="w-screen min-h-[50vh] overflow-hidden flex justify-center pt-28">
-        <div className="overflow-hidden">
+        <div className="overflow-hidden p-5">
           <AnimatePresence>
             <AnimateSharedLayout>{tree}</AnimateSharedLayout>
           </AnimatePresence>
