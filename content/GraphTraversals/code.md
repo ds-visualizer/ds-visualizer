@@ -29,7 +29,7 @@ Depth-first traversal will go thru the node till it reaches the end before going
 
 Now that you have a brief understanding, lets look at the code for it.
 
-lets stat with `bread first` traversal, its similar to what we have seen in trees.
+lets stat with `breadth first` traversal, its similar to what we have seen in trees.
 
 ```java:breadthFirst.java
 
