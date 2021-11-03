@@ -6,6 +6,7 @@ import GraphTraversals from "@Root/components/algos/GraphTraversals";
 import path from "path";
 import fs from "fs";
 import serialize from "@Misc/serialize";
+import Progress from "@Components/layouts/Progress";
 
 const index = ({
   htmlContent,
@@ -14,6 +15,7 @@ const index = ({
     <>
       <Metadata {...metaData.graphtraversals} />
       <GraphTraversals html={htmlContent} />
+      <Progress />
     </>
   );
 };
