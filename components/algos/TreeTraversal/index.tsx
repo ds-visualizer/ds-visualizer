@@ -26,12 +26,12 @@ const index: React.FC<Props> = ({ html }) => {
   useEffect(() => {
     (async () => {
       await insert(10, root, renderTree);
-      await insert(11, root, renderTree);
-      await insert(10, root, renderTree);
+      await insert(15, root, renderTree);
       await insert(12, root, renderTree);
-      await insert(9, root, renderTree);
-      await insert(9, root, renderTree);
+      await insert(20, root, renderTree);
+      await insert(4, root, renderTree);
       await insert(8, root, renderTree);
+      await insert(2, root, renderTree);
       await renderTree();
     })();
 
