@@ -182,3 +182,58 @@ while visited.length != 0 :
   // Keep doing this till the queue is empty, for practice you can trace this by yourself
 
 ```
+
+Lets also look at some extra methods, `findMin` and `contains`, they are direct if you
+understand how the traversals work :).
+
+```java:findMin.java
+
+  int findMin() {
+
+    // Ill slowly add exceptions, since java is a strict type language I recommend
+    // y'all to learn it as well
+
+    if (root == null)
+      throw new RuntimeErrorException(null, "No root in the tree");
+
+    Node current = root;
+
+    // We only want to iterate to the left cuz the left most is where the smallest
+    // node is at
+
+    // similar to how it works in linked list
+
+    while (current.leftChild != null)
+      current = current.leftChild;
+
+
+    return current.value;
+  }
+
+```
+
+Now lest look at contains
+
+```java:contains.java
+
+  Boolean contains(int value) {
+    return contains(root, value);
+  }
+
+  private Boolean contains(Node node, int value) {
+
+    if (node == null)
+      return false;
+
+    if (node.value == value)
+      return true;
+
+    if (value < node.value)
+      return contains(node.leftChild, value);
+
+    else // value > node.value
+      return contains(node.rightChild, value);
+
+  }
+
+```
