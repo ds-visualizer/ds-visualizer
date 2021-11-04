@@ -1,35 +1,23 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import Input from "@Components/layouts/Input";
 import OptionBackground from "@Components/layouts/OptionBackground";
-import Node from "./Node";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import Buttons from "@Root/components/layouts/Buttons";
 import Button from "@Root/components/layouts/Button";
 import Content from "@Root/components/layouts/Content";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
+import useStack from "@Components/hooks/useStack";
+
 interface Props {
   html: MDXRemoteSerializeResult<Record<string, unknown>>;
 }
 
 const index: React.FC<Props> = ({ html }) => {
-  const [stack, setStack] = useState<Array<JSX.Element>>([]);
+  const { methods, refs, stack } = useStack();
 
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const push = (value: number) => {
-    const node = new Node(value);
-    setStack((prev) => [...prev, node.render(stack.length)]);
-  };
-
-  const pop = () => {
-    const nodes = stack.slice(0, -1);
-    setStack(() => nodes);
-  };
-
-  const empty = () => {
-    setStack([]);
-  };
+  const { empty, pop, push } = methods;
+  const { inputRef } = refs;
 
   return (
     <>

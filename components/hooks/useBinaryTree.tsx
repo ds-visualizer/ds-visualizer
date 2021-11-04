@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Node from "./Node";
-import render from "./render";
-import height from "./height";
+import { useState, useEffect } from "react";
+import Node from "@Components/algos/BinaryTree/Node";
+import render from "@Components/algos/BinaryTree/render";
+import height from "@Components/algos/BinaryTree/height";
 
 const useBinaryTree = (root: { root: Node<number> | null }) => {
   const [count, setCount] = useState<number>(1);
