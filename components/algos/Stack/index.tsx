@@ -17,7 +17,7 @@ const index: React.FC<Props> = ({ html }) => {
         onClick={() => {
           setToggle((prev) => !prev);
         }}
-        className="fixed z-20 rounded top-10 right-5 px-4 py-2 bg-black text-white"
+        className="fixed z-20 rounded top-20 right-5 px-4 py-2 bg-black text-white"
       >
         {toggle ? "Example" : "Code"}
       </button>

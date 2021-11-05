@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Value } from "@Root/misc/algo/arrValue";
-import { AnimatePresence, motion } from "framer-motion";
 import OptionBackground from "@Components/layouts/OptionBackground";
 import Input from "@Components/layouts/Input";
 import Buttons from "@Components/layouts/Buttons";
@@ -10,6 +9,7 @@ const Index = () => {
   const [values, setValues] = useState<Value[]>([]);
   const [start, setStart] = useState<boolean>(false);
   const [renderArr, setRenderArr] = useState<JSX.Element[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const generateArr = (items: number = 5) => {
     setValues([]);
@@ -18,8 +18,17 @@ const Index = () => {
       cp.push(new Value(Math.floor(Math.random() * 100)));
     }
     setValues(cp);
+  };
+
+  const addToArr = (e: MouseEvent) => {
+    e.preventDefault();
+    const value = parseInt(inputRef.current?.value || "0");
+
+    let copy = [...values];
+    copy.push(new Value(value));
+    setValues(copy);
     let x: JSX.Element[] = [];
-    cp.forEach((e) => x.push(e.render()));
+    copy.forEach((e) => x.push(e.render()));
     setRenderArr(x);
   };
 
@@ -50,6 +59,7 @@ const Index = () => {
       await addDelay(1000);
     }
     setStart(false);
+    alert("Sort Completed");
   };
 
   const renderArray = () => {
@@ -69,22 +79,25 @@ const Index = () => {
   return (
     <div className="w-full h-[100vh] flex flex-col  align-center">
       <OptionBackground>
-        <Buttons>
-          <Button
-            content="Sort"
-            onClick={async () => {
-              setStart(true);
-            }}
-          ></Button>
-          <Button
-            content="Generate"
-            onClick={() => {
-              generateArr(5);
-            }}
-          ></Button>
-        </Buttons>
+        <form>
+          <Input ref={inputRef} content="Element to add into the array: " />
+          <Buttons>
+            <Button
+              content="Sort"
+              onClick={async () => {
+                setStart(true);
+              }}
+            ></Button>
+            <Button
+              content="Insert"
+              onClick={(e) => {
+                addToArr(e);
+              }}
+            ></Button>
+          </Buttons>
+        </form>
       </OptionBackground>
-      <div className="flex justify-center w-full h-full">{renderArr}</div>
+      <div className="flex justify-center w-full h-full p-6">{renderArr}</div>
     </div>
   );
 };

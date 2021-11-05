@@ -3,28 +3,38 @@
 @tailwind utilities;
 
 body {
-  min-height: 100vh;
+  background-color: #242323;
+  background-image: linear-gradient(to bottom, #1a1818, transparent);
+  background-attachment: fixed;
 }
 
-@layer components {
-  .btn {
-    @apply border-2 rounded border-white px-3 transition py-1;
-  }
+input {
+  background-color: rgba(107, 114, 128, 0.3);
 }
 
-body {
-  background-color: #292929;
+.card {
+  background-image: url("/images/card.svg");
+  background-repeat: no-repeat;
+  background-position: 35% 50%;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Nunito:wght@400;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@1,300&display=swap");
 
 @layer components {
+  .btn {
+    @apply border-2 rounded px-3 transition py-1 border-gray-500;
+  }
+
+  p {
+    @apply my-2;
+  }
+
   .blog h1 {
-    @apply text-4xl md:text-5xl  2xl:text-7xl text-center;
+    @apply text-4xl md:text-5xl  2xl:text-7xl text-center pb-3;
   }
   .blog h2 {
-    @apply text-3xl md:text-4xl  2xl:text-6xl text-center;
+    @apply text-3xl md:text-4xl  2xl:text-6xl;
   }
   .blog h3 {
     @apply text-2xl md:text-3xl  2xl:text-4xl;
@@ -58,23 +68,21 @@ body {
   height: 5px;
 }
 
-*::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
 *::-webkit-scrollbar-thumb {
-  background-color: #bb86fc;
+  background-color: rgb(91, 33, 182);
 }
 
 *::-webkit-scrollbar-track {
   display: none;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 html {
   scroll-behavior: smooth;
-  scrollbar-width: thin;
+  scrollbar-width: thin !important;
+  scrollbar-width: 5px;
   overflow-x: hidden;
-  /* scrollbar-base-color: #4949ff; */
+  scrollbar-base-color: rgb(91, 33, 182);
 }
 
 .blog ul {

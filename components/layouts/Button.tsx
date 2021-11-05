@@ -13,7 +13,7 @@ const button: React.FC<Props> = ({ onClick, content, type }) => {
       type={type}
       onClick={onClick}
       whileTap={{ scale: 0.8 }}
-      className="btn"
+      className="btn border-gray-500"
     >
       {content}
     </motion.button>

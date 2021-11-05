@@ -1,21 +1,23 @@
 import React from "react";
 import type { InferGetStaticPropsType, NextPage } from "next";
 import BinaryTree from "@Components/algos/BinaryTree";
-import Head from "next/head";
+import Metadata from "@Root/components/layouts/Metadata";
 
 import fs from "fs";
 import path from "path";
 import serialize from "@Misc/serialize";
+import Progress from "@Root/components/layouts/Progress";
 
 const binarytree = ({
   contentHtml,
+  metaData,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Head>
-        <title>Binary Tree</title>
-      </Head>
+      <Metadata {...metaData} />
+
       <BinaryTree htmlContent={[contentHtml]} />
+      <Progress />
     </>
   );
 };
@@ -28,8 +30,9 @@ export const getStaticProps = async () => {
     "utf-8"
   );
   let contentHtml = await serialize(contentMdx);
+  const { binarytree } = await import("@Misc/Meta.json");
 
   return {
-    props: { contentHtml },
+    props: { contentHtml, metaData: binarytree },
   };
 };
