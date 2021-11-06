@@ -318,9 +318,7 @@ Lets look at the code now:
 
     int index = 0;
 
-    // Like in the example we have seen, we only do the split if the element isn't a valid parent
-    // And after the shift we don't want to go outside the array size and check for children
-    // so just a safety check
+    // Like in the example we have seen, we only do the swap if the element isn't a valid parent
 
     // Again the loop will run till it reaches the end, height is logn
 
