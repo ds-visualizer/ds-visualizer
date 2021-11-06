@@ -258,7 +258,7 @@ Lets look at how we insert an element into the heap:
     // Now we want to bubble up the elements so they satisfy the heap property
     // We want to keep doing this till we find the right parent
 
-    // This loop iterates till we reach the top of the tree in worth condition
+    // This loop iterates till we reach the top of the tree in worst condition
     // And height of tree is logn
 
     while (heap.get(index) > parent(index)) {
