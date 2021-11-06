@@ -7,7 +7,7 @@ const Footer: React.FC<Props> = () => {
   const router = useRouter();
 
   return (
-    <footer className="py-14 px-4  xl:max-w-[1100px] 3xl:max-w-[1500px] mx-auto grid md:grid-cols-2 gap-x-32 gap-y-7 ">
+    <footer className="py-14 px-4  max-w-[1000px] mx-auto grid md:grid-cols-2 gap-x-32 gap-y-7 ">
       <div className="px-4 py-6 text-primary bg-purple-800 bg-gradient-to-r rounded from-purple-900">
         <p>Thanks for reading it till the end.</p>
         <p>

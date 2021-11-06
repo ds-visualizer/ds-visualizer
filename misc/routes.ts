@@ -1,6 +1,7 @@
 import Route from "@Root/interface/Route";
 
 const routes: Array<Route> = [
+  { name: "Priority Queue", path: "/priorityqueue" },
   { name: "Heap", path: "/heap" },
   { name: "Graph Traversals", path: "/graphtraversals" },
   { name: "Tree Traversals", path: "/treetraversals" },

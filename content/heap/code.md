@@ -1,4 +1,4 @@
-# What is a HEAP?
+# What is a Heap?
 
 > Heap is a type of binary tree where left and right children are smaller or equal to their parent. Another important feature of heap is that they are a balanced binary tree from left to right. The root node is always the biggest
 
@@ -374,7 +374,7 @@ That should cover most of heaps, lets look at some side functions that can be he
 
   /*
    * Time: O(n)
-   * Space: O(1)
+   * Space: O(n), n -> number of characters
    */
 
   @Override
