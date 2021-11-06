@@ -234,6 +234,8 @@ Lets look at the helper functions before we go look at insert method.
   }
 ```
 
+> Height of a balanced binary tree is logn
+
 The helper function do what the name says so I'm not going over them.
 
 Lets look at how we insert an element into the heap:
