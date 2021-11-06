@@ -10,7 +10,7 @@ export default class Node {
     this.countN = Node.count++;
   }
 
-  render(key?: number) {
+  render() {
     return (
       <motion.div
         layout
