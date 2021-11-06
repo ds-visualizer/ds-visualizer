@@ -290,7 +290,7 @@ That should cover most of heaps, lets look at some side functions that can be he
   }
 ```
 
-```java:peek
+```java:peek.java
   public int peek() {
     if (heap.isEmpty())
       throw new RuntimeException("Heap empty");
