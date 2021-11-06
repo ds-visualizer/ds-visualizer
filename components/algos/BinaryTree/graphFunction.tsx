@@ -7,7 +7,9 @@ const graphFunction = (node: Node<number> | null) => {
 
   const parent = document.querySelector(`#n${node.id}`);
 
-  const parentAxis = parent!.getBoundingClientRect();
+  if(!parent) return;
+
+  const parentAxis = parent.getBoundingClientRect();
 
   const childBox = document.querySelector(`#c${node.id}`);
 
