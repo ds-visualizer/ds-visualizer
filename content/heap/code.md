@@ -153,6 +153,8 @@ Lets look at the helper functions before we go look at insert method.
 
 ```java:helper.java
 
+  // Time: O(n) Space: O(1)
+
   private boolean isValidParent(int index) {
     if (!hasLeftChild(index))
       return true;
@@ -163,33 +165,49 @@ Lets look at the helper functions before we go look at insert method.
     return (heap.get(index) > leftChild(index) && heap.get(index) > rightChild(index));
   }
 
+  // TIme: O(n) Space: O(1)
+
   private int leftChild(int index) {
     return heap.get(leftChildIndex(index));
   }
+
+  // TIme: O(n) Space: O(1)
 
   private int rightChild(int index) {
     return heap.get(rightChildIndex(index));
   }
 
+  // TIme: O(n) Space: O(1)
+
   private int parent(int index) {
     return heap.get(parentIndex(index));
   }
+
+  // TIme: O(1) Space: O(1)
 
   private int leftChildIndex(int index) {
     return (2 * index) + 1;
   }
 
+  // TIme: O(1) Space: O(1)
+
   private int rightChildIndex(int index) {
     return (2 * index) + 2;
   }
+
+  // TIme: O(1) Space: O(1)
 
   private boolean hasLeftChild(int index) {
     return leftChildIndex(index) < heap.size();
   }
 
+  // TIme: O(1) Space: O(1)
+
   private boolean hasRightChild(int index) {
     return rightChildIndex(index) < heap.size();
   }
+
+  // TIme: O(1) Space: O(1)
 
   private int parentIndex(int index) {
 
@@ -198,10 +216,14 @@ Lets look at the helper functions before we go look at insert method.
     return (index - 1) / 2;
   }
 
+  // TIme: O(n) Space: O(1)
+
   private void swap(LinkedList<Integer> arr, int index1, int index2) {
 
     Collections.swap(arr, index1, index2);
   }
+
+  // TIme: O(n) Space: O(1)
 
   private int largerChildIndex(int index) {
 
@@ -217,6 +239,18 @@ The helper function do what the name says so I'm not going over them.
 Lets look at how we insert an element into the heap:
 
 ```java:insert.java
+
+  // Time: O(n) space: O(1)
+
+  private void bubbleUp(int index) {
+    swap(heap, index, parentIndex(index));
+  }
+
+  /*
+   * Time: O(nlogn)
+   * Space: O(1)
+   */
+
   public void insert(int value) {
     heap.add(value);
     int index = heap.size() - 1; // Since it gets added in the last
@@ -224,7 +258,12 @@ Lets look at how we insert an element into the heap:
     // Now we want to bubble up the elements so they satisfy the heap property
     // We want to keep doing this till we find the right parent
 
+    // This loop iterates till we reach the top of the tree in worth condition
+    // And height of tree is logn
+
     while (heap.get(index) > parent(index)) {
+
+      // Bubble up has space of n
       bubbleUp(index);
 
       // Since out index will now be swapped with the parent
@@ -257,6 +296,17 @@ Lets look at the code now:
 
 ```java:remove.java
 
+  // Time: O(n) Space: O(1)
+
+  private void bubbleDown(int parent, int child) {
+    swap(heap, parent, child);
+  }
+
+  /*
+   * Time: O(nlogn)
+   * Space: O(1)
+   */
+
   public void remove() {
 
     if (heap.isEmpty())
@@ -272,8 +322,15 @@ Lets look at the code now:
     // And after the shift we don't want to go outside the array size and check for children
     // so just a safety check
 
+    // Again the loop will run till it reaches the end, height is logn
+
     while (index < heap.size() && !isValidParent(index)) {
+
+      // LargerChildIndex is an O(n) operator
+
       int largerChild = largerChildIndex(index);
+
+      // Bubble down is a O(n) operator
 
       bubbleDown(index, largerChild);
       index = largerChild;
@@ -287,12 +344,24 @@ Lets look at the code now:
 That should cover most of heaps, lets look at some side functions that can be helpful.
 
 ```java:isEmpty.java
+
+  /*
+   * Time: O(1)
+   * Space: O(1)
+   */
+
   public boolean isEmpty() {
     return heap.size() == 0;
   }
 ```
 
 ```java:peek.java
+
+  /*
+   * Time: O(1)
+   * Space: O(1)
+   */
+
   public int peek() {
     if (heap.isEmpty())
       throw new RuntimeException("Heap empty");
@@ -302,6 +371,11 @@ That should cover most of heaps, lets look at some side functions that can be he
 ```
 
 ```java:toString.java
+
+  /*
+   * Time: O(n)
+   * Space: O(1)
+   */
 
   @Override
   public String toString() {
