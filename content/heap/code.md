@@ -263,7 +263,7 @@ Lets look at how we insert an element into the heap:
 
     while (heap.get(index) > parent(index)) {
 
-      // Bubble up has space of n
+      // Bubble up has time of n
       bubbleUp(index);
 
       // Since out index will now be swapped with the parent
