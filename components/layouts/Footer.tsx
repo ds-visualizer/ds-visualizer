@@ -8,7 +8,7 @@ const Footer: React.FC<Props> = () => {
 
   return (
     <footer className="py-14 px-4  xl:max-w-[1100px] 3xl:max-w-[1500px] mx-auto grid md:grid-cols-2 gap-x-32 gap-y-7 ">
-      <div className="px-4 py-6 text-primary h-[10rem] bg-purple-800 overflow-scroll  rounded">
+      <div className="px-4 py-6 text-primary bg-purple-800 bg-gradient-to-r rounded from-purple-900">
         <p>Thanks for reading it till the end.</p>
         <p>
           If any typo or bug found, feel free to contribute by fixing the typo
@@ -22,7 +22,7 @@ const Footer: React.FC<Props> = () => {
           </a>
         </p>
       </div>
-      <div className="px-4 py-6 text-primary h-[10rem] bg-purple-800 overflow-scroll  rounded">
+      <div className="px-4 py-6 text-primary bg-purple-800 bg-gradient-to-r rounded from-purple-900">
         <p>
           All the codes can be found here{" "}
           <a

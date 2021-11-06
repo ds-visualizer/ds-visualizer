@@ -35,6 +35,7 @@ This blog I'll be focusing on max heap but the implementation of min heap will a
 And heaps are generally made using array since they will always be a filled binary tree so using an array will be space efficient.
 
 ```text:example.txt
+
 suppose our heap is:
 
        10
@@ -77,6 +78,7 @@ Before we go futher I need you to take a look at `few formulae`:
 Lets do the same bubble up function with an array now:
 
 ```js:example.txt
+
  heap = [10,5,6,5,4,6];
 
  // Insert 7 to the end since we want to add it/
@@ -253,7 +255,7 @@ Now lets look at remove:
 
 Lets look at the code now:
 
-```java:remove.txt
+```java:remove.java
 
   public void remove() {
 
@@ -300,6 +302,7 @@ That should cover most of heaps, lets look at some side functions that can be he
 ```
 
 ```java:toString.java
+
   @Override
   public String toString() {
     return heap.toString();
