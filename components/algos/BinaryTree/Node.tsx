@@ -8,6 +8,7 @@ export default class Node<T> {
   right: Node<T> | null = null;
   left: Node<T> | null = null;
   id: number;
+  deg: number = 0;
 
   constructor(value: T) {
     this.value = value;
@@ -15,6 +16,9 @@ export default class Node<T> {
   }
 
   render(data?: { deg: number; hypo: number }) {
+    if (data?.deg) {
+      this.deg = data.deg;
+    }
     return (
       <motion.div layout>
         <motion.div
@@ -54,7 +58,7 @@ export default class Node<T> {
                 y: -3,
               }}
               animate={{
-                rotate: `-${data.deg + 20}deg`,
+                rotate: `-${this.deg + 20}deg`,
               }}
               style={{ transformOrigin: "top", zIndex: -1 }}
             >
@@ -76,7 +80,7 @@ export default class Node<T> {
                 rotate: `${0}deg`,
               }}
               animate={{
-                rotate: `${data.deg + 20}deg`,
+                rotate: `${this.deg + 20}deg`,
               }}
               style={{ transformOrigin: "top", zIndex: -1 }}
             >
