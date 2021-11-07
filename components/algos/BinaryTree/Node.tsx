@@ -16,7 +16,7 @@ export default class Node<T> {
 
   render(data?: { deg: number; hypo: number }) {
     return (
-      <>
+      <motion.div layout>
         <motion.div
           transition={{
             type: "spring",
@@ -88,7 +88,7 @@ export default class Node<T> {
             </motion.div>
           </>
         )}
-      </>
+      </motion.div>
     );
   }
 }
