@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  ChangeEvent,
+  useEffect,
+  useRef,
+  useState,
+  MouseEventnt,
+} from "react";
 import { Value } from "@Root/misc/algo/arrValue";
 import OptionBackground from "@Components/layouts/OptionBackground";
 import Input from "@Components/layouts/Input";
@@ -11,16 +17,7 @@ const Index = () => {
   const [renderArr, setRenderArr] = useState<JSX.Element[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const generateArr = (items: number = 5) => {
-    setValues([]);
-    let cp = [];
-    for (let i = 0; i < items; i++) {
-      cp.push(new Value(Math.floor(Math.random() * 100)));
-    }
-    setValues(cp);
-  };
-
-  const addToArr = (e: MouseEvent) => {
+  const addToArr = (e: MouseEventnt<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     const value = parseInt(inputRef.current?.value || "0");
 
@@ -88,12 +85,7 @@ const Index = () => {
                 setStart(true);
               }}
             ></Button>
-            <Button
-              content="Insert"
-              onClick={(e) => {
-                addToArr(e);
-              }}
-            ></Button>
+            <Button content="Insert" onClick={(e) => addToArr(e)}></Button>
           </Buttons>
         </form>
       </OptionBackground>
