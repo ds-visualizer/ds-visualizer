@@ -3,7 +3,7 @@ import React, {
   useEffect,
   useRef,
   useState,
-  MouseEventnt,
+  MouseEvent,
 } from "react";
 import { Value } from "@Root/misc/algo/arrValue";
 import OptionBackground from "@Components/layouts/OptionBackground";
@@ -17,7 +17,7 @@ const Index = () => {
   const [renderArr, setRenderArr] = useState<JSX.Element[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const addToArr = (e: MouseEventnt<HTMLButtonElement, MouseEvent>) => {
+  const addToArr = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const value = parseInt(inputRef.current?.value || "0");
 
@@ -76,18 +76,16 @@ const Index = () => {
   return (
     <div className="w-full h-[100vh] flex flex-col  align-center">
       <OptionBackground>
-        <form>
-          <Input ref={inputRef} content="Element to add into the array: " />
-          <Buttons>
-            <Button
-              content="Sort"
-              onClick={async () => {
-                setStart(true);
-              }}
-            ></Button>
-            <Button content="Insert" onClick={(e) => addToArr(e)}></Button>
-          </Buttons>
-        </form>
+        <Input ref={inputRef} content="Element to add into the array: " />
+        <Buttons>
+          <Button
+            content="Sort"
+            onClick={async () => {
+              setStart(true);
+            }}
+          ></Button>
+          <Button content="Insert" onClick={(e) => addToArr(e)}></Button>
+        </Buttons>
       </OptionBackground>
       <div className="flex justify-center w-full h-full p-6">{renderArr}</div>
     </div>
