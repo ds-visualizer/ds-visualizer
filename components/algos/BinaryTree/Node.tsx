@@ -15,6 +15,48 @@ export default class Node<T> {
     this.id = Node.NID++;
   }
 
+  valueOf() {
+    return this.value;
+  }
+
+  heapRender() {
+    return (
+      <motion.div
+        key={this.id}
+        transition={{
+          type: "spring",
+          damping: 20,
+          stiffness: 100,
+          duration: 2,
+        }}
+        initial={{
+          opacity: 0.5,
+        }}
+        animate={{
+          opacity: 1,
+          scale: [0.9, 1.1, 1],
+          transition: {
+            duration: 0.5,
+          },
+        }}
+        exit={{
+          opacity: 0,
+          transition: {
+            duration: 0.5,
+          },
+        }}
+        layout
+      >
+        <motion.div
+          layout
+          className="w-10 node rounded transition-transform  flex justify-center items-center h-10 bg-gray-400"
+        >
+          {this.value}
+        </motion.div>
+      </motion.div>
+    );
+  }
+
   render(data?: { deg: number; hypo: number }) {
     if (data?.deg) {
       this.deg = data.deg;

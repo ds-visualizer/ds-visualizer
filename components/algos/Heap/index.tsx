@@ -15,7 +15,7 @@ interface Props {
 
 let root: { root: Node<number> | null } = { root: null };
 const index: React.FC<Props> = ({ html }) => {
-  const { insert, tree } = useHeap(root);
+  const { insert, tree, heap, nextStep, clear } = useHeap(root);
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -32,13 +32,32 @@ const index: React.FC<Props> = ({ html }) => {
             <Input ref={inputRef} content="Enter your value:" />
             <Buttons>
               <Button type="submit" content="Insert" />
+              <Button
+                type="button"
+                content="Next Step"
+                onClick={() => {
+                  nextStep();
+                }}
+              />
+              <Button
+                type="button"
+                content="Clear"
+                onClick={() => {
+                  clear();
+                }}
+              />
             </Buttons>
           </form>
         </OptionBackground>
       </div>
-      <div className="w-screen min-h-[50vh] overflow-hidden flex justify-center pt-20">
+      <div className="w-screen min-h-[40vh] overflow-hidden flex justify-center pt-20">
         <AnimatePresence>
           <AnimateSharedLayout>{tree}</AnimateSharedLayout>
+        </AnimatePresence>
+      </div>
+      <div className="flex space-x-5 mt-5 justify-center ">
+        <AnimatePresence>
+          <AnimateSharedLayout>{heap}</AnimateSharedLayout>
         </AnimatePresence>
       </div>
       <Content html={html[0]} />

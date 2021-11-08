@@ -20,7 +20,7 @@ const render = (
 
   if (!root)
     return (
-      <>
+      <AnimateSharedLayout>
         <div className="flex  space-y-8 flex-col items-center">
           <div className={`nu${parent?.id || 0}`}>
             <AnimateSharedLayout>{new NullNode().render()}</AnimateSharedLayout>
@@ -32,7 +32,7 @@ const render = (
             </AnimateSharedLayout>
           </div>
         </div>
-      </>
+      </AnimateSharedLayout>
     );
 
   const data = graphFunction(root);

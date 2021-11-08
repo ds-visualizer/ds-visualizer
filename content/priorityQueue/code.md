@@ -31,7 +31,7 @@ We can also make priority queue using a an array and sort it every time we add a
 
 All methods are exactly same as heap so, there is no need for any explanation.
 
-Click <a href="/heap">here</a> if you want to see heap blog.
+Click <a href="/heap">here</a> if you want to see the heap blog.
 
 ```java:methods.java
 

@@ -3,11 +3,11 @@ import Node from "@Components/algos/BinaryTree/Node";
 import useBinaryTree from "./useBinaryTree";
 
 export const balancedInsert = async (
-  value: number,
+  newNode: Node<number>,
   rootObj: { root: Node<number> | null }
 ) => {
   if (!rootObj.root) {
-    rootObj.root = new Node(value);
+    rootObj.root = newNode;
     return;
   }
 
@@ -19,12 +19,12 @@ export const balancedInsert = async (
     const node = queue.shift()!;
 
     if (!node.left) {
-      node.left = new Node(value);
+      node.left = newNode;
       break;
     }
 
     if (!node.right) {
-      node.right = new Node(value);
+      node.right = newNode;
       break;
     }
 
@@ -36,17 +36,30 @@ export const balancedInsert = async (
 
 const useHeap = (root: { root: Node<number> | null }) => {
   const { renderTree, tree } = useBinaryTree(root);
-  const [arr, setArr] = useState<number[]>([]);
+  const [arr, setArr] = useState<Node<number>[]>([]);
+  const [heap, setHeap] = useState<JSX.Element[]>([]);
+  const [next, setNext] = useState(true);
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
+    const jsx = arr.map((el) => el.heapRender());
+    setHeap(jsx);
+  }, [arr]);
+
+  useEffect(() => {
+    root.root = null;
+
+    arr.forEach((el) => {
+      el.left = null;
+      el.right = null;
+    });
     arr.forEach((el) => balancedInsert(el, root));
+
     renderTree();
   }, [arr]);
 
   const parentIndex = (index: number) => {
-    // Returns the parent index of the index
-
-    return Math.floor((index - 1) / 2);
+    return Math.trunc((index - 1) / 2);
   };
 
   const parent = (index: number) => {
@@ -61,28 +74,36 @@ const useHeap = (root: { root: Node<number> | null }) => {
   };
 
   const insert = async (value: number) => {
-    arr.push(value);
-    let index = arr.length - 1; // Since it gets added in the last
-
-    // Now we want to bubble up the elements so they satisfy the heap property
-    // We want to keep doing this till we find the right parent
-
-    // This loop iterates till we reach the top of the tree in worst condition
-    // And height of tree is logn
-
-    while (arr[index] > parent(index)) {
-      // Bubble up has time of n
-      bubbleUp(index);
-
-      // Since out index will now be swapped with the parent
-      index = parentIndex(index);
-    }
+    if (!next) return;
+    arr.push(new Node(value));
 
     setArr([...arr]);
-    root.root = null;
+    setIndex(arr.length - 1);
+
+    arr[arr.length - 1] <= parent(arr.length - 1)
+      ? setNext(true)
+      : setNext(false);
   };
 
-  return { tree, insert };
+  useEffect(() => {
+    if (arr[index] <= parent(index)) return setNext(true);
+  }, [arr]);
+
+  const nextStep = () => {
+    if (arr[index] <= parent(index)) return;
+
+    bubbleUp(index);
+    setArr([...arr]);
+    setIndex(parentIndex(index));
+  };
+
+  const clear = () => {
+    root.root = null;
+    renderTree();
+    setArr([]);
+  };
+
+  return { tree, insert, heap, nextStep, clear };
 };
 
 export default useHeap;
