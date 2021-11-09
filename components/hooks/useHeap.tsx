@@ -103,7 +103,7 @@ const useHeap = (root: { root: Node<number> | null }) => {
     setArr([]);
   };
 
-  return { tree, insert, heap, nextStep, clear };
+  return { tree, insert, heap, nextStep, clear, renderTree };
 };
 
 export default useHeap;

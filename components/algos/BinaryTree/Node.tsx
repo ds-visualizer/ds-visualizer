@@ -25,9 +25,10 @@ export default class Node<T> {
         key={this.id}
         transition={{
           type: "spring",
-          damping: 20,
-          stiffness: 100,
-          duration: 2,
+          // damping: 20,
+          // stiffness: 100,
+          duration: 1,
+          bounce: 0.1,
         }}
         initial={{
           opacity: 0.5,
