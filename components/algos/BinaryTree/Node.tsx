@@ -19,7 +19,7 @@ export default class Node<T> {
     return this.value;
   }
 
-  heapRender() {
+  heapRender(index: number) {
     return (
       <motion.div
         key={this.id}
@@ -47,12 +47,12 @@ export default class Node<T> {
         }}
         layout
       >
-        <motion.div
-          layout
-          className="w-10 node rounded transition-transform  flex justify-center items-center h-10 bg-gray-400"
+        <div
+          className={`w-10 relative  node rounded transition-transform  flex justify-center items-center h-10 bg-gray-400`}
         >
+          <div className="absolute -top-5 left-1 text-white">{index}</div>
           {this.value}
-        </motion.div>
+        </div>
       </motion.div>
     );
   }
@@ -62,7 +62,7 @@ export default class Node<T> {
       this.deg = data.deg;
     }
     return (
-      <motion.div layout>
+      <div>
         <motion.div
           transition={{
             type: "spring",
@@ -134,7 +134,7 @@ export default class Node<T> {
             </motion.div>
           </>
         )}
-      </motion.div>
+      </div>
     );
   }
 }

@@ -1,4 +1,4 @@
-import { AnimateSharedLayout } from "framer-motion";
+import { AnimateSharedLayout, motion } from "framer-motion";
 import react from "react";
 import graphFunction from "./graphFunction";
 import Node from "./Node";
@@ -20,19 +20,19 @@ const render = (
 
   if (!root)
     return (
-      <AnimateSharedLayout>
+      <div>
         <div className="flex  space-y-8 flex-col items-center">
           <div className={`nu${parent?.id || 0}`}>
-            <AnimateSharedLayout>{new NullNode().render()}</AnimateSharedLayout>
+            <>{new NullNode().render()}</>
           </div>
           <div className={`flex space-x-10`}>
-            <AnimateSharedLayout>
+            <>
               {render({ root: null }, rootHeight, currentHeight + 1, null)}
               {render({ root: null }, rootHeight, currentHeight + 1, null)}
-            </AnimateSharedLayout>
+            </>
           </div>
         </div>
-      </AnimateSharedLayout>
+      </div>
     );
 
   const data = graphFunction(root);

@@ -42,7 +42,7 @@ const useHeap = (root: { root: Node<number> | null }) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const jsx = arr.map((el) => el.heapRender());
+    const jsx = arr.map((el, index) => el.heapRender(index));
     setHeap(jsx);
   }, [arr]);
 
