@@ -47,6 +47,10 @@ const useHeap = (root: { root: Node<number> | null }) => {
   }, [arr]);
 
   useEffect(() => {
+    if (arr[index] <= parent(index)) return setNext(true);
+  }, [arr]);
+
+  useEffect(() => {
     root.root = null;
 
     arr.forEach((el) => {
@@ -84,10 +88,6 @@ const useHeap = (root: { root: Node<number> | null }) => {
       ? setNext(true)
       : setNext(false);
   };
-
-  useEffect(() => {
-    if (arr[index] <= parent(index)) return setNext(true);
-  }, [arr]);
 
   const nextStep = () => {
     if (arr[index] <= parent(index)) return;
