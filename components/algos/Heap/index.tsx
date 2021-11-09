@@ -16,7 +16,8 @@ interface Props {
 
 let root: { root: Node<number> | null } = { root: null };
 const index: React.FC<Props> = ({ html }) => {
-  const { insert, tree, heap, nextStep, clear, renderTree } = useHeap(root);
+  const { insert, tree, heap, nextStep, clear, renderTree, remove } =
+    useHeap(root);
   const [show, setShow] = useState(true);
   const [showInstructions, setShowInstructions] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -58,6 +59,13 @@ const index: React.FC<Props> = ({ html }) => {
             <Input ref={inputRef} content="Enter your value:" />
             <Buttons>
               <Button type="submit" content="Insert" />
+              <Button
+                type="button"
+                content="Remove"
+                onClick={() => {
+                  remove();
+                }}
+              />
               <Button
                 type="button"
                 content="Next Step"

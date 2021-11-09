@@ -4,7 +4,7 @@ interface Props {}
 
 const HeapInstructions: React.FC<Props> = () => {
   return (
-    <p className="w-[30rem] bg-gray-800 backdrop-blur-[40px] px-3 py-2 drop-shadow-lg shadow-lg rounded-lg  opacity-[.90] text-gray-400">
+    <div className="w-[30rem] bg-gray-800 backdrop-blur-[40px] px-3 py-2 drop-shadow-lg shadow-lg rounded-lg  opacity-[.90] text-gray-400">
       <ul className="flex flex-col space-y-2">
         <li>
           <span className="text-white">Step1:</span> Click Insert or Remove{" "}
@@ -28,7 +28,7 @@ const HeapInstructions: React.FC<Props> = () => {
         option on the top left. You can always see the tree again by clicking
         the <strong className="text-gray-200">same</strong> option again
       </p>
-    </p>
+    </div>
   );
 };
 
