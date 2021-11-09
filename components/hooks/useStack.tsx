@@ -17,7 +17,7 @@ const useStack = () => {
 
   const push = (value: number) => {
     const node = new Node(value);
-    setStack((prev) => [...prev, node.render(stack.length)]);
+    setStack((prev) => [...prev, node.render()]);
   };
 
   const pop = () => {

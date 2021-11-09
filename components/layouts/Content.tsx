@@ -15,7 +15,7 @@ const Content: React.FC<Props> = ({ html, className }) => {
   });
   return (
     <div
-      className={`blog w-screen  xl:max-w-[1100px] 3xl:max-w-[1500px] overflow-hidden  mx-auto px-3 py-10 pb-20 text-gray-100 ${className}`}
+      className={`blog w-screen  max-w-[1000px] overflow-hidden  mx-auto px-3 py-10 pb-20 text-gray-100 ${className}`}
     >
       <MDXRemote {...html} />
     </div>
