@@ -35,7 +35,7 @@ Click <a href="/heap">here</a> if you want to see the heap blog.
 
 ```java:methods.java
 
-  // Time: O(nlogn) space: O(1)
+  // Time: O(n^2 * logn) space: O(1)
   public void insert(int value) {
     heap.insert(value);
   }
@@ -46,7 +46,7 @@ Click <a href="/heap">here</a> if you want to see the heap blog.
     return heap.peek();
   }
 
-  // Time: O(nlogn) space: O(1)
+  // Time: O(n^2 * logn) space: O(1)
 
   public void remove() {
     heap.remove();
