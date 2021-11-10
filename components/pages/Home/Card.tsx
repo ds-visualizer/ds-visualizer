@@ -10,7 +10,7 @@ const Card: React.FC<Props> = ({ route: { name, path } }) => {
   return (
     <Link href={path}>
       <a>
-        <div className="card bg-gray-600 origin-bottom-left px-6 py-6 text-2xl text-primary drop-shadow hover:-rotate-3 transition-all duration-200 transform w-[17rem] rounded h-[10rem] cursor-pointer ">
+        <div className="card bg-gray-600 origin-bottom-left px-6 py-6 text-2xl text-primary drop-shadow hover:-rotate-3 transition-all duration-200 transform w-[20rem] rounded h-[13rem] cursor-pointer ">
           {name}
         </div>
       </a>
