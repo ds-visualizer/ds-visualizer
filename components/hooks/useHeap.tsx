@@ -70,9 +70,9 @@ const useHeap = (root: { root: Node<number> | null }) => {
   const isValidParent = (index: number) => {
     if (!hasLeftChild(index)) return true;
 
-    if (!hasRightChild(index)) return arr[index] > leftChild(index);
+    if (!hasRightChild(index)) return arr[index] >= leftChild(index);
 
-    return arr[index] > leftChild(index) && arr[index] > rightChild(index);
+    return arr[index] >= leftChild(index) && arr[index] >= rightChild(index);
   };
 
   const leftChild = (index: number) => arr[leftChildIndex(index)];
