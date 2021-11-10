@@ -160,9 +160,9 @@ Lets look at the helper functions before we go look at insert method.
       return true;
 
     if (!hasRightChild(index))
-      return heap.get(index) > leftChild(index);
+      return heap.get(index) >= leftChild(index);
 
-    return (heap.get(index) > leftChild(index) && heap.get(index) > rightChild(index));
+    return (heap.get(index) >= leftChild(index) && heap.get(index) >= rightChild(index));
   }
 
   // TIme: O(n) Space: O(1)
@@ -249,7 +249,7 @@ Lets look at how we insert an element into the heap:
   }
 
   /*
-   * Time: O(nlogn)
+   * Time: O(n^2 * logn)
    * Space: O(1)
    */
 
@@ -305,7 +305,7 @@ Lets look at the code now:
   }
 
   /*
-   * Time: O(nlogn)
+   * Time: O(n^2 * logn)
    * Space: O(1)
    */
 
@@ -382,3 +382,5 @@ That should cover most of heaps, lets look at some side functions that can be he
     return heap.toString();
   }
 ```
+
+This is a very slow implmentation since **I'm using a linkedlist**, but u can get it up to **logn** but using an array 
