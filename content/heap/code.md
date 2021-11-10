@@ -136,7 +136,7 @@ class Heap{
 
   public void insert(int value) {}
 
-  public void remove () {}
+  public void remove() {}
 
   public boolean isEmpty() {}
 
@@ -383,4 +383,4 @@ That should cover most of heaps, lets look at some side functions that can be he
   }
 ```
 
-This is a very slow implmentation since **I'm using a linkedlist**, but u can get it up to **logn** but using an array 
+This is a very slow implmentation since **I'm using a linkedlist**, but u can get it up to **O(logn)** by using an array. Array or list, procedure is the same.
