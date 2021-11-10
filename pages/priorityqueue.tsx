@@ -6,6 +6,7 @@ import serialize from "@Misc/serialize";
 import PriorityQueue from "@Components/algos/PriorityQueue";
 import Metadata from "@Root/components/layouts/Metadata";
 import meta from "@Misc/Meta.json";
+import Progress from "@Root/components/layouts/Progress";
 
 const priorityqueue = ({
   html,
@@ -14,6 +15,7 @@ const priorityqueue = ({
     <>
       <Metadata {...meta.priorityqueue} />
       <PriorityQueue html={html} />
+      <Progress/>
     </>
   );
 };
