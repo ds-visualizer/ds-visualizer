@@ -171,7 +171,7 @@ const useHeap = (root: { root: Node<number> | null }) => {
     setIndex(0);
     setMethodType("Remove");
 
-    0 >= arr.length && isValidParent(0) ? setNext(true) : setNext(false);
+    0 < arr.length && isValidParent(0) ? setNext(true) : setNext(false);
   };
 
   const nextStep = () => {
