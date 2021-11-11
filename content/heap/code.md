@@ -249,7 +249,7 @@ Lets look at how we insert an element into the heap:
   }
 
   /*
-   * Time: O(n^2 * logn)
+   * Time: O(nlogn)
    * Space: O(1)
    */
 
@@ -305,7 +305,7 @@ Lets look at the code now:
   }
 
   /*
-   * Time: O(n^2 * logn)
+   * Time: O(nlogn)
    * Space: O(1)
    */
 
