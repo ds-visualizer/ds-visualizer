@@ -16,6 +16,7 @@ const Sponsor: React.FC<Props> = () => {
         </a>{" "}
         to contribute
       </p>
+
       <p>
         <a href="https://vercel.com/dashboard?utm_source=ds-visualizer&utm_compaign=os">
           <Image
