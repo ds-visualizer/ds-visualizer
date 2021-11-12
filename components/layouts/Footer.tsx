@@ -16,7 +16,7 @@ const Footer: React.FC<Props> = () => {
           <a
             className="text-blue-400 underline"
             target="_blank"
-            href="https://github.com/satvik-1203/ds-visualizer"
+            href="https://github.com/ds-visualizer/ds-visualizer"
           >
             GitHub
           </a>
