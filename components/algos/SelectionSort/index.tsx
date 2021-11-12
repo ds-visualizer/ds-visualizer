@@ -10,8 +10,14 @@ import OptionBackground from "@Components/layouts/OptionBackground";
 import Input from "@Components/layouts/Input";
 import Buttons from "@Components/layouts/Buttons";
 import Button from "@Components/layouts/Button";
+import mdxHtml from "@Root/interface/mdxHtmlType";
+import Content from "@Root/components/layouts/Content";
 
-const Index = () => {
+interface Props {
+  html: mdxHtml[];
+}
+
+const Index = ({ html }: Props) => {
   const [values, setValues] = useState<Value[]>([]);
   const [start, setStart] = useState<boolean>(false);
   const [renderArr, setRenderArr] = useState<JSX.Element[]>([]);
@@ -88,6 +94,9 @@ const Index = () => {
         </Buttons>
       </OptionBackground>
       <div className="flex justify-center w-full h-full p-6">{renderArr}</div>
+      <div>
+        <Content html={html[0]} />
+      </div>
     </div>
   );
 };
