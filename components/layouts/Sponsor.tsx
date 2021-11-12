@@ -18,7 +18,7 @@ const Sponsor: React.FC<Props> = () => {
       </p>
 
       <p>
-        <a href="https://vercel.com/dashboard?utm_source=ds-visualizer&utm_compaign=os">
+        <a href="https://vercel.com/?utm_source=ds-visualizer&utm_campaign=oss">
           <Image
             width={350}
             height={45}

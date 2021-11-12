@@ -27,6 +27,6 @@ Thanks vercel for sponsoring this project
 
 <br/>
 
-<a href="https://vercel.com/dashboard?utm_source=ds-visualizer&utm_compaign=os">
+<a href="https://vercel.com/?utm_source=ds-visualizer&utm_campaign=oss">
   <img src="public/images/powered-by-vercel.svg" alt="Powered by Vercel"/>
 </a>
