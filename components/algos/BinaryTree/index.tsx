@@ -9,7 +9,7 @@ import Content from "@Components/layouts/Content";
 
 import Node from "./Node";
 import insert from "./insert";
-import useBinaryTree from "./useBinaryTree";
+import useBinaryTree from "@Components/hooks/useBinaryTree";
 
 interface Props {
   htmlContent: mdxHtml[];
@@ -31,6 +31,7 @@ const index: React.FC<Props> = ({ htmlContent }) => {
           onSubmit={(e) => {
             e.preventDefault();
             insert(parseInt(inputRef.current?.value || "0"), root, renderTree);
+            inputRef.current!.value = "";
           }}
         >
           <Input ref={inputRef} content="Enter your value:" />
@@ -39,7 +40,7 @@ const index: React.FC<Props> = ({ htmlContent }) => {
           </Buttons>
         </form>
       </OptionBackground>
-      <div className="w-screen min-h-[50vh] overflow-hidden flex justify-center pt-28">
+      <div className="w-screen min-h-[50vh] overflow-hidden flex justify-center pt-20">
         <div className="overflow-hidden">
           <AnimatePresence>
             <AnimateSharedLayout>{tree}</AnimateSharedLayout>

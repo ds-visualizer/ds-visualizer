@@ -47,5 +47,20 @@
     "path": "/treetraversals",
     "description": "Learn more about tree traversal using our visualizer and code explanation",
     "image": "/images/treetraversals.png"
+  },
+  "graphtraversals": {
+    "title": "Graph Traversals",
+    "path": "/graphtraversals",
+    "description": "Learn more about graph traversal using our visualizer and code explanation"
+  },
+  "heap": {
+    "title": "Heap",
+    "path": "/heap",
+    "description": "Leave more about Heaps using out visualizer and code explanation"
+  },
+  "priorityqueue": {
+    "title": "Priority Queue",
+    "path": "/priorityqueue",
+    "description": "Leave more about Priority Queues using out visualizer and code explanation"
   }
 }

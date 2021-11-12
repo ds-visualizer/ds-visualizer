@@ -42,9 +42,9 @@ class LinkedList {
 
 	public void removeLast() {}
 
-	public void remove() {}
+	public void remove(int index) {}
 
-	public void toString() {}
+	public String toString() {}
 
 	public int get(int index) {}
 
@@ -352,7 +352,7 @@ For this task lets implement a getter 🙂 which is called `size`:
 
 	// Thanks to us storing length, we could make this an O(1) operator, otherwise it would turn out to be O(n)
 
-	pubic int size() {
+	public int size() {
 		return length;
 	}
 ```
@@ -398,7 +398,7 @@ Alright lets go back to another tough method, `remove(int index)`:
 		}
 
 		current.next = current.next.next;
-		length--
+		length--;
 
 	}
 ```

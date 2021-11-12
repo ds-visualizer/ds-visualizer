@@ -20,3 +20,11 @@ going through `CONTRIBUTING.md` file.
 To contribute please look at `CONTRIBUTING.md` file.
 
 We hope you have a good experience using this project for your learning!
+
+## Powered by: 
+
+Thanks vercel for sponsoring this project
+<br/>
+<a href="https://vercel.com/dashboard?utm_source=ds-visualizer&utm_compaign=os">
+<img src="public/images/vercel.svg" alt="Powered by Vercel"/>
+</a>

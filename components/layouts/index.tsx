@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import { useRouter } from "next/router";
+import Sponsor from "./Sponsor";
 
 interface Props {}
 
@@ -15,6 +16,7 @@ const index: React.FC<Props> = ({ children }) => {
       <NavBar />
       {children}
       {!footerNotIn.includes(router.pathname) && <Footer />}
+      <Sponsor />
     </div>
   );
 };

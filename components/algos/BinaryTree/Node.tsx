@@ -8,15 +8,62 @@ export default class Node<T> {
   right: Node<T> | null = null;
   left: Node<T> | null = null;
   id: number;
+  deg: number = 0;
 
   constructor(value: T) {
     this.value = value;
     this.id = Node.NID++;
   }
 
-  render(data?: { deg: number; hypo: number }) {
+  valueOf() {
+    return this.value;
+  }
+
+  heapRender(index: number) {
     return (
-      <>
+      <motion.div
+        key={this.id}
+        transition={{
+          type: "spring",
+          // damping: 20,
+          // stiffness: 100,
+          duration: 1,
+          bounce: 0.1,
+        }}
+        initial={{
+          opacity: 0.5,
+        }}
+        animate={{
+          opacity: 1,
+          scale: [0.9, 1.1, 1],
+          transition: {
+            duration: 0.5,
+          },
+        }}
+        exit={{
+          opacity: 0,
+          transition: {
+            duration: 0.5,
+          },
+        }}
+        layout
+      >
+        <div
+          className={`w-10 relative  node rounded transition-transform  flex justify-center items-center h-10 bg-gray-400`}
+        >
+          <div className="absolute -top-5 left-1 text-white">{index}</div>
+          {this.value}
+        </div>
+      </motion.div>
+    );
+  }
+
+  render(data?: { deg: number; hypo: number }) {
+    if (data?.deg) {
+      this.deg = data.deg;
+    }
+    return (
+      <div>
         <motion.div
           transition={{
             type: "spring",
@@ -54,7 +101,7 @@ export default class Node<T> {
                 y: -3,
               }}
               animate={{
-                rotate: `-${data.deg + 20}deg`,
+                rotate: `-${this.deg + 20}deg`,
               }}
               style={{ transformOrigin: "top", zIndex: -1 }}
             >
@@ -76,7 +123,7 @@ export default class Node<T> {
                 rotate: `${0}deg`,
               }}
               animate={{
-                rotate: `${data.deg + 20}deg`,
+                rotate: `${this.deg + 20}deg`,
               }}
               style={{ transformOrigin: "top", zIndex: -1 }}
             >
@@ -88,7 +135,7 @@ export default class Node<T> {
             </motion.div>
           </>
         )}
-      </>
+      </div>
     );
   }
 }

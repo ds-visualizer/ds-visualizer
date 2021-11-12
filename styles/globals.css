@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 body {
-  background-color: #242323;
-  background-image: linear-gradient(to bottom, #1a1818, transparent);
+  /* background-color: #242323;
+  background-image: linear-gradient(to bottom, #1a1818, transparent); */
   background-attachment: fixed;
 }
 
@@ -26,12 +26,24 @@ input {
     @apply border-2 rounded px-3 transition py-1 border-gray-500;
   }
 
+  body {
+    @apply bg-gray-900 bg-gradient-to-tl from-gray-800;
+  }
+
+  .blog blockquote {
+    @apply relative before:w-1 before:h-full before:rounded-tl before:rounded-bl before:bg-white before:absolute  my-3;
+  }
+
+  .blog blockquote p {
+    @apply text-gray-100;
+  }
+
   p {
     @apply my-2;
   }
 
   .blog h1 {
-    @apply text-4xl md:text-5xl  2xl:text-7xl text-center pb-3;
+    @apply text-white text-4xl md:text-5xl  2xl:text-7xl text-center pb-3;
   }
   .blog h2 {
     @apply text-3xl md:text-4xl  2xl:text-6xl;
@@ -41,20 +53,23 @@ input {
   }
 
   .blog > * {
-    @apply text-base md:text-lg xl:text-xl leading-[1.6rem] md:leading-[1.8rem] xl:leading-[2rem];
+    @apply text-base md:text-lg xl:text-xl leading-[1.6rem] md:leading-[1.8rem] xl:leading-[2rem] text-gray-300;
   }
 
   .blog pre code {
-    @apply text-base;
+    @apply text-base text-gray-200 px-2 py-2;
   }
 
-  .blog blockquote {
-    @apply mb-4;
+  .blog pre {
+    @apply bg-gray-800 bg-gradient-to-br px-3 py-4 to-gray-700;
+  }
+  .blog code {
+    @apply px-1 py-[0.5px];
   }
 }
 .remark-code-title {
   width: fit-content;
-  background-color: hsla(234, 83%, 67%, 0.6);
+  background-color: hsla(234, 83%, 67%, 1);
   color: white;
   padding: 0.1em 0.3em;
   border-top-left-radius: 0.3rem;
@@ -109,40 +124,31 @@ html {
 }
 .blog p {
   margin: 1rem 0;
-  color: #b8b8b8;
 }
 .blog strong {
-  color: rgb(235, 233, 233);
+  color: rgb(241, 239, 239);
 }
 .blog pre {
   overflow-x: scroll;
-  background: #1d1d1d;
-  padding: 0.9rem 0.8rem;
   border-radius: 0.5rem;
   font-size: 0.8rem;
 }
 .blog code {
   background: rgba(250, 249, 249, 0.7);
   border-radius: 0.4rem;
-  padding: 0.1rem 0.2rem;
   color: black;
 }
 .blog pre code {
   background: transparent;
-  color: white;
   font-family: "DM Mono", monospace;
 }
 .blog blockquote {
   border-radius: 0.4rem;
-  overflow: hidden;
-  padding-left: 0.4rem;
-  background-color: rgb(88, 88, 88);
 }
 .blog blockquote p {
-  padding: 0.3rem 0.4rem;
-  background-color: rgba(49, 49, 49, 0.6);
+  padding: 0.2rem 1rem;
   margin: 0;
-  color: white;
+  background-color: transparent;
 }
 .blog a {
   cursor: pointer;

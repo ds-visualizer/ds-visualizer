@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import mdxHtml from "@Root/interface/mdxHtmlType";
 import Content from "@Root/components/layouts/Content";
 import OptionBackground from "@Components/layouts/OptionBackground";
@@ -6,7 +6,8 @@ import Input from "@Components/layouts/Input";
 import Buttons from "@Root/components/layouts/Buttons";
 import Button from "@Root/components/layouts/Button";
 import { AnimateSharedLayout, AnimatePresence } from "framer-motion";
-import Node from "./Node";
+
+import useQueue from "@Components/hooks/useQueue";
 
 interface Props {
   html: mdxHtml[];
@@ -14,20 +15,10 @@ interface Props {
 
 const index: React.FC<Props> = ({ html }) => {
   const [codeHtml] = html;
-  const [queue, setQueue] = useState<Array<JSX.Element>>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const enqueue = () => {
-    const value = parseInt(inputRef.current?.value || "0");
-    const node = new Node(value);
-    const newQ = [...queue, node.render()];
-    setQueue(newQ);
-  };
-
-  const dequeue = () => {
-    const newQ = queue.slice(1);
-    setQueue(newQ);
-  };
+  const { methods, queue } = useQueue();
+  const { dequeue, enqueue } = methods;
 
   return (
     <>
@@ -36,7 +27,7 @@ const index: React.FC<Props> = ({ html }) => {
         <Buttons>
           <Button
             onClick={() => {
-              enqueue();
+              enqueue(parseInt(inputRef.current?.value || "0"));
             }}
             content="Enqueue"
           />
