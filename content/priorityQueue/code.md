@@ -4,8 +4,8 @@
 
 > Priority queue is implemented using a max heap since we want to access and remove the biggest element in the queue
 
-Priority Queue is just a wraper class around `Heap`, So if you have missed the heap blog, please go back and read it
-Click <a href="/heap">here</a> if you want to see the heap blog. While removing an element, the highest valued data will be removed before removing other data
+Priority Queue is just a wraper class around `Heap`, So if you have missed the heap blog, please go back and read it.
+Click <a href="/heap">here</a> if you want to read the heap blog. While removing an element, the highest valued data will be removed before removing other data
 
 ```java:PriorityQueue.java
 
