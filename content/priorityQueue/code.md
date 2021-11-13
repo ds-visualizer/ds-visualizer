@@ -1,4 +1,4 @@
-# What is a Priority Queue
+# What is a Priority Queue (Using Heap)
 
 > A priority queue is basically a type of queue that puts the elements sorted in its priority order. Used by our kernel to assign tasks based on their priorities.
 
