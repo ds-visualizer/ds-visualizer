@@ -153,34 +153,20 @@ Lets look at the helper functions before we go look at insert method.
 
 ```java:helper.java
 
-  // Time: O(n) Space: O(1)
-
-  private boolean isValidParent(int index) {
-    if (!hasLeftChild(index))
-      return true;
-
-    if (!hasRightChild(index))
-      return heap.get(index) >= leftChild(index);
-
-    return (heap.get(index) >= leftChild(index) && heap.get(index) >= rightChild(index));
-  }
-
   // TIme: O(n) Space: O(1)
 
-  private int leftChild(int index) {
-    return heap.get(leftChildIndex(index));
+  private void swap(LinkedList<Integer> arr, int index1, int index2) {
+
+    Collections.swap(arr, index1, index2);
   }
 
-  // TIme: O(n) Space: O(1)
+  // TIme: O(1) Space: O(1)
 
-  private int rightChild(int index) {
-    return heap.get(rightChildIndex(index));
-  }
+  private int parentIndex(int index) {
 
-  // TIme: O(n) Space: O(1)
+    // Returns the parent index of the index
 
-  private int parent(int index) {
-    return heap.get(parentIndex(index));
+    return (index - 1) / 2;
   }
 
   // TIme: O(1) Space: O(1)
@@ -195,6 +181,24 @@ Lets look at the helper functions before we go look at insert method.
     return (2 * index) + 2;
   }
 
+  // TIme: O(n) Space: O(1)
+
+  private int rightChild(int index) {
+    return heap.get(rightChildIndex(index));
+  }
+
+  // TIme: O(n) Space: O(1)
+
+  private int leftChild(int index) {
+    return heap.get(leftChildIndex(index));
+  }
+
+  // TIme: O(n) Space: O(1)
+
+  private int parent(int index) {
+    return heap.get(parentIndex(index));
+  }
+
   // TIme: O(1) Space: O(1)
 
   private boolean hasLeftChild(int index) {
@@ -207,20 +211,16 @@ Lets look at the helper functions before we go look at insert method.
     return rightChildIndex(index) < heap.size();
   }
 
-  // TIme: O(1) Space: O(1)
+  // Time: O(n) Space: O(1)
 
-  private int parentIndex(int index) {
+  private boolean isValidParent(int index) {
+    if (!hasLeftChild(index))
+      return true;
 
-    // Returns the parent index of the index
+    if (!hasRightChild(index))
+      return heap.get(index) >= leftChild(index);
 
-    return (index - 1) / 2;
-  }
-
-  // TIme: O(n) Space: O(1)
-
-  private void swap(LinkedList<Integer> arr, int index1, int index2) {
-
-    Collections.swap(arr, index1, index2);
+    return (heap.get(index) >= leftChild(index) && heap.get(index) >= rightChild(index));
   }
 
   // TIme: O(n) Space: O(1)
