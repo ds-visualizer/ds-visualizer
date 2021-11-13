@@ -19,15 +19,6 @@ const HeapInstructions: React.FC<Props> = () => {
           will be able to Insert or Remove element
         </li>
       </ul>
-
-      <p>
-        <span className="text-white underline font-bold">Bonus:</span> If your
-        visualizer is laggy, its due to the bad code I've written 🥲, So please
-        hide the tree by clicking{" "}
-        <strong className="text-gray-200">Hide Tree </strong>
-        option on the top left. You can always see the tree again by clicking
-        the <strong className="text-gray-200">same</strong> option again
-      </p>
     </div>
   );
 };

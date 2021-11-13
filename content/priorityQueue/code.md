@@ -1,10 +1,11 @@
-# What is a Priority Queue
+# What is a Priority Queue (Using Heap)
 
 > A priority queue is basically a type of queue that puts the elements sorted in its priority order. Used by our kernel to assign tasks based on their priorities.
 
 > Priority queue is implemented using a max heap since we want to access and remove the biggest element in the queue
 
-We can also make priority queue using a an array and sort it every time we add an element. Your question can be, they will have same time complexity so why not use a sorting algo. In the blog I have written, I used a list instead of an array so access elements were costly, but if you use an array instead of a list, the time for insert and remove would've been O(logn) which is super cheap
+Priority Queue is just a wraper class around `Heap`, So if you have missed the heap blog, please go back and read it.
+Click <a href="/heap">here</a> if you want to read the heap blog. While removing an element, the highest valued data will be removed before removing other data
 
 ```java:PriorityQueue.java
 
@@ -31,11 +32,9 @@ We can also make priority queue using a an array and sort it every time we add a
 
 All methods are exactly same as heap so, there is no need for any explanation.
 
-Click <a href="/heap">here</a> if you want to see the heap blog.
-
 ```java:methods.java
 
-  // Time: O(n^2 * logn) space: O(1)
+  // Time: O(nlogn) space: O(1)
   public void insert(int value) {
     heap.insert(value);
   }
@@ -46,7 +45,7 @@ Click <a href="/heap">here</a> if you want to see the heap blog.
     return heap.peek();
   }
 
-  // Time: O(n^2 * logn) space: O(1)
+  // Time: O(nlogn) space: O(1)
 
   public void remove() {
     heap.remove();

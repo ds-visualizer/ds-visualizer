@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Node from "@Components/algos/BinaryTree/Node";
 import useBinaryTree from "./useBinaryTree";
+import timeOut from "@Root/misc/timeOut";
 
 export const balancedInsert = async (
   newNode: Node<number>,
@@ -41,6 +42,7 @@ const useHeap = (root: { root: Node<number> | null }) => {
   const [methodType, setMethodType] = useState<"" | "Insert" | "Remove">("");
   const [next, setNext] = useState(true);
   const [index, setIndex] = useState(0);
+  const [insertProcess, setInsertProcess] = useState(false);
 
   useEffect(() => {
     const jsx = arr.map((el, index) => el.heapRender(index));
@@ -49,7 +51,9 @@ const useHeap = (root: { root: Node<number> | null }) => {
 
   useEffect(() => {
     if (methodType == "Insert")
-      if (arr[index] <= parent(index)) return setNext(true);
+      if (arr[index] <= parent(index)) {
+        return setNext(true);
+      }
 
     if (methodType == "Remove")
       if (index < arr.length && isValidParent(index)) return setNext(true);
@@ -113,6 +117,33 @@ const useHeap = (root: { root: Node<number> | null }) => {
     ];
   };
 
+  useEffect(() => {
+    if (!insertProcess) return;
+    if (next) return setInsertProcess(false);
+    nextStep();
+  }, [insertProcess, arr, next]);
+
+  const syncInsert = (value: number) => {
+    if (insertProcess) return;
+    setInsertProcess(true);
+    insert(value);
+  };
+
+  const [removeProcess, setRemoveProcess] = useState(false);
+
+  useEffect(() => {
+    if (!removeProcess) return;
+    if (next) return setRemoveProcess(false);
+    nextStep();
+  }, [removeProcess, arr, next]);
+
+  const syncRemove = () => {
+    if (removeProcess) return;
+
+    setRemoveProcess(true);
+    remove();
+  };
+
   const insert = async (value: number) => {
     if (!next) return;
     arr.push(new Node(value));
@@ -126,38 +157,6 @@ const useHeap = (root: { root: Node<number> | null }) => {
       ? setNext(true)
       : setNext(false);
   };
-
-  /*
-  public void remove() {
-
-    if (heap.isEmpty())
-      throw new RuntimeException("Heap empty");
-
-    // We remove the first node and put the last node in first
-    heap.removeFirst();
-    heap.addFirst(heap.pollLast());
-
-    int index = 0;
-
-    // Like in the example we have seen, we only do the swap if the element isn't a valid parent
-
-    // Again the loop will run till it reaches the end, height is logn
-
-    while (index < heap.size() && !isValidParent(index)) {
-
-      // LargerChildIndex is an O(n) operator
-
-      int largerChild = largerChildIndex(index);
-
-      // Bubble down is a O(n) operator
-
-      bubbleDown(index, largerChild);
-      index = largerChild;
-
-    }
-
-  }
-  */
 
   const remove = () => {
     if (!next) return;
@@ -207,7 +206,17 @@ const useHeap = (root: { root: Node<number> | null }) => {
     setArr([]);
   };
 
-  return { tree, insert, heap, nextStep, clear, renderTree, remove };
+  return {
+    tree,
+    insert,
+    heap,
+    nextStep,
+    clear,
+    renderTree,
+    remove,
+    syncInsert,
+    syncRemove,
+  };
 };
 
 export default useHeap;
