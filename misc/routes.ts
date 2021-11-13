@@ -11,6 +11,7 @@ const routes: Array<Route> = [
   { name: "Queue", path: "/queue" },
   { name: "Stack", path: "/stack" },
   { name: "LinkedList", path: "/linkedlist" },
+  { name: "SelectionSort", path: "/SelectionSort" },
 ];
 
 export default routes;

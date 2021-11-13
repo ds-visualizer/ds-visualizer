@@ -6,15 +6,15 @@ import type { InferGetStaticPropsType } from "next";
 import path from "path";
 import fs from "fs";
 import serialize from "@Misc/serialize";
+import Metadata from "@Root/components/layouts/Metadata";
+import meta from "@Misc/Meta.json";
 
 const SelectionSort = ({
   html,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Head>
-        <title>Selection Sort</title>
-      </Head>
+      <Metadata {...meta.SelectionSort} />
       <SelectSort html={html} />
     </>
   );

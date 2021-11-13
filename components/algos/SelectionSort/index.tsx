@@ -80,7 +80,7 @@ const Index = ({ html }: Props) => {
   }, [start]);
 
   return (
-    <div className="w-full h-[100vh] flex flex-col  align-center">
+    <div className="w-full flex flex-col  align-center">
       <OptionBackground>
         <Input ref={inputRef} content="Element to add into the array: " />
         <Buttons>
