@@ -1,6 +1,6 @@
 # What is a Priority Queue (Using Heap)
 
-> A priority queue is basically a type of queue that removes the elements its priority order. Used by our kernel to assign tasks based on their priorities.
+> A priority queue is a type of queue that remove the elements in its priority order. Used by our kernel to assign tasks based on their priorities.
 
 > Priority queue is implemented using a max heap since we want to access and remove the biggest element in the queue
 
