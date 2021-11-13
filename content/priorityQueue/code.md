@@ -4,7 +4,7 @@
 
 > Priority queue is implemented using a max heap since we want to access and remove the biggest element in the queue
 
-We can also make priority queue using a an array and sort it every time we add an element. Your question can be, they will have same time complexity so why not use a sorting algo. In the blog I have written, I used a list instead of an array so access elements were costly, but if you use an array instead of a list, the time for insert and remove would've been O(logn) which is super cheap
+We can also make priority queue using a an array and sort it every time we add an element. Your question can be, they will have same time complexity as heap from the previous blog so why not use a sorting algo. In the blog I have written, I used a linked-list instead of an array so access elements were costly, but if you use an array instead of a list, the time for insert and remove would've been O(logn) which is super cheap and will be far better than shifting or sorting an array for every iteration.
 
 ```java:PriorityQueue.java
 
