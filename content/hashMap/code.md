@@ -212,6 +212,32 @@ Similar to get function, remove function has the same logic.
 
 ```
 
+`get` method isn't different either
+
+```java:HashMap.java
+
+  /*
+   * Time: O(n) n-> elements in the list, with good hashing function O(1)
+   * Space:(1)
+   */
+
+  E get(T key) {
+
+    LinkedList<Entry> entries = map[hash(key)];
+
+    if (entries == null)
+      return null;
+
+    Entry entry = getEntry(key, entries);
+
+    if (entry == null)
+      return null;
+
+    return entry.value;
+  }
+
+```
+
 Lets look at `contains` method now,
 
 ```java:HashMap.java
