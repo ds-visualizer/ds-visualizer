@@ -3,69 +3,85 @@
     "title": "Linked List",
     "path": "/linkedlist",
     "image": "/images/linkedlist.png",
-    "description": "Learn more about linked list using our visualizer and code explanation"
+    "description": "Learn more about linked list using our visualizer and code explanation",
+    "keywords": ["linked list", "visualizer", "data structure"]
   },
   "binarytree": {
     "title": "Binary Tree",
     "path": "/binartree",
     "description": "Learn more about binary tree using our visualizer and code explanation",
-    "image": "/images/binarytree.png"
+    "image": "/images/binarytree.png",
+    "keywords": ["visualizer", "tree", "binary tree", "data structure"]
   },
   "graph": {
     "title": "Graph",
     "path": "/graph",
     "description": "Learn more about graphs using our visualizer and code explanation",
-    "image": "/images/graph.png"
+    "image": "/images/graph.png",
+    "keywords": ["data structure", "visualizer", "graph"]
   },
   "queue": {
     "title": "Queue",
     "path": "/queue",
     "description": "Learn more about queue using our visualizer and code explanation",
-    "image": "/images/image.png"
+    "image": "/images/image.png",
+    "keywords": ["data structure", "visualizer", "queue"]
   },
   "stack": {
     "title": "Stack",
     "path": "/stack",
     "description": "Learn more about stacks using our visualizer and code explanation",
-    "image": "/images/stack.png"
+    "image": "/images/stack.png",
+    "keywords": ["stack", "data structure", "visualizer"]
   },
   "home": {
     "title": "Home",
     "path": "/",
     "description": "Enhance your learning experience with the help of our data structure explanation and visualization",
-    "keywords": ["data structure", "data structure visualizer", "visualizer"],
-    "image": "/images/home.png"
+    "image": "/images/home.png",
+    "keywords": ["data structure", "data structure visualizer", "visualizer"]
   },
   "tree": {
     "title": "Tree",
     "path": "/tree",
     "description": "Learn more about tree using our visualizer and code explanation",
-    "image": "/images/tree.png"
+    "image": "/images/tree.png",
+    "keywords": ["tree", "data structure", "visualizer"]
   },
   "treetraversals": {
     "title": "Tree Traversals",
     "path": "/treetraversals",
     "description": "Learn more about tree traversal using our visualizer and code explanation",
-    "image": "/images/treetraversals.png"
+    "image": "/images/treetraversals.png",
+    "keywords": ["tree", "tree traversals", "data structure", "visualizer"]
   },
   "graphtraversals": {
     "title": "Graph Traversals",
     "path": "/graphtraversals",
-    "description": "Learn more about graph traversal using our visualizer and code explanation"
+    "description": "Learn more about graph traversal using our visualizer and code explanation",
+    "keywords": ["graph", "graph traversals", "data structure", "visualizer"]
   },
   "heap": {
     "title": "Heap",
     "path": "/heap",
-    "description": "Learn more about Heaps using out visualizer and code explanation"
+    "description": "Learn more about Heaps using out visualizer and code explanation",
+    "keywords": ["heap", "data structure", "visualizer"]
   },
   "priorityqueue": {
     "title": "Priority Queue",
     "path": "/priorityqueue",
-    "description": "Learn more about Priority Queues using out visualizer and code explanation"
+    "description": "Learn more about Priority Queues using out visualizer and code explanation",
+    "keywords": ["queue", "priority queue", "data structure", "visualizer"]
   },
   "SelectionSort": {
     "title": "Selection Sort",
     "path": "/SelectionSort",
-    "description": "Learn more about Selection Sort using out visualizer and code explanation"
+    "description": "Learn more about Selection Sort using out visualizer and code explanation",
+    "keywords": [
+      "selection sort",
+      "sorting algorithm",
+      "algorithm",
+      "visualizer"
+    ]
   }
 }

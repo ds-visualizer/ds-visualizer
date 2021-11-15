@@ -10,15 +10,6 @@ Heres our boilerplate code
             //this is where we will do all the sorting
         }
 
-        //print method to make our life easier
-        public static String printArr(int[] arr){
-            String temp = "";
-            for(int i=0; i<arr.length; i++){
-                temp+=""+arr[i];
-            }
-            return temp;
-        }
-
         public static void main(String args[]){
             int[] arr1 = new int[5];
             int n = 5;
@@ -28,9 +19,9 @@ Heres our boilerplate code
             }
 
             System.out.println("Before sorting ");
-            System.out.println(printArr(arr1));
+            System.out.println(Arrays.toString(arr1))
             sort(arr1);
-            System.out.println(printArr(arr1));
+            System.out.println(Arrays.toString(arr1))
         }
     }
 ```
@@ -48,28 +39,7 @@ So lets add that to our method!
             }
         }
 
-        //print method to make our life easier
-        public static String printArr(int[] arr){
-            String temp = "";
-            for(int i=0; i<arr.length; i++){
-                temp+=""+arr[i];
-            }
-            return temp;
-        }
-
-        public static void main(String args[]){
-            int[] arr1 = new int[5];
-            int n = 5;
-            for(int i=0; i<5; i++){
-              arr1[i] = n;
-              n--;
-            }
-
-            System.out.println("Before sorting ");
-            System.out.println(printArr(arr1));
-            sort(arr1);
-            System.out.println(printArr(arr1));
-        }
+        //P.S I have removed the main method because it gets a little repetitive but its there at the end when we finish the code :)
     }
 ```
 
@@ -84,29 +54,6 @@ Now we will need another inner loop that starts are i+1 so it can compare all th
 
                 }
             }
-        }
-
-        //print method to make our life easier
-        public static String printArr(int[] arr){
-            String temp = "";
-            for(int i=0; i<arr.length; i++){
-                temp+=""+arr[i];
-            }
-            return temp;
-        }
-
-        public static void main(String args[]){
-            int[] arr1 = new int[5];
-            int n = 5;
-            for(int i=0; i<5; i++){
-              arr1[i] = n;
-              n--;
-            }
-
-            System.out.println("Before sorting ");
-            System.out.println(printArr(arr1));
-            sort(arr1);
-            System.out.println(printArr(arr1));
         }
     }
 ```
@@ -125,29 +72,6 @@ In order to find the minimum value we need a way to keep track of each value and
 
                 }
             }
-        }
-
-        //print method to make our life easier
-        public static String printArr(int[] arr){
-            String temp = "";
-            for(int i=0; i<arr.length; i++){
-                temp+=""+arr[i];
-            }
-            return temp;
-        }
-
-        public static void main(String args[]){
-            int[] arr1 = new int[5];
-            int n = 5;
-            for(int i=0; i<5; i++){
-              arr1[i] = n;
-              n--;
-            }
-
-            System.out.println("Before sorting ");
-            System.out.println(printArr(arr1));
-            sort(arr1);
-            System.out.println(printArr(arr1));
         }
     }
 ```
@@ -168,29 +92,6 @@ Now in the inner j loop we need to check if the current value at j index is less
                     }
                 }
             }
-        }
-
-        //print method to make our life easier
-        public static String printArr(int[] arr){
-            String temp = "";
-            for(int i=0; i<arr.length; i++){
-                temp+=""+arr[i];
-            }
-            return temp;
-        }
-
-        public static void main(String args[]){
-             int[] arr1 = new int[5];
-            int n = 5;
-            for(int i=0; i<5; i++){
-              arr1[i] = n;
-              n--;
-            }
-
-            System.out.println("Before sorting ");
-            System.out.println(printArr(arr1));
-            sort(arr1);
-            System.out.println(printArr(arr1));
         }
     }
 ```
@@ -217,15 +118,6 @@ Now we are getting to the fun part of the algorithim which is swapping the eleme
             }
         }
 
-        //print method to make our life easier
-        public static String printArr(int[] arr){
-            String temp = "";
-            for(int i=0; i<arr.length; i++){
-                temp+=""+arr[i];
-            }
-            return temp;
-        }
-
         public static void main(String args[]){
             int[] arr1 = new int[5];
             int n = 5;
@@ -235,9 +127,9 @@ Now we are getting to the fun part of the algorithim which is swapping the eleme
             }
 
             System.out.println("Before sorting ");
-            System.out.println(printArr(arr1));
+            System.out.println(Arrays.toString(arr1))
             sort(arr1);
-            System.out.println(printArr(arr1));
+            System.out.println(Arrays.toString(arr1))
         }
     }
 ```
