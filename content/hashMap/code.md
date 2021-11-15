@@ -129,7 +129,6 @@ Now lets look at the helper function before we proceed.
    * Space:(1)
    */
 
-
   private Entry getEntry(T key, LinkedList<Entry> entries) {
 
     for (Entry entry : entries)
