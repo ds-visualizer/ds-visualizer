@@ -108,6 +108,8 @@ Now lets look at the helper function before we proceed.
 
 ```java:helper
 
+  // Time: O(1), Space: O(1)
+
   private int hash(T key) {
 
     // This hashCode function returns an integer and is specifically made for
@@ -121,6 +123,12 @@ Now lets look at the helper function before we proceed.
 
     return Math.abs(key.hashCode() % 10);
   }
+
+  /*
+   * Time: O(n) n-> elements in the list, with good hashing function O(1)
+   * Space:(1)
+   */
+
 
   private Entry getEntry(T key, LinkedList<Entry> entries) {
 
@@ -136,6 +144,11 @@ Now lets look at the helper function before we proceed.
 Now lets look at `put` method, its similar to what we discussed but instead we will have value bind to it.
 
 ```java:HashMap.java
+
+  /*
+   * Time: O(n) n-> elements in the list, with good hashing function O(1)
+   * Space:(1)
+   */
 
   // T and E follows the same type as given to the class
 
@@ -173,6 +186,11 @@ Similar to get function, remove function has the same logic.
 
 ```java:HashMap.java
 
+  /*
+   * Time: O(n) n-> elements in the list, with good hashing function O(1)
+   * Space:(1)
+   */
+
   void remove(T key) {
 
     LinkedList<Entry> entries = map[hash(key)];
@@ -198,6 +216,11 @@ Similar to get function, remove function has the same logic.
 Lets look at `contains` method now,
 
 ```java:HashMap.java
+
+  /*
+   * Time: O(n) n-> elements in the list, with good hashing function O(1)
+   * Space:(1)
+   */
 
   boolean contain(T key) {
     LinkedList<Entry> entries = map[hash(key)];
