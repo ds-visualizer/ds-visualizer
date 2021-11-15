@@ -69,7 +69,7 @@ const useHashMap = () => {
         {map.map((row, index) => {
           return (
             <motion.div key={index} className="flex flex-col">
-              <div className="w-14  rounded  flex justify-center items-center h-14 bg-purple-400">
+              <div className="w-14  rounded  flex justify-center items-center h-7 bg-purple-400">
                 {index}
               </div>
               <motion.div
