@@ -104,7 +104,7 @@ If you pay attention to initialization, you would observe yourself giving the ty
 
 So suppose we initializer our hashmap like `HashMap<String, Integer> map = new HashMap<String, Integer>`, our T will be String and our E will be an integer
 
-Now lets look at the helper function before we proceed.
+Now lets look at the helper functions before we proceed.
 
 ```java:helper
 
