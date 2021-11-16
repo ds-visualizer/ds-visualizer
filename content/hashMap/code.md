@@ -171,10 +171,14 @@ Now lets look at `put` method, its similar to what we discussed but instead we w
 
     Entry entry = getEntry(key, entries);
 
-    // We want the keys to be unique
+    // We want the keys to be unique,
+    // So we replace the value in the key
 
-    if (entry != null)
+    if (entry != null){
+      entry.value = value;
       return;
+    }
+
 
     entries.add(new Entry(key, value));
   }
