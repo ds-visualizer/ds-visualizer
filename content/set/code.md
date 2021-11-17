@@ -1,7 +1,7 @@
 # What is a Hash Set?
 
-Hash set is a type of data structure that is built with the same logic as hash table (hash map).
-So if you have missed the blog on hash maps, click the link <a href="/hashmap">here</a> to view hash maps.
+Hash set is similar to hash table(hash map).
+So if you missed the blog on hash maps, click the link <a href="/hashmap">here</a> to view it.
 
 In this blog, I'll be assuming that you already have knowledge of hash tables, so I won't go into specifics for each function.
 
