@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Node from "@Components/algos/BinaryTree/Node";
 import useBinaryTree from "./useBinaryTree";
-import timeOut from "@Root/misc/timeOut";
 
 export const balancedInsert = async (
   newNode: Node<number>,

@@ -11,7 +11,7 @@ interface Props {
 const button: React.FC<Props> = ({ onClick, content, type, className }) => {
   return (
     <motion.button
-      type={type}
+      type={type || "button"}
       onClick={onClick}
       whileTap={{ scale: 0.8 }}
       className={`btn border-gray-500 text-gray-100 ${className}`}
