@@ -1,21 +1,20 @@
 import React, { useRef } from "react";
 import mdxHtml from "@Root/interface/mdxHtmlType";
-import Content from "@Components/layouts/Content";
-import useHashMap from "@Components/hooks/useHashMap";
-import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
-import OptionBackground from "@Components/layouts/OptionBackground";
-import Buttons from "@Components/layouts/Buttons";
-import Button from "@Components/layouts/Button";
-import Input from "@Components/layouts/Input";
+import Content from "@Root/components/layouts/Content";
+import useHashMap from "@Root/components/hooks/useHashMap";
+import Button from "@Root/components/layouts/Button";
+import Buttons from "@Root/components/layouts/Buttons";
+import Input from "@Root/components/layouts/Input";
+import OptionBackground from "@Root/components/layouts/OptionBackground";
+import { AnimateSharedLayout } from "framer-motion";
 
 interface Props {
   html: mdxHtml[];
 }
 
 const index: React.FC<Props> = ({ html }) => {
-  const { htmlMap, put, remove } = useHashMap();
+  const { htmlMap, put, remove } = useHashMap({ type: "Set" });
   const keyRef = useRef<HTMLInputElement>(null);
-  const valueRef = useRef<HTMLInputElement>(null);
 
   return (
     <div className="">
@@ -23,20 +22,18 @@ const index: React.FC<Props> = ({ html }) => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            put(keyRef.current!.value.trim(), valueRef.current!.value.trim());
+            put(keyRef.current!.value);
             keyRef.current!.value = "";
-            valueRef.current!.value = "";
           }}
         >
           <div className="flex space-x-3">
-            <Input ref={keyRef} type="text" content="Enter Your Key" />
-            <Input ref={valueRef} type="text" content="Enter Your Value" />
+            <Input ref={keyRef} content="Enter Your Key" />
           </div>
           <Buttons>
             <Button type="submit" content="Put" />
             <Button
               onClick={() => {
-                remove(keyRef.current!.value.trim());
+                remove(keyRef.current!.value);
                 keyRef.current!.value = "";
               }}
               content="Remove"

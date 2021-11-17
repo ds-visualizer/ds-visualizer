@@ -4,7 +4,11 @@ import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 export class Node {
   static ID = 0;
   id: number;
-  constructor(public key: string, public value: string) {
+  constructor(
+    public key: string,
+    public value?: string,
+    public options: { type: "Set" | "Map" } = { type: "Map" }
+  ) {
     this.id = Node.ID++;
   }
 
@@ -28,7 +32,10 @@ export class Node {
         className="w-14  rounded  flex flex-col text-sm justify-center items-center h-14 bg-gray-400 overflow-hidden"
       >
         <div className="key">K: {this.key}</div>
-        <div className="value">V: {this.value}</div>
+
+        {this.options.type === "Map" ? (
+          <div className="value">V: {this.value}</div>
+        ) : null}
       </motion.div>
     );
   }
@@ -38,7 +45,7 @@ const hash = (str: string) => {
   return str.length % 10;
 };
 
-const useHashMap = () => {
+const useHashMap = (options: { type: "Set" | "Map" } = { type: "Map" }) => {
   const [map, setMap] = useState<Array<Array<Node>>>(new Array(10).fill([]));
   const [htmlMap, setHtmlMap] = useState<JSX.Element>();
 
@@ -46,18 +53,26 @@ const useHashMap = () => {
     setHtmlMap(renderMap());
   }, [map]);
 
-  const put = (key: string, value: string) => {
-    const index = hash(key);
+  const put = (key: string, value?: string) => {
+    let index: number;
+
+    if (options.type == "Map") index = hash(key);
+    else index = +key % 10;
+
     const newMap = [...map];
 
     if (newMap[index].find((node) => node.key === key)) return;
 
-    newMap[index] = [new Node(key, value), ...map[index]];
+    newMap[index] = [new Node(key, value, options), ...map[index]];
     setMap(newMap);
   };
 
   const remove = (key: string) => {
-    const index = hash(key);
+    let index: number;
+
+    if (options.type == "Map") index = hash(key);
+    else index = +key % 10;
+
     const newMap = [...map];
     newMap[index] = map[index].filter((node) => node.key !== key);
     setMap(newMap);

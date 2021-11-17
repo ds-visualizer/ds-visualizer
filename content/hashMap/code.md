@@ -93,7 +93,9 @@ public class HashMap<T, E> {
 
   void remove(T key) {}
 
-  boolean contain(T key) {}
+  E get() {}
+
+  boolean has(T key) {}
 
 }
 
@@ -142,7 +144,7 @@ Now lets look at the helper functions before we proceed.
 
 Now lets look at `put` method, its similar to what we discussed but instead we will have value bind to it.
 
-```java:HashMap.java
+```java:put
 
   /*
    * Time: O(n) n-> elements in the list, with good hashing function O(1)
@@ -185,9 +187,9 @@ Now lets look at `put` method, its similar to what we discussed but instead we w
 
 ```
 
-Similar to get function, remove function has the same logic.
+Similar to put function, remove function has the same logic.
 
-```java:HashMap.java
+```java:remove
 
   /*
    * Time: O(n) n-> elements in the list, with good hashing function O(1)
@@ -218,7 +220,7 @@ Similar to get function, remove function has the same logic.
 
 `get` method isn't different either
 
-```java:HashMap.java
+```java:get
 
   /*
    * Time: O(n) n-> elements in the list, with good hashing function O(1)
@@ -242,16 +244,16 @@ Similar to get function, remove function has the same logic.
 
 ```
 
-Lets look at `contains` method now,
+Lets look at `has` method now,
 
-```java:HashMap.java
+```java:has
 
   /*
    * Time: O(n) n-> elements in the list, with good hashing function O(1)
    * Space:(1)
    */
 
-  boolean contain(T key) {
+  boolean has(T key) {
     LinkedList<Entry> entries = map[hash(key)];
 
     // if no entries then entry wouldn't even exit
