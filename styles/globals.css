@@ -12,6 +12,10 @@ input {
   background-color: rgba(107, 114, 128, 0.3);
 }
 
+.comment input {
+  background-color: transparent;
+}
+
 .card {
   background-image: url("/images/card.svg");
   background-repeat: no-repeat;
