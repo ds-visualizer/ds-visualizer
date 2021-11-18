@@ -36,7 +36,8 @@ export default async function handler(
     const comments = await Prisma.comment.findMany({ where: { path } });
 
     res.status(200).json(comments);
-  } catch (_e) {
+  } catch (e) {
+    console.log(e);
     res.status(500).send("Server Error");
   }
 }
