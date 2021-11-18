@@ -3,11 +3,10 @@
 
 generator client {
   provider = "prisma-client-js"
-  // previewFeatures = ["dataProxy"]
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgres"
   url      = env("DATABASE_URL")
 }
 
