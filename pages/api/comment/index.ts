@@ -1,9 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-// import prisma from "@Root/prisma/prisma.config";
+import Prisma from "@Root/prisma/prisma.config";
 import { Comment } from "@prisma/client";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
 
 export default async function handler(
   req: NextApiRequest,
@@ -16,7 +13,7 @@ export default async function handler(
       if (!(content && parent && path && user))
         return res.status(400).send("Invalid body");
 
-      const newComment = await prisma.comment.create({
+      const newComment = await Prisma.comment.create({
         data: { content, parent, path, user },
       });
 
@@ -36,7 +33,7 @@ export default async function handler(
 
     if (typeof path === "object") return res.status(400).end("Bad request");
 
-    const comments = await prisma.comment.findMany({ where: { path } });
+    const comments = await Prisma.comment.findMany({ where: { path } });
 
     res.status(200).json(comments);
   } catch (e) {
