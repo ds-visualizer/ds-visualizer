@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import mdxHtml from "@Root/interface/mdxHtmlType";
 import Content from "@Root/components/layouts/Content";
-import useHeap from "@Components/hooks/useHeap";
+import useHeap from "@Root/hooks/useHeap";
 
 import Node from "@Components/algos/BinaryTree/Node";
 import OptionBackground from "@Components/layouts/OptionBackground";

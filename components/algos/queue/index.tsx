@@ -7,7 +7,7 @@ import Buttons from "@Root/components/layouts/Buttons";
 import Button from "@Root/components/layouts/Button";
 import { AnimateSharedLayout, AnimatePresence } from "framer-motion";
 
-import useQueue from "@Components/hooks/useQueue";
+import useQueue from "@Root/hooks/useQueue";
 
 interface Props {
   html: mdxHtml[];

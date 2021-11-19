@@ -10,7 +10,7 @@ import Node from "./Node";
 import render from "./render";
 import mdxHtml from "@Root/interface/mdxHtmlType";
 import Content from "@Root/components/layouts/Content";
-import useAdjList from "@Components/hooks/useAdjList";
+import useAdjList from "@Root/hooks/useAdjList";
 
 interface Props {
   html: mdxHtml[];
