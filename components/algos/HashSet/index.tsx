@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import mdxHtml from "@Root/interface/mdxHtmlType";
 import Content from "@Root/components/layouts/Content";
-import useHashMap from "@Root/components/hooks/useHashMap";
+import useHashMap from "@Root/hooks/useHashMap";
 import Button from "@Root/components/layouts/Button";
 import Buttons from "@Root/components/layouts/Buttons";
 import Input from "@Root/components/layouts/Input";
