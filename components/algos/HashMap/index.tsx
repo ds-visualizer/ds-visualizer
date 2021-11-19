@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import mdxHtml from "@Root/interface/mdxHtmlType";
 import Content from "@Components/layouts/Content";
-import useHashMap from "@Components/hooks/useHashMap";
+import useHashMap from "@Root/hooks/useHashMap";
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import OptionBackground from "@Components/layouts/OptionBackground";
 import Buttons from "@Components/layouts/Buttons";

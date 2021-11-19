@@ -9,7 +9,7 @@ import Content from "@Components/layouts/Content";
 
 import Node from "./Node";
 import insert from "./insert";
-import useBinaryTree from "@Components/hooks/useBinaryTree";
+import useBinaryTree from "@Root/hooks/useBinaryTree";
 
 interface Props {
   htmlContent: mdxHtml[];
