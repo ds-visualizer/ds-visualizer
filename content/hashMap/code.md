@@ -147,8 +147,8 @@ Now lets look at `put` method, its similar to what we discussed but instead we w
 ```java:put
 
   /*
-   * Time: O(n) n-> elements in the list, with good hashing function O(1)
-   * Space:(1)
+   * Time: O(n) n -> elements in the list, with good hashing function O(1)
+   * Space:(N) N -> the given elements size
    */
 
   // T and E follows the same type as given to the class
@@ -193,7 +193,7 @@ Similar to put function, remove function has the same logic.
 
   /*
    * Time: O(n) n-> elements in the list, with good hashing function O(1)
-   * Space:(1)
+   * Space:(N) N -> the given elements size
    */
 
   void remove(T key) {
@@ -224,7 +224,7 @@ Similar to put function, remove function has the same logic.
 
   /*
    * Time: O(n) n-> elements in the list, with good hashing function O(1)
-   * Space:(1)
+   * Space:(N) N -> the given elements size
    */
 
   E get(T key) {
@@ -250,7 +250,7 @@ Lets look at `has` method now,
 
   /*
    * Time: O(n) n-> elements in the list, with good hashing function O(1)
-   * Space:(1)
+   * Space:(N) N -> the given elements size
    */
 
   boolean has(T key) {
