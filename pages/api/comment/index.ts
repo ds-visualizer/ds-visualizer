@@ -9,8 +9,7 @@ export default async function handler(
   if (req.method === "POST") {
     try {
       const { content, parent, path, user }: Comment = req.body;
-
-      if (!(content && parent && path && user))
+      if (!(content && path && user))
         return res.status(400).send("Invalid body");
 
       const newComment = await Prisma.comment.create({
@@ -18,7 +17,8 @@ export default async function handler(
       });
 
       res.status(200).json(newComment);
-    } catch (_e) {
+    } catch (e) {
+      console.log(e);
       res.status(500).send("Server Error");
     }
     return;

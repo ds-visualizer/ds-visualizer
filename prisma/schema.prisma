@@ -13,7 +13,7 @@ datasource db {
 model Comment {
   id      String   @id @default(cuid())
   content String
-  parent  String
+  parent  String?
   user    String 
   path    String
 }

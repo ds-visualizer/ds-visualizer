@@ -9,7 +9,10 @@ interface Props {}
 
 const Feedback: React.FC<Props> = () => {
   const router = useRouter();
-  const [comments, setComment] = useState<Array<IComment>>([]);
+  const [commentForm, setCommentForm] = useState({
+    comment: "",
+  });
+  const [comments, setComments] = useState<Array<IComment>>([]);
 
   useEffect(() => {
     (async () => {
@@ -18,12 +21,11 @@ const Feedback: React.FC<Props> = () => {
           `/api/comment?path=${router.pathname}`
         );
 
-        setComment(res.data);
-        console.log(res.data);
+        setComments(res.data);
       } catch (e) {}
     })();
 
-    return () => setComment([]);
+    return () => setComments([]);
   }, [router.pathname]);
 
   return (
@@ -31,16 +33,41 @@ const Feedback: React.FC<Props> = () => {
       <div className="underline text-white text-lg xl:text-3xl tracking-wider font-mono my-7">
         Feedbacks
       </div>
-      <div className="flex space-x-3 items-center justify-center">
-        <div className="w-full">
-          <CommentInput inputInfo={{ name: "Comment" }} />
+      <form
+        onSubmit={async (e) => {
+          e.preventDefault();
+          const body = {
+            content: commentForm.comment,
+            path: router.pathname,
+            user: "Satvik",
+          };
+          try {
+            const res = await axios.post("/api/comment", body);
+            setComments([res.data, ...comments]);
+            setCommentForm({ ...commentForm, comment: "" });
+          } catch (e) {}
+        }}
+      >
+        <div className="flex space-x-3 items-center justify-center">
+          <div className="w-full">
+            <CommentInput
+              inputInfo={{
+                name: "Comment",
+                stateName: "comment",
+                value: commentForm.comment,
+              }}
+              handleFormState={(stateName, value) => {
+                setCommentForm({ ...commentForm, [stateName]: value });
+              }}
+            />
+          </div>
+          <div className="">
+            <button className="bg-purple-500 px-4 py-2 rounded duration-300 hover:bg-purple-700 transition-colors shadow-2xl">
+              Send
+            </button>
+          </div>
         </div>
-        <div className="">
-          <button className="bg-purple-500 px-4 py-2 rounded duration-300 hover:bg-purple-700 transition-colors shadow-2xl">
-            Send
-          </button>
-        </div>
-      </div>
+      </form>
       {comments.map((comment) => (
         <Comment comment={comment} />
       ))}
