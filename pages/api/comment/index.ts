@@ -33,7 +33,10 @@ export default async function handler(
 
     if (typeof path === "object") return res.status(400).end("Bad request");
 
-    const comments = await Prisma.comment.findMany({ where: { path } });
+    const comments = await Prisma.comment.findMany({
+      orderBy: { timeStamp: "desc" },
+      where: { path },
+    });
 
     res.status(200).json(comments);
   } catch (e) {

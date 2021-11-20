@@ -16,4 +16,5 @@ model Comment {
   parent  String?
   user    String 
   path    String
+  timeStamp DateTime @default(now())
 }

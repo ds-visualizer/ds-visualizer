@@ -19,6 +19,7 @@ const InputBox: React.FC<Props> = ({ inputInfo, handleFormState }) => {
     <div className="relative comment my-8 mx-4">
       <input
         id={name}
+        autoComplete="off"
         onChange={(e) => {
           if (!stateName) return;
           if (!handleFormState) return;

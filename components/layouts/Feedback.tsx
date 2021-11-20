@@ -4,6 +4,7 @@ import axios from "axios";
 import { Comment as IComment } from "@prisma/client";
 import Comment from "./Comment";
 import CommentInput from "./Comment.Input";
+import useGlobalContext from "@Root/hooks/useGlobalContext";
 
 interface Props {}
 
@@ -13,6 +14,10 @@ const Feedback: React.FC<Props> = () => {
     comment: "",
   });
   const [comments, setComments] = useState<Array<IComment>>([]);
+
+  const {
+    state: { user },
+  } = useGlobalContext();
 
   useEffect(() => {
     (async () => {
@@ -39,7 +44,7 @@ const Feedback: React.FC<Props> = () => {
           const body = {
             content: commentForm.comment,
             path: router.pathname,
-            user: "Satvik",
+            user: user?.user_metadata.user_name,
           };
           try {
             const res = await axios.post("/api/comment", body);

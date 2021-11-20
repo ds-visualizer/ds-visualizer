@@ -7,12 +7,10 @@ import Action from "./types";
 interface Props {}
 
 export interface IState {
-  logged: boolean;
-  user: User;
+  user: User | null;
 }
 
 const initialState: IState = {
-  logged: false,
   user: {} as User,
 };
 
