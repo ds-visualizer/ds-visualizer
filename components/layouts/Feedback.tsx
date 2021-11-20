@@ -5,6 +5,7 @@ import { Comment as IComment } from "@prisma/client";
 import Comment from "./Comment";
 import CommentInput from "./Comment.Input";
 import useGlobalContext from "@Root/hooks/useGlobalContext";
+import useError from "@Hooks/useError";
 
 interface Props {}
 
@@ -19,6 +20,8 @@ const Feedback: React.FC<Props> = () => {
     state: { user },
   } = useGlobalContext();
 
+  const [err, setErr] = useError();
+
   useEffect(() => {
     (async () => {
       try {
@@ -27,7 +30,7 @@ const Feedback: React.FC<Props> = () => {
         );
 
         setComments(res.data);
-      } catch (e) {}
+      } catch (e: any) {}
     })();
 
     return () => setComments([]);
@@ -47,34 +50,45 @@ const Feedback: React.FC<Props> = () => {
             user: user?.user_metadata.user_name,
           };
           try {
+            if (!user) throw new Error("Must be logged in");
+
             const res = await axios.post("/api/comment", body);
             setComments([res.data, ...comments]);
             setCommentForm({ ...commentForm, comment: "" });
-          } catch (e) {}
+          } catch (e: any) {
+            setErr(e.message);
+          }
         }}
       >
-        <div className="flex space-x-3 items-center justify-center">
-          <div className="w-full">
-            <CommentInput
-              inputInfo={{
-                name: "Comment",
-                stateName: "comment",
-                value: commentForm.comment,
-              }}
-              handleFormState={(stateName, value) => {
-                setCommentForm({ ...commentForm, [stateName]: value });
-              }}
-            />
+        <div className="relative">
+          <div className="flex space-x-3 items-center justify-center">
+            <div className="w-full">
+              <CommentInput
+                inputInfo={{
+                  name: "Comment",
+                  stateName: "comment",
+                  value: commentForm.comment,
+                }}
+                handleFormState={(stateName, value) => {
+                  setCommentForm({ ...commentForm, [stateName]: value });
+                }}
+              />
+            </div>
+            <div className="">
+              <button className="bg-purple-500 px-4 py-2 rounded duration-300 hover:bg-purple-700 transition-colors shadow-2xl">
+                Send
+              </button>
+            </div>
           </div>
-          <div className="">
-            <button className="bg-purple-500 px-4 py-2 rounded duration-300 hover:bg-purple-700 transition-colors shadow-2xl">
-              Send
-            </button>
-          </div>
+          {err && (
+            <div className="absolute bottom-0 left-10 text-red-600 bold">
+              {err}
+            </div>
+          )}
         </div>
       </form>
       {comments.map((comment) => (
-        <Comment comment={comment} />
+        <Comment comment={comment} key={comment.id} />
       ))}
     </div>
   );
