@@ -6,6 +6,7 @@ import Comment from "./Comment";
 import CommentInput from "./Comment.Input";
 import useGlobalContext from "@Root/hooks/useGlobalContext";
 import useError from "@Hooks/useError";
+import { AnimateSharedLayout } from "framer-motion";
 
 interface Props {}
 
@@ -87,9 +88,12 @@ const Feedback: React.FC<Props> = () => {
           )}
         </div>
       </form>
-      {comments.map((comment) => (
-        <Comment comment={comment} key={comment.id} />
-      ))}
+
+      <AnimateSharedLayout>
+        {comments.map((comment) => (
+          <Comment comment={comment} key={comment.id} />
+        ))}
+      </AnimateSharedLayout>
     </div>
   );
 };
