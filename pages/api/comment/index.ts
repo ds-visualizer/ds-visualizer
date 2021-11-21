@@ -8,12 +8,12 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     try {
-      const { content, parent, path, user }: Comment = req.body;
-      if (!(content && path && user))
+      const { content, parent, path, user, email }: Comment = req.body;
+      if (!(content && path && user && email))
         return res.status(400).send("Invalid body");
 
       const newComment = await Prisma.comment.create({
-        data: { content, parent, path, user },
+        data: { content, parent, path, user, email },
       });
 
       res.status(200).json(newComment);
