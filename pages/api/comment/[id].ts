@@ -9,9 +9,11 @@ export default async function handler(
 ) {
   if (req.method === "DELETE") {
     try {
-      const jwt_secret = process.env["JWT_SECRET"]!;
+      const jwt_secret = process.env["JWT_SECRET"];
       const { jwt_token }: any = req.headers;
       const { id } = req.query;
+
+      if (!jwt_secret) return res.status(501).send("No token");
 
       if (typeof id === "object") return res.status(400).send("Wrong params");
 
