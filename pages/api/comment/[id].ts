@@ -28,7 +28,7 @@ export default async function handler(
           id: id,
         },
       });
-      console.log(comment);
+
       if (!comment)
         return res.status(400).send("No comment found with that ID");
 
@@ -48,7 +48,8 @@ export default async function handler(
       console.log("Deleted");
 
       return res.status(200).send("Deleted the comment");
-    } catch (_e) {
+    } catch (e) {
+      console.log(e);
       return res.status(500).send("Server Error");
     }
   } else if (req.method == "GET") {
