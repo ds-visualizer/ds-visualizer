@@ -47,21 +47,19 @@ export default async function handler(
 
       return res.status(200).send("Deleted the comment");
     } catch (_e) {
-      res.status(500).send("Server Error");
+      return res.status(500).send("Server Error");
     }
-  }
+  } else if (req.method == "GET") {
+    const { id } = req.query;
 
-  if (req.method !== "GET") res.status(405).end("Method not allowed");
+    if (!id || typeof id !== "string") return;
 
-  const { id } = req.query;
+    const comments = await Prisma.comment.findMany({
+      where: {
+        parent: id,
+      },
+    });
 
-  if (!id || typeof id !== "string") return;
-
-  const comments = await Prisma.comment.findMany({
-    where: {
-      parent: id,
-    },
-  });
-
-  res.send(comments);
+    res.send(comments);
+  } else res.status(405).end("Method not allowed");
 }
