@@ -37,15 +37,11 @@ export default async function handler(
           .status(401)
           .send("You don't have authorization to delete the comment");
 
-      console.log("Before deleting");
-
-      await prisma.comment.delete({
+      await Prisma.comment.delete({
         where: {
           id,
         },
       });
-
-      console.log("Deleted");
 
       return res.status(200).send("Deleted the comment");
     } catch (e) {
