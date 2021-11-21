@@ -49,14 +49,14 @@ const Comment: React.FC<Props> = ({ comment, deleteComment }) => {
             <button
               onClick={async () => {
                 try {
-                  const jwtToken = supabase?.session.access_token;
+                  const jwtToken = supabase?.currentSession.access_token;
 
                   await axios.delete(`/api/comment/${id}`, {
                     headers: {
                       JWT_TOKEN: jwtToken,
                     },
                   });
-                  
+
                   deleteComment(id);
                 } catch (e: any) {
                   console.log(e.message);

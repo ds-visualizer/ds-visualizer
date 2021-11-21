@@ -43,7 +43,7 @@ export default async function handler(
         },
       });
 
-      res.status(200).send("Deleted the comment");
+      return res.status(200).send("Deleted the comment");
     } catch (_e) {
       res.status(500).send("Server Error");
     }
