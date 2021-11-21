@@ -37,6 +37,10 @@ const Feedback: React.FC<Props> = () => {
     return () => setComments([]);
   }, [router.pathname]);
 
+  const deleteComment = (id: string) => {
+    setComments(comments.filter((comment) => comment.id != id));
+  };
+
   return (
     <div className="px-3">
       <div className="underline text-white text-lg xl:text-3xl tracking-wider font-mono my-7">
@@ -44,14 +48,18 @@ const Feedback: React.FC<Props> = () => {
       </div>
       <form
         onSubmit={async (e) => {
-          e.preventDefault();
-          const body = {
-            content: commentForm.comment,
-            path: router.pathname,
-            user: user?.user_metadata.user_name,
-          };
           try {
+            e.preventDefault();
             if (!user) throw new Error("Must be logged in");
+            if (!commentForm.comment)
+              throw new Error("Comment field must not be empty");
+
+            const body = {
+              content: commentForm.comment,
+              path: router.pathname,
+              user: user.user_metadata.user_name,
+              email: user.email,
+            };
 
             const res = await axios.post("/api/comment", body);
             setComments([res.data, ...comments]);
@@ -91,7 +99,11 @@ const Feedback: React.FC<Props> = () => {
 
       <AnimateSharedLayout>
         {comments.map((comment) => (
-          <Comment comment={comment} key={comment.id} />
+          <Comment
+            comment={comment}
+            key={comment.id}
+            deleteComment={deleteComment}
+          />
         ))}
       </AnimateSharedLayout>
     </div>

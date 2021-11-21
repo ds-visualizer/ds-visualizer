@@ -11,10 +11,11 @@ datasource db {
 }
 
 model Comment {
-  id      String   @id @default(cuid())
-  content String
-  parent  String?
-  user    String 
-  path    String
+  id        String   @id @default(cuid())
+  content   String
+  parent    String?
+  user      String
+  path      String
   timeStamp DateTime @default(now())
+  email     String   
 }
