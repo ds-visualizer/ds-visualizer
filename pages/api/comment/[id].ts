@@ -18,19 +18,20 @@ export default async function handler(
       if (typeof id === "object") return res.status(400).send("Wrong params");
 
       let data: User;
-
+      console.log("before verifying");
       try {
         data = jwt.verify(jwt_token, jwt_secret) as User;
       } catch (_e) {
         return res.status(400).send("Invalid Token");
       }
+      console.log("after verifying");
 
       const comment = await Prisma.comment.findUnique({
         where: {
           id: id,
         },
       });
-
+      console.log(comment);
       if (!comment)
         return res.status(400).send("No comment found with that ID");
 
@@ -44,6 +45,7 @@ export default async function handler(
           id,
         },
       });
+      console.log("deleted");
 
       return res.status(200).send("Deleted the comment");
     } catch (_e) {
