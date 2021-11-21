@@ -1029,6 +1029,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"base64-url@npm:^2.3.2":
+  version: 2.3.3
+  resolution: "base64-url@npm:2.3.3"
+  checksum: 3b231b4b5e82ae8834a1616a53b6eb5666e5604072bc0d631826be28ce0c8181cc1fbbb96591a3060777bff3c6000c70068c4f89ee29145e24011b0531cc5353
+  languageName: node
+  linkType: hard
+
 "big.js@npm:^5.2.2":
   version: 5.2.2
   resolution: "big.js@npm:5.2.2"
@@ -2994,6 +3001,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is.object@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "is.object@npm:1.0.0"
+  checksum: 42a367616bb791fded3b4855f58eb0723d6e73696c9e777abc94481674325aae03ad8114c7819c1a0eb17b4f9547de80f89338b429d949e26f6c781cc085b3d7
+  languageName: node
+  linkType: hard
+
 "isarray@npm:~1.0.0":
   version: 1.0.0
   resolution: "isarray@npm:1.0.0"
@@ -3039,6 +3053,25 @@ __metadata:
   version: 2.3.1
   resolution: "json-parse-even-better-errors@npm:2.3.1"
   checksum: 798ed4cf3354a2d9ccd78e86d2169515a0097a5c133337807cdf7f1fc32e1391d207ccfc276518cc1d7d8d4db93288b8a50ba4293d212ad1336e52a8ec0a941f
+  languageName: node
+  linkType: hard
+
+"json-parse-safe@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "json-parse-safe@npm:2.0.0"
+  checksum: 117e334a166d73d523eeedbad38d92834f4fbf20c6141ebc579ad7c7ccc8ad21dcdb3dcd0eef783bcbcf138bad4e9ab4abd58b38c4a1f77e84cfe4168accad34
+  languageName: node
+  linkType: hard
+
+"json-web-token@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "json-web-token@npm:3.2.0"
+  dependencies:
+    base64-url: ^2.3.2
+    is.object: ^1.0.0
+    json-parse-safe: ^2.0.0
+    xtend: ^4.0.2
+  checksum: e0077b9d543c6ea789697b08acaa0e3134bf1d17d9835ca7f74177d28ba5667f32cf77bb59e77999271b1e83f77de82f4e0fac6392b9e80c9f554932a1e5461d
   languageName: node
   linkType: hard
 
@@ -4478,6 +4511,7 @@ __metadata:
     autoprefixer: ^10.2.6
     axios: ^0.24.0
     framer-motion: ^4.1.17
+    json-web-token: ^3.2.0
     next: ^12.0.0
     next-mdx-remote: ^3.0.5
     postcss: ^8.3.5
