@@ -18,14 +18,11 @@ export default async function handler(
       if (typeof id === "object") return res.status(400).send("Wrong params");
 
       let data: User;
-      console.log("before verifying");
       try {
         data = jwt.verify(jwt_token, jwt_secret) as User;
       } catch (_e) {
         return res.status(400).send("Invalid Token");
       }
-      console.log("after verifying");
-
       const comment = await Prisma.comment.findUnique({
         where: {
           id: id,
@@ -40,12 +37,15 @@ export default async function handler(
           .status(401)
           .send("You don't have authorization to delete the comment");
 
+      console.log("Before deleting");
+
       await prisma.comment.delete({
         where: {
           id,
         },
       });
-      console.log("deleted");
+
+      console.log("Deleted");
 
       return res.status(200).send("Deleted the comment");
     } catch (_e) {
