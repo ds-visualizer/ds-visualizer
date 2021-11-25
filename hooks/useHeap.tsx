@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import Node from "@Components/algos/BinaryTree/Node";
 import useBinaryTree from "./useBinaryTree";
-import timeOut from "@Root/misc/timeOut";
 
 export const balancedInsert = async (
   newNode: Node<number>,
@@ -41,7 +40,7 @@ const useHeap = (root: { root: Node<number> | null }) => {
   const [heap, setHeap] = useState<JSX.Element[]>([]);
   const [methodType, setMethodType] = useState<"" | "Insert" | "Remove">("");
   const [next, setNext] = useState(true);
-  const [index, setIndex] = useState(0);
+  const index = useRef(0);
   const [insertProcess, setInsertProcess] = useState(false);
 
   useEffect(() => {
@@ -51,12 +50,13 @@ const useHeap = (root: { root: Node<number> | null }) => {
 
   useEffect(() => {
     if (methodType == "Insert")
-      if (arr[index] <= parent(index)) {
+      if (arr[index.current] <= parent(index.current)) {
         return setNext(true);
       }
 
     if (methodType == "Remove")
-      if (index < arr.length && isValidParent(index)) return setNext(true);
+      if (index.current < arr.length && isValidParent(index.current))
+        return setNext(true);
   }, [arr]);
 
   useEffect(() => {
@@ -149,7 +149,7 @@ const useHeap = (root: { root: Node<number> | null }) => {
     arr.push(new Node(value));
 
     setArr([...arr]);
-    setIndex(arr.length - 1);
+    index.current = arr.length - 1;
 
     setMethodType("Insert");
 
@@ -167,7 +167,7 @@ const useHeap = (root: { root: Node<number> | null }) => {
     if (!el) return setArr([...arr]);
     arr.unshift(el);
     setArr([...arr]);
-    setIndex(0);
+    index.current = 0;
     setMethodType("Remove");
 
     0 < arr.length && isValidParent(0) ? setNext(true) : setNext(false);
@@ -179,24 +179,24 @@ const useHeap = (root: { root: Node<number> | null }) => {
     if (methodType == "") return;
 
     if (methodType == "Insert") {
-      if (arr[index] <= parent(index)) return setMethodType("");
+      if (arr[index.current] <= parent(index.current)) return setMethodType("");
 
-      bubbleUp(index);
+      bubbleUp(index.current);
       setArr([...arr]);
-      setIndex(parentIndex(index));
+      index.current = parentIndex(index.current);
     }
 
     if (methodType == "Remove") {
-      if (index < arr.length && isValidParent(index)) {
+      if (index.current < arr.length && isValidParent(index.current)) {
         setMethodType("");
         setNext(true);
         return;
       }
 
-      let largerChild = largerChildIndex(index);
-      bubbleDown(index, largerChild);
+      let largerChild = largerChildIndex(index.current);
+      bubbleDown(index.current, largerChild);
       setArr([...arr]);
-      setIndex(largerChild);
+      index.current = largerChild;
     }
   };
 

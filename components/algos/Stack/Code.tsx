@@ -7,7 +7,7 @@ import Button from "@Root/components/layouts/Button";
 import Content from "@Root/components/layouts/Content";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
-import useStack from "@Components/hooks/useStack";
+import useStack from "@Root/hooks/useStack";
 
 interface Props {
   html: MDXRemoteSerializeResult<Record<string, unknown>>;

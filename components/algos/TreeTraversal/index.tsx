@@ -8,7 +8,7 @@ import Input from "@Components/layouts/Input";
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import insert from "@Components/algos/BinaryTree/insert";
 
-import useBinaryTree from "@Root/components/hooks/useBinaryTree";
+import useBinaryTree from "@Root/hooks/useBinaryTree";
 import Node from "@Components/algos/BinaryTree/Node";
 import popUp from "./popUpNode";
 

@@ -12,6 +12,10 @@ input {
   background-color: rgba(107, 114, 128, 0.3);
 }
 
+.comment input {
+  background-color: transparent;
+}
+
 .card {
   background-image: url("/images/card.svg");
   background-repeat: no-repeat;
@@ -35,7 +39,7 @@ input {
   }
 
   .blog blockquote p {
-    @apply text-gray-100;
+    @apply text-gray-400;
   }
 
   p {
@@ -46,18 +50,18 @@ input {
     @apply text-white text-4xl md:text-5xl  2xl:text-7xl text-center pb-3;
   }
   .blog h2 {
-    @apply text-3xl md:text-4xl  2xl:text-6xl;
+    @apply text-3xl text-white md:text-4xl  2xl:text-6xl;
   }
   .blog h3 {
-    @apply text-2xl md:text-3xl  2xl:text-4xl;
+    @apply text-2xl text-white md:text-3xl  2xl:text-4xl;
   }
 
   .blog > * {
-    @apply text-base md:text-lg xl:text-xl leading-[1.6rem] md:leading-[1.8rem] xl:leading-[2rem] text-gray-300;
+    @apply text-base md:text-lg xl:text-xl leading-[1.6rem] md:leading-[1.8rem] xl:leading-[2rem] text-gray-100;
   }
 
   .blog pre code {
-    @apply text-base text-gray-200 px-2 py-2;
+    @apply text-base text-gray-300 px-2 py-2;
   }
 
   .blog pre {

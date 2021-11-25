@@ -1,7 +1,7 @@
 import Content from "@Root/components/layouts/Content";
 import React, { useEffect, useRef, useState } from "react";
 import mdxHtml from "@Root/interface/mdxHtmlType";
-import useHeap from "@Components/hooks/useHeap";
+import useHeap from "@Root/hooks/useHeap";
 import Node from "@Components/algos/BinaryTree/Node";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import OptionBackground from "@Components/layouts/OptionBackground";
