@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import * as marked from "marked";
 import HtmlComponent from "./HtmlComponent";
 import MdxComponent from "./MdxComponent";
@@ -13,6 +13,11 @@ const index: React.FC<Props> = () => {
   const [htmlContent, setHtmlContent] = useState<string>("");
   const [mode, setMode] = useState<Mode>("Side");
   const [fileName, setFileName] = useState("");
+  const saveRef = useRef(true);
+
+  useEffect(() => {
+    setMdxContent(localStorage.getItem("currentFile") || "");
+  }, []);
 
   useEffect(() => {
     setHtmlContent(marked.marked(mdxContent));
@@ -94,7 +99,6 @@ const index: React.FC<Props> = () => {
             const file = new Blob([mdxContent], {
               type: "text/plain",
             });
-
             const url = URL.createObjectURL(file);
             const link = document.createElement("a");
             link.href = url;
