@@ -12,6 +12,7 @@ const index: React.FC<Props> = () => {
   const [mdxContent, setMdxContent] = useState<string>("");
   const [htmlContent, setHtmlContent] = useState<string>("");
   const [mode, setMode] = useState<Mode>("Side");
+  const [fileName, setFileName] = useState("");
 
   useEffect(() => {
     setHtmlContent(marked.marked(mdxContent));
@@ -30,9 +31,11 @@ const index: React.FC<Props> = () => {
             type="file"
             onChange={(e) => {
               if (!e.target.files?.length) return;
-
+              const file = e.target.files[0];
+              setFileName(file.name);
               const reader = new FileReader();
-              reader.readAsText(e.target.files[0]);
+              reader.readAsText(file);
+
               reader.onload = () =>
                 setMdxContent((reader.result as string) || "");
             }}
@@ -95,7 +98,7 @@ const index: React.FC<Props> = () => {
             const url = URL.createObjectURL(file);
             const link = document.createElement("a");
             link.href = url;
-            link.download = "content.md";
+            link.download = fileName || "content.md";
             link.click();
           }}
         />
