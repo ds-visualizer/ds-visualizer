@@ -21,6 +21,7 @@ const index: React.FC<Props> = () => {
 
   useEffect(() => {
     setHtmlContent(marked.marked(mdxContent));
+    localStorage.setItem("currentFile", mdxContent);
   }, [mdxContent]);
 
   const onClick = (type: Mode) => setMode(type);
