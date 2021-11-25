@@ -4,6 +4,7 @@ import React, {
   useRef,
   useState,
   MouseEvent,
+  FormEvent,
 } from "react";
 import { Value } from "@Root/misc/algo/arrValue";
 import OptionBackground from "@Components/layouts/OptionBackground";
@@ -23,7 +24,7 @@ const Index = ({ html }: Props) => {
   const [renderArr, setRenderArr] = useState<JSX.Element[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const addToArr = (e: MouseEvent<HTMLButtonElement>) => {
+  const addToArr = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const value = parseInt(inputRef.current?.value || "0");
 
@@ -48,13 +49,32 @@ const Index = ({ html }: Props) => {
     setValues(values);
   };
 
+  const selectedEffect = async (
+    value: Value | null,
+    color: string,
+    delay: number
+  ) => {
+    if (!value) return;
+    const valueElement = document.querySelector<HTMLDivElement>(
+      `.a${value.key}`
+    );
+    if (!valueElement) return;
+    valueElement.style.transform = "scale(1.3)";
+    valueElement.style.backgroundColor = color;
+    await addDelay(delay);
+    valueElement.style.transform = "scale(1)";
+    valueElement.style.backgroundColor = "#9ca3af";
+  };
+
   const sortArray = async () => {
     let minPos = 0;
     for (let i = 0; i < values.length - 1; i++) {
       minPos = i;
+      selectedEffect(values[i], "#12c9bd", 1000 * (values.length - i));
       for (let j = i + 1; j < values.length; j++) {
         if (values[j].value < values[minPos].value) {
           minPos = j;
+          await selectedEffect(values[minPos], "#be12c9", 1000);
         }
       }
       swapElements(minPos, i);
@@ -62,7 +82,6 @@ const Index = ({ html }: Props) => {
       await addDelay(1000);
     }
     setStart(false);
-    alert("Sort Completed");
   };
 
   const renderArray = () => {
@@ -90,7 +109,16 @@ const Index = ({ html }: Props) => {
               setStart(true);
             }}
           ></Button>
-          <Button content="Insert" onClick={(e) => addToArr(e)}></Button>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              addToArr(e);
+              inputRef.current!.value = "";
+              inputRef.current?.focus();
+            }}
+          >
+            <Button content="Insert"></Button>
+          </form>
         </Buttons>
       </OptionBackground>
       <div className="flex justify-center w-full h-full p-6">{renderArr}</div>

@@ -31,9 +31,7 @@ export class Value {
           damping: 20,
           stiffness: 100,
         }}
-        className={`${styles.divClass} ${
-          this.selected ? "border-4 border-white" : ""
-        }`}
+        className={`a${this.key} ${styles.divClass}`}
       >
         {this.value}
       </motion.div>
