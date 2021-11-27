@@ -1,23 +1,52 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import useGlobalContext from "@Root/hooks/useGlobalContext";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 interface Props {
   signIn: () => void;
   signOut: () => void;
 }
 
+interface LinkProps {
+  name: string;
+  onClick: (name: string) => void;
+  path: string;
+}
+
+const NavLink: React.FC<LinkProps> = ({ path, name, onClick }) => {
+  const router = useRouter();
+  return (
+    <Link href={path}>
+      <a
+        className={`${
+          router.pathname == path ? "text-white" : "text-gray-300"
+        } hover:text-gray-200 transition-colors`}
+      >
+        <span
+          onClick={() => {
+            onClick(name);
+          }}
+        >
+          {name}
+        </span>
+      </a>
+    </Link>
+  );
+};
 const NavBar: React.FC<Props> = ({ signOut, signIn }) => {
   const { state } = useGlobalContext();
   const { user } = state;
+  const [option, setOption] = useState("");
 
   return (
     <div className=" sticky top-0 z-40  backdrop-blur-[3px]">
       <div className=" border-b flex justify-between  py-3 px-6 mx-8 border-gray-600">
-        <Link href="/">
-          <a className="text-white">Home</a>
-        </Link>
+        <div className="flex space-x-3">
+          <NavLink path="/" name="Home" onClick={setOption} />
+          <NavLink path="/visualizer" name="Visualizer" onClick={setOption} />
+        </div>
         {!user ? (
           <button
             className="text-gray-300 hover:text-gray-100 transition-colors"
