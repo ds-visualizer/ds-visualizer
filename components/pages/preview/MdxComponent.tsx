@@ -12,7 +12,8 @@ interface Props {
 
 const MdxComponent = forwardRef<boolean, Props>(
   ({ setMdxContent, mdxContent }, saveRef) => {
-    const onDragEnter = async (e: React.DragEvent<HTMLDivElement>) => {
+
+    const onDrop = async (e: React.DragEvent<HTMLDivElement>) => {
       e.preventDefault();
       e.stopPropagation();
       const item = e.dataTransfer.items[0];
@@ -41,7 +42,7 @@ const MdxComponent = forwardRef<boolean, Props>(
     };
 
     return (
-      <div className="h-full" onDrop={onDragEnter}>
+      <div className="h-full" onDrop={onDrop}>
         <textarea
           onChange={(e) => {
             setMdxContent(e.target.value);
