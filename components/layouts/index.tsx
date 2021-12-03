@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import superbase from "@Root/superbase.config";
+import superbase from "@Root/supabase.config";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import { useRouter } from "next/router";
