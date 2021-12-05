@@ -24,7 +24,7 @@ const Index = ({ html }: Props) => {
   const [renderArr, setRenderArr] = useState<JSX.Element[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const addToArr = (e: FormEvent<HTMLFormElement>) => {
+  const addToArr = (e: FormEvent<HTMLFormElement> | Event) => {
     e.preventDefault();
     const value = parseInt(inputRef.current?.value || "0");
 
@@ -66,20 +66,29 @@ const Index = ({ html }: Props) => {
     valueElement.style.backgroundColor = "#9ca3af";
   };
 
+  const removeColor = async (value: Value | null) => {
+    if (!value) return;
+    const valueElement = document.querySelector<HTMLDivElement>(
+      `.a${value.key}`
+    );
+    if (!valueElement) return;
+    valueElement.style.backgroundColor = "#9ca3af";
+  };
+
   const sortArray = async () => {
     let minPos = 0;
     for (let i = 0; i < values.length - 1; i++) {
       minPos = i;
-      selectedEffect(values[i], "#12c9bd", 1000 * (values.length - i));
+      selectedEffect(values[i], "#be12c9", 1000 * (values.length - i));
       for (let j = i + 1; j < values.length; j++) {
         if (values[j].value < values[minPos].value) {
           minPos = j;
-          await selectedEffect(values[minPos], "#be12c9", 1000);
+          await selectedEffect(values[minPos], "#12c9bd", 1200);
         }
       }
       swapElements(minPos, i);
       renderArray();
-      await addDelay(1000);
+      removeColor(values[minPos]);
     }
     setStart(false);
   };
@@ -101,25 +110,35 @@ const Index = ({ html }: Props) => {
   return (
     <div className="w-full flex flex-col  align-center">
       <OptionBackground>
-        <Input ref={inputRef} content="Element to add into the array: " />
-        <Buttons>
-          <Button
-            content="Sort"
-            onClick={async () => {
-              setStart(true);
-            }}
-          ></Button>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              addToArr(e);
-              inputRef.current!.value = "";
-              inputRef.current?.focus();
-            }}
-          >
-            <Button content="Insert"></Button>
-          </form>
-        </Buttons>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            addToArr(e);
+            console.log("e");
+            inputRef.current!.value = "";
+            inputRef.current?.focus();
+          }}
+        >
+          <Input ref={inputRef} content="Element to add into the array: " />
+          <Buttons>
+            <Button
+              content="Sort"
+              onClick={async () => {
+                setStart(true);
+              }}
+            ></Button>
+            <Button
+              content="Insert"
+              onClick={(e: Event) => {
+                e.preventDefault();
+                addToArr(e);
+                console.log("e");
+                inputRef.current!.value = "";
+                inputRef.current?.focus();
+              }}
+            ></Button>
+          </Buttons>
+        </form>
       </OptionBackground>
       <div className="flex justify-center w-full h-full p-6">{renderArr}</div>
       <div>
