@@ -10,7 +10,7 @@ interface Props {}
 
 const index: React.FC<Props> = ({ children }) => {
   const router = useRouter();
-  const footerNotIn = ["/", "/preview"];
+  const footerNotIn = ["/", "/preview", "/visualizer"];
   const { dispatch } = useGlobalContext();
 
   useEffect(() => {
