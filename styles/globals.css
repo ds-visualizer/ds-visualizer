@@ -50,7 +50,7 @@ input {
   }
 
   .blog h1 {
-    @apply text-blue-700 text-4xl md:text-5xl  2xl:text-7xl text-center pb-3;
+    @apply text-blue-500 text-4xl md:text-5xl  2xl:text-7xl pb-3;
   }
   .blog h2 {
     @apply text-3xl text-blue-500 md:text-4xl  2xl:text-6xl;
@@ -59,14 +59,14 @@ input {
     @apply text-2xl text-blue-500 md:text-3xl  2xl:text-4xl;
   }
   .blog strong {
-    @apply text-blue-500;
+    @apply text-blue-600;
   }
   .blog > * {
     @apply text-base w-[85%] md:text-lg xl:text-xl leading-[1.6rem] md:leading-[1.8rem] xl:leading-[2rem] text-gray-100;
   }
 
   .blog pre code {
-    @apply text-base text-gray-300 px-2 py-2 font-normal;
+    @apply text-base text-gray-300 px-2 py-2 font-normal after:content-[''] before:content-[''];
   }
 
   .blog pre {
@@ -77,8 +77,9 @@ input {
   }
 
   .blog code {
-    @apply underline text-blue-300 font-bold;
+    @apply after:content-['\`'] before:content-['\`'] before:text-blue-500 after:text-blue-500 text-blue-400 font-bold;
   }
+
   .blog {
     @apply flex items-center flex-col;
   }
@@ -87,10 +88,11 @@ input {
     @apply bg-gray-800 bg-gradient-to-br px-3 w-full py-4 to-gray-700;
   } */
 }
+
 .remark-code-title {
   width: 100%;
   background-color: #1f2837;
-  color: rgb(167, 80, 80);
+  color: rgb(45, 105, 201);
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
   transform: translateY(0.5rem);
