@@ -1,6 +1,13 @@
 import Route from "@Root/interface/Route";
 
 const routes: Array<Route> = [
+  {
+    name: "Pairs In An Array",
+    path: "/pairs-in-an-array",
+    type: "Algorithm",
+    category: "2 pointer",
+  },
+
   { name: "Hash Sets", path: "/hashset", type: "Visualizer" },
   { name: "Hash Maps", path: "/hashmap", type: "Visualizer" },
   { name: "Priority Queue", path: "/priorityqueue", type: "Visualizer" },
