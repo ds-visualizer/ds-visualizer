@@ -9,7 +9,7 @@ const routes: Array<Route> = [
   { name: "Tree Traversals", path: "/treetraversals", type: "Visualizer" },
   { name: "Graph", path: "/graph", type: "Visualizer" },
   { name: "Binary Tree", path: "/binarytree", type: "Visualizer" },
-  { name: "Tree", path: "/tree", type: "Visualizer" },
+  // { name: "Tree", path: "/tree", type: "Visualizer" },
   { name: "Queue", path: "/queue", type: "Visualizer" },
   { name: "Stack", path: "/stack", type: "Visualizer" },
   { name: "LinkedList", path: "/linkedlist", type: "Visualizer" },

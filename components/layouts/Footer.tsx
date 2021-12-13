@@ -14,8 +14,7 @@ const Footer: React.FC<Props> = () => {
         <div className="px-4 py-6 text-primary bg-purple-800 bg-gradient-to-r rounded from-purple-900">
           <p>Thanks for reading it till the end.</p>
           <p>
-            If any typo or bug found, feel free to contribute by fixing the typo
-            or putting up an issue in{" "}
+            If any typo or bug found by putting up an issue in{" "}
             <a
               className="text-blue-400 underline"
               target="_blank"
@@ -27,7 +26,7 @@ const Footer: React.FC<Props> = () => {
         </div>
         <div className="px-4 py-6 text-primary bg-purple-800 bg-gradient-to-r rounded from-purple-900">
           <p>
-            All the codes can be found here{" "}
+            The code can be found{" "}
             <a
               className="text-blue-400 underline"
               href={`https://github.com/ds-visualizer/Java-Codes/tree/main${router.pathname}`}
