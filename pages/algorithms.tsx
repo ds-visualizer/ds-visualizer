@@ -5,11 +5,11 @@ import Layout from "@Components/layouts/HomeLayout";
 import Metadata from "@Root/components/layouts/Metadata";
 
 const algorithm: NextPage = () => {
-  const visualizerRoutes = routes.filter((route) => route.type == "Visualizer");
+  const visualizerRoutes = routes.filter((route) => route.type == "Algorithm");
   return (
     <div className="flex flex-col items-center justify-center py-2">
-      <Metadata title="Visualizer" />
-      <Layout heading="Visualizer" routes={visualizerRoutes} />
+      <Metadata title="Algorithm" />
+      <Layout heading="Algorithm" routes={visualizerRoutes} />
     </div>
   );
 };
