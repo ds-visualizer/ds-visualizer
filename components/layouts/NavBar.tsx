@@ -11,11 +11,10 @@ interface Props {
 
 interface LinkProps {
   name: string;
-  onClick: (name: string) => void;
   path: string;
 }
 
-const NavLink: React.FC<LinkProps> = ({ path, name, onClick }) => {
+const NavLink: React.FC<LinkProps> = ({ path, name }) => {
   const router = useRouter();
   return (
     <Link href={path}>
@@ -24,13 +23,7 @@ const NavLink: React.FC<LinkProps> = ({ path, name, onClick }) => {
           router.pathname == path ? "text-white" : "text-gray-300"
         } hover:text-gray-200 transition-colors`}
       >
-        <span
-          onClick={() => {
-            onClick(name);
-          }}
-        >
-          {name}
-        </span>
+        <span>{name}</span>
       </a>
     </Link>
   );
@@ -38,14 +31,14 @@ const NavLink: React.FC<LinkProps> = ({ path, name, onClick }) => {
 const NavBar: React.FC<Props> = ({ signOut, signIn }) => {
   const { state } = useGlobalContext();
   const { user } = state;
-  const [option, setOption] = useState("");
 
   return (
     <div className=" sticky top-0 z-40  backdrop-blur-[3px]">
       <div className=" border-b flex justify-between  py-3 px-6 mx-8 border-gray-600">
         <div className="flex space-x-3">
-          <NavLink path="/" name="Home" onClick={setOption} />
-          <NavLink path="/visualizer" name="Visualizer" onClick={setOption} />
+          <NavLink path="/" name="Home" />
+          <NavLink path="/visualizer" name="Visualizer" />
+          <NavLink path="/algorithms" name="Algorithms" />
         </div>
         {!user ? (
           <button
