@@ -6,11 +6,11 @@ Its similar to an array, in an array the key is the index while the value is the
 
 ## What makes Hash Maps so amazing?
 
-Hash maps have an amazing look up and removal times. The Look up and removal time of hash map is O(1). They are mostly used in algorithms to reduce the time complexities.
+Hash maps have an amazing look up and removal times. The Look up and removal time of hash maps are O(1). They are mostly used in algorithms to reduce the time complexities.
 
 Before we go into hash map implementation, lets build our own hashmap.
 
-> Keyword **HASH**, hashing is a one function, similar to encryption message but instead when you hash something you don't get the data back to original form.
+> Keyword **HASH**, hashing is a function, similar to encryption message but instead when you hash something you don't get the data back to original form.
 
 ```text:example.txt
 
