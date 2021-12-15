@@ -5,19 +5,24 @@ import path from "path";
 import serialize from "@Misc/serialize";
 import mdxHtml from "@Root/interface/mdxHtmlType";
 import DynamicPages from "@Root/components/pages/algorithms/DynamicPages";
+import { IMeta } from "@Root/interface/Meta";
+import Metadata from "@Root/components/layouts/Metadata";
 
 const id = ({
   codeHtml,
   questionHtml,
   meta,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => (
-  <DynamicPages code={codeHtml} question={questionHtml} meta={meta} />
+  <>
+    <Metadata {...meta} />
+    <DynamicPages code={codeHtml} question={questionHtml} />
+  </>
 );
 
 export const getServerSideProps: GetServerSideProps<{
   codeHtml: mdxHtml;
   questionHtml: mdxHtml;
-  meta: string;
+  meta: IMeta;
 }> = async ({ res, query }) => {
   //
   try {
@@ -36,7 +41,10 @@ export const getServerSideProps: GetServerSideProps<{
 
     const code = fs.readFileSync(filePath + "/code.md", "utf-8");
     const question = fs.readFileSync(filePath + "/question.md", "utf-8");
-    const meta = fs.readFileSync(filePath + "/Meta.json", "utf-8");
+
+    const meta = JSON.parse(
+      fs.readFileSync(filePath + "/Meta.json", "utf-8")
+    ) as IMeta;
 
     // Serializing it to html
 

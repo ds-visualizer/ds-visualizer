@@ -8,8 +8,8 @@ const algorithm: NextPage = () => {
   const visualizerRoutes = routes.filter((route) => route.type == "Algorithm");
   return (
     <div className="flex flex-col items-center justify-center py-2">
-      <Metadata title="Algorithm" />
-      <Layout heading="Algorithm" routes={visualizerRoutes} />
+      <Metadata title="Algorithms" />
+      <Layout heading="Algorithms" routes={visualizerRoutes} />
     </div>
   );
 };

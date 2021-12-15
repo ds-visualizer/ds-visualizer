@@ -7,7 +7,6 @@ import Button from "@Root/components/layouts/Button";
 interface Props {
   code: mdxHtml;
   question: mdxHtml;
-  meta: string;
 }
 
 const DynamicPages: React.FC<Props> = ({ code, question }) => {
