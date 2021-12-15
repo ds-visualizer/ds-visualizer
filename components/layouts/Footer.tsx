@@ -14,7 +14,7 @@ const Footer: React.FC<Props> = () => {
         <div className="px-4 py-6 text-primary bg-purple-800 bg-gradient-to-r rounded from-purple-900">
           <p>Thanks for reading it till the end.</p>
           <p>
-            If any typo or bug found by putting up an issue in{" "}
+            If any typo or bug found let me know by putting up an issue in{" "}
             <a
               className="text-blue-400 underline"
               target="_blank"
