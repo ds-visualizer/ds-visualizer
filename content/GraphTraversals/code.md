@@ -33,11 +33,19 @@ lets stat with `breadth first` traversal, its similar to what we have seen in tr
 
 ```java:breadthFirst.java
 
+  /*
+   * Time: O(V^2), with hashSet O(V)
+   * Space: O(V)
+   */
+
   public void breadthFirst(String label) {
     Node labelNode = findNode(label);
 
     if (labelNode == null)
       return;
+
+    // We need to keep track of all visited vertices to
+    // this leads to a O(V) space complexity
 
     List<Node> visited = new LinkedList<Node>();
     Queue<Node> queue = new LinkedList<Node>();
@@ -55,12 +63,13 @@ lets stat with `breadth first` traversal, its similar to what we have seen in tr
 
         // In graphs we need to make sure that we didn't visit the node
         // if we did, we won't add the node into the queue.
-        // If otherwise u add the node into the queue, we will end up in an infinity loop 😣
+        // If you do add the node into the queue, we will end up in an infinity loop 😣
 
-        if (!visited.contains(child)) {
+        if (visited.contains(child))
+          continue;
+
           queue.add(child);
           visited.add(child);
-        }
 
       }
     }
@@ -72,6 +81,11 @@ lets stat with `breadth first` traversal, its similar to what we have seen in tr
 Now for DFS, lets look at the algorithm:
 
 ```java:depthFirst.java
+
+  /*
+   * Time: O(V^2), with hashSet O(V)
+   * Space: O(V)
+   */
 
   public void depthFirst(String label) {
 
@@ -103,3 +117,5 @@ Now for DFS, lets look at the algorithm:
   }
 
 ```
+
+DFS can also be done using recursion but I felt like the stack approach felt easier to start off with.

@@ -2,32 +2,33 @@
 
 > Hash map is a type of data structure which is based on key value pair. You ask for a key, you get the value of that key. And Keys in hash map are **UNIQUE**.
 
-Hash maps are used widely in order to reduce time complexities. But again, they don't come free of cost, using hash maps is amazing to reduce the time complexities but you need to utilize more space in order to gain the time advantage.
+Its similar to an array, in an array the key is the index while the value is the value located in the index.
 
 ## What makes Hash Maps so amazing?
 
-Hash maps have an amazing look up and removal times. The Look up and removal time of hash map is O(1) with a good hashing function. And since hash maps are a built in libraries, the language provides a good hashing function.
+Hash maps have an amazing look up and removal times. The Look up and removal time of hash maps are O(1). They are mostly used in algorithms to reduce the time complexities.
 
-Before we go into hash map implementation, lets make our own example hash function.
+Before we go into hash map implementation, lets build our own hashmap.
+
+> Keyword **HASH**, hashing is a function, similar to encryption message but instead when you hash something you don't get the data back to original form.
 
 ```text:example.txt
 
 We know array look up time is O(1) so lets use an array in this case
 
-hashArr = [] // size 10
+hashArr = new Array(10) // size 10
 
 suppose you want to add alex into the array, but how do you add it such a way that when you want
 to access alex, you get it in O(1)?
 
-we need a good hash function, for now lets make a hash function
-that hashes w.r.t the size of the string
+hash function that hashes w.r.t the size of the string
 
 alex - 4, so lets put him in index 4. So when we want to access alex,
 we can use the same hash function and get the name at index 4.
 
 ```
 
-So we just made our own hash function that's based on string length, however our hash function is a very ewww one. Suppose you want to insert matt into our array, using our hashing function the returned index would be 4. So now do we store alex or matt? This situation is called `collision`. With a good hashing function we can avoid this type of collision.
+So we just made our own hash function that's based on string length. Suppose you want to insert matt into our array, using our hashing function the returned index would be 4. So now do we store alex or matt? This situation is called `collision`. With a good hashing function we can avoid this type of collision.
 
 Lets took at a way to get around collisions.
 
@@ -39,8 +40,10 @@ now we want to add matt, but its taken by alex :(.
 So instead of putting plain element in its index, we will put a list and add elements to the list.
 
 Yes, I know what your thinking, our time won't be O(1) haha,
-but heyna our hash function was very basic, but like I told with a good hash function we can
+but heyna our hash function was very basic, but with a good hash function we can
 reduce this collisions and get this code to O(1)
+
+hashArr = [ , , , {alex, matt} , , , , , , ,]
 
 ```
 
@@ -48,12 +51,6 @@ Now we took care of collisions but there is another fault, what if we have a str
 If length is greater than 10, we could do something like `number % 10` so we reset back. 11 % 10 will get us back to 1.
 
 So instead of plainly returning str.length, lets return str.length % 10.
-
-```text:example.txt
-
-hashArr = [ , , , {alex, matt} , , , , , , ,]
-
-```
 
 And another important thing you should remember about hash maps is that you should never have same keys.
 
@@ -102,9 +99,9 @@ public class HashMap<T, E> {
 ```
 
 T and E might be confusing to you if this is your first time but its really simple if you understand it.
-If you pay attention to initialization, you would observe yourself giving the type. Example: `LinkedList<Node> nodes = new LinkedList<Node>()` In this case, we just made a linked list that stores node instead of a fixed data type such as node.
+If you pay attention to initialization, you would observe yourself giving the type. Example: `LinkedList<Node> nodes = new LinkedList<>()` In this case, we just made a linked list that stores node instead of a fixed data type such as node.
 
-So suppose we initializer our hashmap like `HashMap<String, Integer> map = new HashMap<String, Integer>`, our T will be String and our E will be an integer
+So suppose we initializer our hashmap like `HashMap<String, Integer> map = new HashMap<>()`, our T will be String and our E will be an integer
 
 Now lets look at the helper functions before we proceed.
 
@@ -122,6 +119,7 @@ Now lets look at the helper functions before we proceed.
     // collisions
 
     // suppose our hashCode returns 123439, our hash function only returns 9
+    // It can be negative so I'll use Math.abs
 
     return Math.abs(key.hashCode() % 10);
   }
@@ -148,7 +146,7 @@ Now lets look at `put` method, its similar to what we discussed but instead we w
 
   /*
    * Time: O(n) n -> elements in the list, with good hashing function O(1)
-   * Space:(N) N -> the given elements size
+   * Space:(n) n -> the given elements size
    */
 
   // T and E follows the same type as given to the class
@@ -187,7 +185,7 @@ Now lets look at `put` method, its similar to what we discussed but instead we w
 
 ```
 
-Similar to put function, remove function has the same logic.
+Similar to put function, `remove` function has the same logic.
 
 ```java:remove
 

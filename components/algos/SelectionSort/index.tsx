@@ -5,6 +5,7 @@ import React, {
   useState,
   MouseEvent,
   FormEvent,
+  MouseEventHandler,
 } from "react";
 import { Value } from "@Root/misc/algo/arrValue";
 import OptionBackground from "@Components/layouts/OptionBackground";
@@ -114,7 +115,6 @@ const Index = ({ html }: Props) => {
           onSubmit={(e) => {
             e.preventDefault();
             addToArr(e);
-            console.log("e");
             inputRef.current!.value = "";
             inputRef.current?.focus();
           }}
@@ -132,7 +132,6 @@ const Index = ({ html }: Props) => {
               onClick={(e: Event) => {
                 e.preventDefault();
                 addToArr(e);
-                console.log("e");
                 inputRef.current!.value = "";
                 inputRef.current?.focus();
               }}

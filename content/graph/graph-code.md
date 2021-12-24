@@ -1,11 +1,10 @@
 # Adjacency List Graph Code
 
-Graphs can be in made in 2 ways, **Adjacency matrix** and **Adjacency List**. Today we will be going thru Adjacency List type graph and stay tuned
-if you want to see Adjacency matrix graph as well.
+Graphs can be in made in 2 ways, **Adjacency matrix** and **Adjacency List**. we will be going thru Adjacency List.
 
 I won't go in depth of Adjacency matrix but I want to show the differences between them before we go further
 
-`Adjacency Matrix` is made with 2D array and and very costly in space but has faster removal / read times whereas `Adjacency List` is space efficient and faster in adding vertices.
+`Adjacency Matrix` is made with 2D array and and very costly in space but has faster removal / read times whereas `Adjacency List` is space efficient and faster in adding vertices and edges.
 
 There is no telling that one of them is better than the other, it depends on the situation. But here in this blog we will go over **Adjacency List**.
 
@@ -14,7 +13,7 @@ Lines that connect one node to another node are called **edges**, and nodes in g
 > As we walk through in the blog, I want y'all to keep understanding it with the help of the visualizer, there is no use for me to simply
 > every piece when you have the visualizer in front of you 😉.
 
-THe plain structure of a graph would look like this:
+The plain structure of a graph would look like this:
 
 ```java:Graph.java
 
@@ -36,16 +35,21 @@ class Graph {
       this.label = label;
     }
 
+    @override
+    public String toString(){
+      return this.label;
+    }
+
   }
 
-  // use a hashMap here if you want to get the look up time for the nodes in O(1)     else using
-  // linked list will give you a look up time of O(n);
-  // Since we didn't learn hashmaps yet, I'll be using linked list, will update it
-  // to hashmaps soon
+  // use a hashMap here if you want to get the look up time for the nodes in O(1)
+  // else using linked list will give you a look up time of O(n);
+  // Since we didn't learn hashmaps yet, I'll be using linked list
 
-  // Linked list that holds all the vertices in the graph
 
   private LinkedList<Node> nodes = new LinkedList<Node>();
+
+  // Linked list that holds all the vertices (nodes) in the graph
 
   private Node findNode(String label) {}
 
@@ -226,7 +230,7 @@ Just for the purpose of debugging I'll also show a print method:
   public void print() {
 
     for (Node node : nodes)
-      System.out.println(node.label + " is connected to " + node.edges.toString().toString());
+      System.out.println(node.label + " is connected to " + node.edges);
 
   }
 ```

@@ -20,6 +20,9 @@ input {
   background-image: url("/images/card.svg");
   background-repeat: no-repeat;
   background-position: 35% 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Nunito:wght@400;800&display=swap");
@@ -47,39 +50,55 @@ input {
   }
 
   .blog h1 {
-    @apply text-white text-4xl md:text-5xl  2xl:text-7xl text-center pb-3;
+    @apply text-blue-500 text-4xl md:text-5xl  2xl:text-7xl pb-3;
   }
   .blog h2 {
-    @apply text-3xl text-white md:text-4xl  2xl:text-6xl;
+    @apply text-3xl text-blue-500 md:text-4xl  2xl:text-6xl;
   }
   .blog h3 {
-    @apply text-2xl text-white md:text-3xl  2xl:text-4xl;
+    @apply text-2xl text-blue-500 md:text-3xl  2xl:text-4xl;
   }
-
+  .blog strong {
+    @apply text-blue-600;
+  }
   .blog > * {
-    @apply text-base md:text-lg xl:text-xl leading-[1.6rem] md:leading-[1.8rem] xl:leading-[2rem] text-gray-100;
+    @apply text-base w-[85%] md:text-lg xl:text-xl leading-[1.6rem] md:leading-[1.8rem] xl:leading-[2rem] text-gray-100;
   }
 
   .blog pre code {
-    @apply text-base text-gray-300 px-2 py-2;
+    @apply text-base text-gray-300 px-2 py-2 font-normal after:content-[''] before:content-[''];
   }
 
   .blog pre {
-    @apply bg-gray-800 bg-gradient-to-br px-3 py-4 to-gray-700;
+    @apply bg-gray-800 bg-gradient-to-br px-3 w-full py-4 to-gray-700;
   }
   .blog code {
     @apply px-1 py-[0.5px];
   }
+
+  .blog code {
+    @apply after:content-['\`'] before:content-['\`'] before:text-blue-500 after:text-blue-500 text-blue-400 font-bold;
+  }
+
+  .blog {
+    @apply flex items-center flex-col;
+  }
+
+  /* .remark-code-title {
+    @apply bg-gray-800 bg-gradient-to-br px-3 w-full py-4 to-gray-700;
+  } */
 }
+
 .remark-code-title {
-  width: fit-content;
-  background-color: hsla(234, 83%, 67%, 1);
-  color: white;
-  padding: 0.1em 0.3em;
-  border-top-left-radius: 0.3rem;
-  border-top-right-radius: 0.3rem;
-  margin-left: 0.6rem;
+  width: 100%;
+  background-color: #1f2837;
+  color: rgb(45, 105, 201);
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
   transform: translateY(0.5rem);
+  border-bottom: 0.1rem solid #303c50;
+  padding: 0.4rem 1rem;
+  font-weight: bold;
 }
 
 *::-webkit-scrollbar {
@@ -105,7 +124,8 @@ html {
 }
 
 .blog ul {
-  margin: 1rem 0;
+  margin: 1rem 0rem;
+  padding-left: 3rem;
 }
 .blog li {
   list-style: disc;
@@ -129,22 +149,16 @@ html {
 .blog p {
   margin: 1rem 0;
 }
-.blog strong {
-  color: rgb(241, 239, 239);
-}
 .blog pre {
   overflow-x: scroll;
-  border-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
   font-size: 0.8rem;
-}
-.blog code {
-  background: rgba(250, 249, 249, 0.7);
-  border-radius: 0.4rem;
-  color: black;
 }
 .blog pre code {
   background: transparent;
   font-family: "DM Mono", monospace;
+  text-decoration: none;
 }
 .blog blockquote {
   border-radius: 0.4rem;
