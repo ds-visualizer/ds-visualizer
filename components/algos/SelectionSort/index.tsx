@@ -25,7 +25,7 @@ const Index = ({ html }: Props) => {
   const [renderArr, setRenderArr] = useState<JSX.Element[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const addToArr = (e: FormEvent<HTMLFormElement> | Event) => {
+  const addToArr = (e: FormEvent<HTMLFormElement> | MouseEvent) => {
     e.preventDefault();
     const value = parseInt(inputRef.current?.value || "0");
 
@@ -129,7 +129,7 @@ const Index = ({ html }: Props) => {
             ></Button>
             <Button
               content="Insert"
-              onClick={(e: Event) => {
+              onClick={(e) => {
                 e.preventDefault();
                 addToArr(e);
                 inputRef.current!.value = "";

@@ -23,8 +23,7 @@ const routes: Array<Route> = [
   {
     name: "Selection Sort",
     path: "/SelectionSort",
-    category: "",
-    type: "Algorithm",
+    type: "Visualizer",
   },
 ];
 
