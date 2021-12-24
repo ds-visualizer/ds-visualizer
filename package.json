@@ -6,7 +6,9 @@
     "start": "next start",
     "prisma:formate": "prisma format",
     "prisma:studio": "prisma studio",
-    "prisma:migrate": "prisma migrate dev"
+    "prisma:migrate": "prisma migrate dev",
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run"
   },
   "dependencies": {
     "@prisma/client": "3.5.0",
@@ -28,6 +30,7 @@
     "@types/prismjs": "^1.16.6",
     "@types/react": "^17.0.24",
     "autoprefixer": "^10.2.6",
+    "cypress": "^9.1.1",
     "postcss": "^8.3.5",
     "prisma": "3.5.0",
     "tailwindcss": "^2.2.4",
