@@ -1,5 +1,5 @@
 import React from "react";
-import { Comment as IComment } from "@prisma/client";
+import { Comment as IComment } from "@Root/interface/Comment";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import useGlobalContext from "@Hooks/useGlobalContext";

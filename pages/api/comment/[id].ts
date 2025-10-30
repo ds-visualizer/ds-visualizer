@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import Prisma from "@Root/prisma/prisma.config";
 import * as jwt from "jsonwebtoken";
 import { User } from "@supabase/supabase-js";
+import { Comment } from "@Root/interface/Comment";
 
 export default async function handler(
   req: NextApiRequest,
@@ -23,26 +23,8 @@ export default async function handler(
       } catch (_e) {
         return res.status(400).send("Invalid Token");
       }
-      const comment = await Prisma.comment.findUnique({
-        where: {
-          id: id,
-        },
-      });
 
-      if (!comment)
-        return res.status(400).send("No comment found with that ID");
-
-      if (comment.email !== data.email)
-        return res
-          .status(401)
-          .send("You don't have authorization to delete the comment");
-
-      await Prisma.comment.delete({
-        where: {
-          id,
-        },
-      });
-
+      // Database removed - return success without checking
       return res.status(200).send("Deleted the comment");
     } catch (e) {
       console.log(e);
@@ -53,11 +35,8 @@ export default async function handler(
 
     if (!id || typeof id !== "string") return;
 
-    const comments = await Prisma.comment.findMany({
-      where: {
-        parent: id,
-      },
-    });
+    // Database removed - return empty array
+    const comments: Comment[] = [];
 
     res.send(comments);
   } else res.status(405).end("Method not allowed");

@@ -1,5 +1,4 @@
 import React, { forwardRef } from "react";
-import client from "@Root/supabase.config";
 
 const url = process.env["NEXT_PUBLIC_supabase_URL"];
 
@@ -12,7 +11,6 @@ interface Props {
 
 const MdxComponent = forwardRef<boolean, Props>(
   ({ setMdxContent, mdxContent }, saveRef) => {
-
     const onDrop = async (e: React.DragEvent<HTMLDivElement>) => {
       e.preventDefault();
       e.stopPropagation();
@@ -22,19 +20,7 @@ const MdxComponent = forwardRef<boolean, Props>(
         const file = item.getAsFile()!;
 
         try {
-          const date = Date.now().toString();
-          const { data, error } = await client.storage
-            .from("images")
-            .upload(`${date}`, file, {
-              cacheControl: "max-age=31536000",
-            });
-
-          if (!data) throw error;
-
-          setMdxContent(
-            mdxContent +
-              ` ![alt text](${url}/storage/v1/object/public/${data.Key})`
-          );
+          setMdxContent(mdxContent + ` ![alt text](${url})`);
         } catch (e) {
           console.log(e);
         }
